@@ -7,7 +7,6 @@
     using JetBrains.Annotations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using Rib.Common.Helpers.Templating.Razor;
 
     [TestClass]
     public class MailBuilderTests
@@ -213,7 +212,7 @@
             var msg = new MailMessage();
             _mailSender.Setup(x => x.SendAsync(msg)).Returns(Task.FromResult(0)).Verifiable();
             _mailMessageFactory.Setup(x => x.Create()).Returns(msg).Verifiable();
-            var builder = GetBuilder();
+            var builder = new MailBuilder(_mailSender.Object, _mailMessageFactory.Object);
             await builder.SendAsync();
         }
 

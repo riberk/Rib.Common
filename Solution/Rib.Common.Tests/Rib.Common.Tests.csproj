@@ -261,6 +261,12 @@
     <Compile Include="Helpers\Cache\ObjectCacheFactoryTests.cs" />
     <Compile Include="Helpers\Cache\StubCachePolicyFactoryTests.cs" />
     <Compile Include="Helpers\Configuration\AppSettingsReaderTests.cs" />
+    <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemResolverTests.cs" />
+    <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemsHelperTests.cs" />
+    <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemsReaderTests.cs" />
+    <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemTests.cs" />
+    <Compile Include="Helpers\Configuration\Services\ConfigurationServiceTests.cs" />
+    <Compile Include="Helpers\Configuration\SettingsManagers\ConfigurationReaderTests.cs" />
     <Compile Include="Helpers\Configuration\SettingsReaderExtensionsTests.cs" />
     <Compile Include="Helpers\Configuration\SettingsWriterExtensionsTests.cs" />
     <Compile Include="Helpers\Encrypting\ByteArraySplitterTests.cs" />

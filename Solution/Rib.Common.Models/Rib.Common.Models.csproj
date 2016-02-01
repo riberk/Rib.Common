@@ -226,6 +226,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationItemGroupTableModel.cs" />
+    <Compile Include="Configuration\ConfigurationItemTableModel.cs" />
     <Compile Include="Contract\IPagedResponse.cs" />
     <Compile Include="Contract\IPaginator.cs" />
     <Compile Include="Contract\PagedResponse.cs" />
