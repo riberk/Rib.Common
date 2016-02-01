@@ -1,7 +1,5 @@
 ﻿namespace Rib.Common.Ninject
 {
-    using global::Common.Logging;
-
     /// <summary>
     ///     Загружает модули сборки <see cref="Rib.Common" />
     /// </summary>

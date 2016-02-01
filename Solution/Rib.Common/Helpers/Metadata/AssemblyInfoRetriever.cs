@@ -3,10 +3,9 @@ namespace Rib.Common.Helpers.Metadata
     using System;
     using System.IO;
     using System.Reflection;
+    using JetBrains.Annotations;
     using Rib.Common.Helpers.Cache;
     using Rib.Common.Models.Metadata;
-    using global::Common.Logging;
-    using JetBrains.Annotations;
 
     /// <summary>
     ///     Получатель информации о сборке
@@ -14,17 +13,14 @@ namespace Rib.Common.Helpers.Metadata
     internal class AssemblyInfoRetriever : IAssemblyInfoRetriever
     {
         [NotNull] private readonly ICacherFactory _cacherFactory;
-        [NotNull] private readonly ILog _log;
 
         /// <summary>
         ///     Инициализирует новый экземпляр класса <see cref="AssemblyInfoRetriever" />.
         /// </summary>
-        public AssemblyInfoRetriever([NotNull] ICacherFactory cacherFactory, [NotNull] ILog log)
+        public AssemblyInfoRetriever([NotNull] ICacherFactory cacherFactory)
         {
             if (cacherFactory == null) throw new ArgumentNullException(nameof(cacherFactory));
-            if (log == null) throw new ArgumentNullException(nameof(log));
             _cacherFactory = cacherFactory;
-            _log = log;
         }
 
         /// <summary>
@@ -40,12 +36,9 @@ namespace Rib.Common.Helpers.Metadata
 
         private IAssemblyInfo CreateAssemblyInfo([NotNull] Assembly assembly)
         {
-            _log.Trace($"Create assembly info for {assembly.FullName}");
             var buildDate = RetrieveLinkerTimestamp(assembly);
-            _log.Trace($"Build date {assembly.FullName}: {buildDate}");
             var version = assembly.GetName().Version;
             var buildVersion = version?.ToString() ?? "NoVersion";
-            _log.Trace($"Version {assembly.FullName}: {buildVersion}");
             return new AssemblyInfo(buildVersion, buildDate);
         }
 
