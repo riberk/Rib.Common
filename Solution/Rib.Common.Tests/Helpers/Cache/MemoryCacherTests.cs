@@ -1,0 +1,237 @@
+﻿namespace Rib.Common.Helpers.Cache
+{
+    using System;
+    using System.Linq;
+    using System.Runtime.Caching;
+    using JetBrains.Annotations;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+
+    [TestClass]
+    public class MemoryCacherTests
+    {
+        [NotNull] private Mock<ICachePolicyFactory> _itemPolicyMock;
+        [NotNull] private MockRepository _mockFactory;
+        private Mock<IObjectCacheFactory> _objectCacheFactory;
+
+        [TestInitialize]
+        public void Init()
+        {
+            _mockFactory = new MockRepository(MockBehavior.Strict);
+            _itemPolicyMock = _mockFactory.Create<ICachePolicyFactory>();
+            _objectCacheFactory = _mockFactory.Create<IObjectCacheFactory>();
+        }
+
+        [NotNull]
+        private static string FullKey(string prefix, string key) => MemoryCacher.FullKey(prefix, key);
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void ConstructorNullArgument1() => new MemoryCacher<string>(null, _objectCacheFactory.Object, "123");
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void ConstructorNullArgument2() => new MemoryCacher<string>(_itemPolicyMock.Object, _objectCacheFactory.Object, null);
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void ConstructorNullArgument3() => new MemoryCacher<string>(_itemPolicyMock.Object, null, "123");
+
+        [TestMethod]
+        public void Constructor() => new MemoryCacher<string>(_itemPolicyMock.Object, _objectCacheFactory.Object, "321");
+
+        [TestMethod]
+        public void GetOrAddSimpleTest()
+        {
+            _itemPolicyMock.Setup(x => x.Create<One>()).Returns(new CacheItemPolicy()).Verifiable();
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name);
+            var exp = new One();
+            var key = "1sdrsdhsdrhsdr";
+            Func<string, One> valueFactory = s =>
+            {
+                Assert.AreEqual(key, s);
+                return exp;
+            };
+            _objectCacheFactory.Setup(x => x.Create()).Returns(MemoryCache.Default).Verifiable();
+            var actual1 = cacher.GetOrAdd(key, valueFactory);
+            var actual2 = cacher.GetOrAdd(key, s =>
+            {
+                Assert.Fail("Дважды вызвана фабрика");
+                return null;
+            });
+
+            Assert.AreEqual(exp, actual1);
+            Assert.AreEqual(exp, actual2);
+            Assert.AreEqual(actual1, actual2);
+        }
+
+        [TestMethod]
+        public void GetOrAddWithDifferentInstance()
+        {
+            _itemPolicyMock.Setup(x => x.Create<One>()).Returns(new CacheItemPolicy()).Verifiable();
+            var cacher1 = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name);
+            var cacher2 = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name);
+            var exp = new One();
+            var key = "1sdrsdhsryjtujuw54hrt5nfgmdrhsdr";
+            Func<string, One> valueFactory = s =>
+            {
+                Assert.AreEqual(key, s);
+                return exp;
+            };
+            _objectCacheFactory.Setup(x => x.Create()).Returns(MemoryCache.Default).Verifiable();
+            var actual1 = cacher1.GetOrAdd(key, valueFactory);
+            var actual2 = cacher2.GetOrAdd(key, s =>
+            {
+                Assert.Fail("Дважды вызвана фабрика");
+                return null;
+            });
+            Assert.AreEqual(exp, actual1);
+            Assert.AreEqual(exp, actual2);
+            Assert.AreEqual(actual1, actual2);
+        }
+
+        [TestMethod]
+        public void GetOrAddWithDifferentInstanceNullValue()
+        {
+            _itemPolicyMock.Setup(x => x.Create<One>()).Returns(new CacheItemPolicy()).Verifiable();
+            var cacher1 = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name);
+            var cacher2 = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name);
+            var key = "1sdrsdsdrgsdrgsrdghdfhfgjkghklhsdrhsdr";
+            Func<string, One> valueFactory = s =>
+            {
+                Assert.AreEqual(key, s);
+                return null;
+            };
+            _objectCacheFactory.Setup(x => x.Create()).Returns(MemoryCache.Default).Verifiable();
+            var actual1 = cacher1.GetOrAdd(key, valueFactory);
+            var actual2 = cacher2.GetOrAdd(key, s =>
+            {
+                Assert.Fail("Дважды вызвана фабрика");
+                return null;
+            });
+            Assert.IsNull(actual1);
+            Assert.IsNull(actual2);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (InvalidCastException))]
+        public void GetOrAddWithCastExceptionTest()
+        {
+            const string prefix = "123";
+            const string key = "321";
+
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, prefix);
+
+            var mCache = MemoryCache.Default;
+            _objectCacheFactory.Setup(x => x.Create()).Returns(mCache).Verifiable();
+            var fullKey = FullKey(prefix, key);
+            mCache.Add(fullKey, "123", new CacheItemPolicy());
+            cacher.GetOrAdd(key, s => new One());
+        }
+
+        [TestMethod]
+        public void GetOrAddWithNullTest()
+        {
+            _itemPolicyMock.Setup(x => x.Create<One>()).Returns(new CacheItemPolicy()).Verifiable();
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name);
+            Func<string, One> valueFactory = s => null;
+            const string key = "100sfgsdgrsdg";
+            _objectCacheFactory.Setup(x => x.Create()).Returns(MemoryCache.Default).Verifiable();
+            var actual1 = cacher.GetOrAdd(key, valueFactory);
+            var actual2 = cacher.GetOrAdd(key, s =>
+            {
+                Assert.Fail("Дважды вызвана фабрика");
+                return null;
+            });
+
+            Assert.IsNull(actual1);
+            Assert.IsNull(actual2);
+        }
+
+        [TestMethod]
+        public void RemoveTest()
+        {
+            const string prefix = "123123af";
+            const string key = "321awdaw";
+
+            var mCache = MemoryCache.Default;
+            _objectCacheFactory.Setup(x => x.Create()).Returns(mCache).Verifiable();
+            var fullKey = FullKey(prefix, key);
+            var exp = new One();
+            var resExp = mCache.AddOrGetExisting(fullKey, exp, new CacheItemPolicy());
+            var actual = mCache.Get(fullKey);
+            Assert.IsNull(resExp);
+            Assert.AreEqual(exp, actual);
+
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, prefix);
+            cacher.Remove(key);
+            var after = mCache.Get(fullKey);
+            Assert.IsNull(after);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AddOrUpdateNullArgument1Test()
+                => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").AddOrUpdate(null, s => new One());
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void AddOrUpdateNullArgument2Test()
+                => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").AddOrUpdate("dadwad", null);
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RemoveArgumentNullTest() => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").Remove(null);
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MemoryCacherOnUpdateArgumentNullTest() => new Testcache().Update(null);
+
+        [TestMethod]
+        public void MemoryCacherOnUpdateTest()
+        {
+            const string key = "dsfgsdsdfgh";
+            var cache = new Testcache();
+            var raised = false;
+            MemoryCacher.CacheItemUpdated += (sender, args) =>
+            {
+                Assert.IsNotNull(sender);
+                Assert.AreEqual(cache, sender);
+                Assert.IsNotNull(args);
+                Assert.AreEqual(key, args.FullKey);
+                raised = true;
+            };
+            cache.Update(key);
+            Assert.IsTrue(raised);
+        }
+        
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void GetOrAddNullArgument1()
+            => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).GetOrAdd(null, s => new One());
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void GetOrAddNullArgument2()
+            => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).GetOrAdd("123", null);
+
+        [TestCleanup]
+        public void Clean()
+        {
+            _mockFactory.VerifyAll();
+        }
+
+        public class One
+        {
+        }
+
+        public class Testcache : MemoryCacher
+        {
+            public void Update(string key)
+            {
+                OnCacheItemUpdated(this, new CacheUpdatedEventArgs(key));
+            }
+        }
+    }
+}

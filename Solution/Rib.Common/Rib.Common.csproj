@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D73231CE-3808-4C23-8FD5-06C879DF75E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rib.Common</RootNamespace>
+    <AssemblyName>Rib.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\Cache\CacheCleaner.cs" />
+    <Compile Include="Helpers\Cache\CacheUpdatedEventArgs.cs" />
+    <Compile Include="Helpers\Cache\ICacheCleaner.cs" />
+    <Compile Include="Helpers\Cache\IObjectCacheFactory.cs" />
+    <Compile Include="Helpers\Cache\Module.cs" />
+    <Compile Include="Helpers\Cache\ObjectCacheFactory.cs" />
+    <Compile Include="Helpers\Cache\StubCachePolicyFactory.cs" />
+    <Compile Include="Helpers\Configuration\AppSettingsManager.cs" />
+    <Compile Include="Helpers\Configuration\ISettingsManager.cs" />
+    <Compile Include="Helpers\Configuration\ISettingsReader.cs" />
+    <Compile Include="Helpers\Configuration\ISettingsWriter.cs" />
+    <Compile Include="Helpers\Configuration\Module.cs" />
+    <Compile Include="Helpers\Configuration\SettingsReaderExtensions.cs" />
+    <Compile Include="Helpers\Configuration\SettingsWriterExtensions.cs" />
+    <Compile Include="Helpers\CorrelationId\ICorrelationIdStore.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\IRsaKeyCreator.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\Module.cs" />
+    <Compile Include="Helpers\Encrypting\ByteArraySplitter.cs" />
+    <Compile Include="Helpers\Encrypting\IByteArraySplitter.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\AsymmetricCryptoService.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\AsymmetricCryptoServiceExtensions.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\IAsymmetricCryptoService.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\IMaxBlockLengthResolver.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\IRsaCryptoServiceProviderResolver.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\MaxBlockLengthResolver.cs" />
+    <Compile Include="Helpers\Encrypting\Asymmetric\RsaCryptoServiceProviderResolver.cs" />
+    <Compile Include="Helpers\Encrypting\Module.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricAlgorithmTypeReader.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricAlgorithmFactory.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricCryptoService.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricKeyFactory.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\Module.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\SymmetricAlgorithmFactory.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoService.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensions.cs" />
+    <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactory.cs" />
+    <Compile Include="Helpers\Expressions\ConvertRemover.cs" />
+    <Compile Include="Helpers\Expressions\INewMaker.cs" />
+    <Compile Include="Helpers\Expressions\IPathConvertRemover.cs" />
+    <Compile Include="Helpers\Expressions\IPropertyStringResolver.cs" />
+    <Compile Include="Helpers\Expressions\IPropertyHelper.cs" />
+    <Compile Include="Helpers\Expressions\IStringToPathProvider.cs" />
+    <Compile Include="Helpers\Expressions\Module.cs" />
+    <Compile Include="Helpers\Expressions\NewMaker.cs" />
+    <Compile Include="Helpers\Expressions\PathConvertRemover.cs" />
+    <Compile Include="Helpers\Expressions\PropertyHelper.cs" />
+    <Compile Include="Helpers\Expressions\PropertyStringResolver.cs" />
+    <Compile Include="Helpers\Expressions\StringToPathProvider.cs" />
+    <Compile Include="Helpers\Mailing\IMailBuilder.cs" />
+    <Compile Include="Helpers\Mailing\IMailBuilderFactory.cs" />
+    <Compile Include="Helpers\Mailing\IMailMessageFactory.cs" />
+    <Compile Include="Helpers\Mailing\IMailSender.cs" />
+    <Compile Include="Helpers\Mailing\ISmtpClientFactory.cs" />
+    <Compile Include="Helpers\Mailing\MailBuilder.cs" />
+    <Compile Include="Helpers\Mailing\MailBuilderFactory.cs" />
+    <Compile Include="Helpers\Mailing\MailMessageFactory.cs" />
+    <Compile Include="Helpers\Mailing\MailSender.cs" />
+    <Compile Include="Helpers\Mailing\Module.cs" />
+    <Compile Include="Helpers\Mailing\SmtpClientFactory.cs" />
+    <Compile Include="Helpers\Metadata\AssemblyInfoRetriever.cs" />
+    <Compile Include="Helpers\Metadata\AttributesReader.cs" />
+    <Compile Include="Helpers\Metadata\AttributesReaderExtensions.cs" />
+    <Compile Include="Helpers\Metadata\Enums\EnumAttributeReader.cs" />
+    <Compile Include="Helpers\Metadata\Enums\EnumAttributeReaderExtensions.cs" />
+    <Compile Include="Helpers\Metadata\Enums\EnumFieldReader.cs" />
+    <Compile Include="Helpers\Metadata\Enums\EnumReader.cs" />
+    <Compile Include="Helpers\Metadata\Enums\EnumReaderExtensions.cs" />
+    <Compile Include="Helpers\Metadata\Enums\IEnumAttributeReader.cs" />
+    <Compile Include="Helpers\Metadata\Enums\IEnumFieldReader.cs" />
+    <Compile Include="Helpers\Metadata\Enums\IEnumReader.cs" />
+    <Compile Include="Helpers\Metadata\Enums\Module.cs" />
+    <Compile Include="Helpers\Metadata\IAssemblyInfoRetriever.cs" />
+    <Compile Include="Helpers\Metadata\IAttributesReader.cs" />
+    <Compile Include="Helpers\Cache\ICachePolicyFactory.cs" />
+    <Compile Include="Helpers\Cache\ICacher.cs" />
+    <Compile Include="Helpers\Cache\ICacherFactory.cs" />
+    <Compile Include="Helpers\Cache\MemoryCacher.cs" />
+    <Compile Include="Helpers\Cache\MemoryCacherFactory.cs" />
+    <Compile Include="Helpers\Metadata\Module.cs" />
+    <Compile Include="Helpers\ObjectExtensions.cs" />
+    <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
+    <Compile Include="Helpers\Tmp\TmpFolder.cs" />
+    <Compile Include="Ninject\RibNinjectModule.cs" />
+    <Compile Include="Ninject\CommonModule.cs" />
+    <Compile Include="Ninject\IResolver.cs" />
+    <Compile Include="Ninject\NinjectResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
+      <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
+      <Name>Rib.Common.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
