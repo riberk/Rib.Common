@@ -6,7 +6,6 @@ namespace Rib.Tests.Mock
     using System.Reflection;
     using JetBrains.Annotations;
     using Moq;
-    using TsSoft.Expressions.Helpers.Reflection;
 
     public class ArgumentsVerifier
     {
@@ -22,14 +21,14 @@ namespace Rib.Tests.Mock
             _mockFactory = new MockRepository(MockBehavior.Loose);
             _errors = new List<string>();
             _constructors = types
-                .Select(x => new
-                {
-                    Type = x,
-                    Constructors = x.GetConstructors()
-                        .Where(c => c.GetParameters().All(p => p.ParameterType.IsReferenceType() && p.ParameterType != typeof (string)))
-                        .ToArray()
-                }).Where(x => x.Constructors.Any())
-                .ToDictionary(x => x.Type, x => x.Constructors);
+                    .Select(x => new
+                    {
+                        Type = x,
+                        Constructors = x.GetConstructors()
+                                        .Where(c => c.GetParameters().All(p => p.ParameterType.IsClass && p.ParameterType != typeof (string)))
+                                        .ToArray()
+                    }).Where(x => x.Constructors.Any())
+                    .ToDictionary(x => x.Type, x => x.Constructors);
             _voidConstructors = types.SelectMany(x => x.GetConstructors()).Where(x => !x.GetParameters().Any()).ToList();
             _createMockMethod = typeof (MockRepository).GetMethod("Create", new Type[0]);
         }
@@ -73,8 +72,8 @@ namespace Rib.Tests.Mock
             {
                 var args = mi.GetParameters();
                 var dict = args.ToDictionary(x => x,
-                    parameterInfo =>
-                        _createMockMethod.MakeGenericMethod(parameterInfo.ParameterType).Invoke(_mockFactory, new object[0]));
+                                             parameterInfo =>
+                                             _createMockMethod.MakeGenericMethod(parameterInfo.ParameterType).Invoke(_mockFactory, new object[0]));
                 foreach (var source in dict)
                 {
                     var p = args.Select(x =>
@@ -84,13 +83,13 @@ namespace Rib.Tests.Mock
                         try
                         {
                             return s.GetType()
-                                .GetProperties()
-                                .Single(pp => pp.Name == "Object" && pp.DeclaringType == s.GetType())
-                                .GetValue(s);
+                                    .GetProperties()
+                                    .Single(pp => pp.Name == "Object" && pp.DeclaringType == s.GetType())
+                                    .GetValue(s);
                         }
                         catch (Exception e)
                         {
-                            throw new AggregateException($"Exception on argument {x.Name} o type {x.Member.DeclaringType}",e);
+                            throw new AggregateException($"Exception on argument {x.Name} o type {x.Member.DeclaringType}", e);
                         }
                     }).ToArray();
                     try

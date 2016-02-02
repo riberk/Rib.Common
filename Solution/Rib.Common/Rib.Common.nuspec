@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Rib.Common</id>
+    <version>1.0.0</version>
+    <title>Rib.Common</title>
+    <authors>Pavel Kurdikov</authors>
+    <owners>Pavel Kurdikov</owners>
+    <licenseUrl>https://github.com/riberk/Rib.Common/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/riberk/Rib.Common</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common classes and interfaces for oop works with cache, ninject, application configuration and etc</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags></tags>
+    <dependencies>
+      <dependency id="Rib.Common.Models" version="[1.0, 2.0)" />
+      <dependency id="Ninject" version="[3.2, 4.0)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Rib.Common.dll" target="lib\net46" />
+  </files>
+</package>

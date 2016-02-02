@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="All">
+
+  <PropertyGroup>
+    <LibraryPath>$(MSBuildProjectDirectory)\Library</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ConfigurationName Condition=" '$(ConfigurationName)' == '' ">Release</ConfigurationName>
+    <SourceDirectory>$(MSBuildProjectDirectory)</SourceDirectory>
+    <SolutionDirectory>$(SourceDirectory)\Solution</SolutionDirectory>
+    <TargetDirectory>$(MSBuildProjectDirectory)\Target\$(ConfigurationName)</TargetDirectory>
+  </PropertyGroup>
+
+  <Target Name="All" DependsOnTargets="Build" />
+
+  <Target Name="Clean">
+    <RemoveDir Directories="$(TargetDirectory)" />
+  </Target>
+
+  <Target Name="Init" DependsOnTargets="Clean">
+    <MakeDir Directories="$(TargetDirectory)" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="Init">
+    <MSBuild Projects="$(SolutionDirectory)\Rib.Common.sln" Properties="Configuration=$(ConfigurationName)" Targets="Clean; Build" />
+  </Target>
+
+</Project>

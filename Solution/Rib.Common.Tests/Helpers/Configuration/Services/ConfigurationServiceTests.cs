@@ -176,7 +176,9 @@
             [UsedImplicitly]
             public static class InnerConfigClass
             {
+#pragma warning disable
                 [UsedImplicitly] public static readonly ConfigurationItem InnerItem1Field;
+#pragma warning restore
             }
         }
 

@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Tests", "Rib.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Tests", "Rib.Tests\Rib.Tests.csproj", "{9BF49E22-995F-472B-90E1-D37C1D323598}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A3C4E35-5051-48C0-AFD4-E88E79EBEA29}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec.xsd = nuspec.xsd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

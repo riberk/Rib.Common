@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Rib.Common.Models</id>
+    <version>1.0.0</version>
+    <title>Rib.Common.Models</title>
+    <authors>Pavel Kurdikov</authors>
+    <owners>Pavel Kurdikov</owners>
+    <licenseUrl>https://github.com/riberk/Rib.Common/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/riberk/Rib.Common</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Model classes and interfaces for Rib.Common</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags></tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Rib.Common.Models.dll" target="lib\net46" />
+  </files>
+</package>
