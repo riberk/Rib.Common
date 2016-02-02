@@ -3,7 +3,7 @@ namespace Rib.Common.Helpers.Configuration
     using System;
     using System.Configuration;
 
-    internal class AppSettingsManager : ISettingsManager
+    public class AppSettingsManager : ISettingsManager
     {
         public string Read(string name)
         {
