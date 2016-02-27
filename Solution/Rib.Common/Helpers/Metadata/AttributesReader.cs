@@ -29,6 +29,8 @@ namespace Rib.Common.Helpers.Metadata
         /// <returns>Атрибуты или пустая коллекция, если отсутствуют</returns>
         public IReadOnlyCollection<object> ReadMany(Type attr, ICustomAttributeProvider provider)
         {
+            if (attr == null) throw new ArgumentNullException(nameof(attr));
+            if (provider == null) throw new ArgumentNullException(nameof(provider));
             var key = _attributesReaderKeyFactory.Create(attr, provider);
             var res = _cacherFactory.Create<IReadOnlyCollection<object>>().GetOrAdd(key, s => provider.GetCustomAttributes(attr, false));
             if (res == null)
