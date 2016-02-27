@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Rib.Common.Helpers.Cache;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
@@ -94,9 +95,9 @@
         public void ReadManyWithoutResultTest()
         {
             var reader = new AttributesReader(_cacherFactory.Object);
-            var cacher = _factory.Create<ICacher<IReadOnlyCollection<TestAttribute>>>();
+            var cacher = _factory.Create<ICacher<IReadOnlyCollection<object>>>();
 
-            _cacherFactory.Setup(x => x.Create<IReadOnlyCollection<TestAttribute>>(null, null)).Returns(cacher.Object).Verifiable();
+            _cacherFactory.Setup(x => x.Create<IReadOnlyCollection<object>>(null, null)).Returns(cacher.Object).Verifiable();
             var key = $"{typeof (IReadOnlyCollection<TestAttribute>).FullName}|{typeof (string).FullName}";
             cacher.Setup(x => x.GetOrAdd(key, It.IsAny<Func<string, IReadOnlyCollection<TestAttribute>>>())).Returns(
                 (string s, Func<string, IReadOnlyCollection<TestAttribute>> f) =>
@@ -108,7 +109,7 @@
                 }).Verifiable();
             var res = reader.ReadMany<TestAttribute>(typeof (string));
             Assert.IsNotNull(res);
-            Assert.AreEqual(0, res.Count);
+            Assert.AreEqual(0, res.Count());
         }
 
         [TestMethod]
@@ -129,7 +130,7 @@
                 }).Verifiable();
             var res = reader.ReadMany<TestAttribute>(typeof (ManyAttributes));
             Assert.IsNotNull(res);
-            Assert.AreEqual(2, res.Count);
+            Assert.AreEqual(2, res.Count());
         }
 
         [TestMethod]
