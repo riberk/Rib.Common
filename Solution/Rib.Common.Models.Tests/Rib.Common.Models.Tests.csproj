@@ -55,6 +55,7 @@
     <Compile Include="Contract\PaginatorTests.cs" />
     <Compile Include="Helpers\CorrelationIdExtensionsTests.cs" />
     <Compile Include="Helpers\CorrelationIdTests.cs" />
+    <Compile Include="Metadata\EnumModelTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
