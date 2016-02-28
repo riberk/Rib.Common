@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Security.Cryptography;
+    using System.Security.Principal;
     using System.Text;
     using JetBrains.Annotations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -19,6 +20,10 @@
         [TestInitialize]
         public void Init()
         {
+            if (!IsAdministrator())
+            {
+                Assert.Fail("All tests for crypto conteiners need administrative privileges");
+            }
             _mockFactory = new MockRepository(MockBehavior.Strict);
             _resolverMock = _mockFactory.Create<IRsaCryptoServiceProviderResolver>();
             _byteSplitter = _mockFactory.Create<IByteArraySplitter>();
@@ -180,6 +185,13 @@
         public void Clean()
         {
             _mockFactory.VerifyAll();
+        }
+
+        public static bool IsAdministrator()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
 }
