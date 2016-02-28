@@ -17,6 +17,7 @@ using System.Security;
 [assembly: AssemblyCulture("")]
 [assembly: InternalsVisibleTo("Rib.Common.Tests")]
 [assembly: InternalsVisibleTo("Rib.Logic")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 [assembly: SecurityRules(SecurityRuleSet.Level1, SkipVerificationInFullTrust = true)]
 // Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
 // для COM-компонентов.  Если требуется обратиться к типу в этой сборке через 

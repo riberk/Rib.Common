@@ -30,15 +30,15 @@
         [ExpectedException(typeof (AttributeNotFoundException))]
         public void ReadSafeWithNullTest()
         {
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (string))).Returns((DescriptionAttribute) null).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof (string))).Returns(new  object[] { (DescriptionAttribute)null }).Verifiable();
             _attributesReader.Object.ReadSafe<DescriptionAttribute>(typeof (string));
         }
 
         [TestMethod]
         public void ReadSafeTest()
         {
-            var exp = new DescriptionAttribute("aawd");
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (string))).Returns(exp).Verifiable();
+            object exp = new DescriptionAttribute("aawd");
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute),typeof (string))).Returns(new[] {exp}).Verifiable();
             var actual = _attributesReader.Object.ReadSafe<DescriptionAttribute>(typeof (string));
             Assert.AreEqual(exp, actual);
         }

@@ -15,7 +15,7 @@ namespace Rib.Common.Models.Exceptions
         /// </summary>
         /// <param name="type">Тип атрибута</param>
         /// <param name="memberInfo">Член, на котором ожидался атрибут</param>
-        public AttributeNotFoundException(Type type, MemberInfo memberInfo) : base(type)
+        public AttributeNotFoundException(Type type, ICustomAttributeProvider memberInfo) : base(type)
         {
             MemberInfo = memberInfo;
         }
@@ -27,7 +27,7 @@ namespace Rib.Common.Models.Exceptions
         /// <param name="message">Сообщение, описывающее ошибку. </param>
         /// <param name="type">Тип атрибута</param>
         /// <param name="memberInfo">Член, на котором ожидался атрибут</param>
-        public AttributeNotFoundException(string message, Type type, MemberInfo memberInfo) : base(message, type)
+        public AttributeNotFoundException(string message, Type type, ICustomAttributeProvider memberInfo) : base(message, type)
         {
             MemberInfo = memberInfo;
         }
@@ -44,7 +44,7 @@ namespace Rib.Common.Models.Exceptions
         /// </param>
         /// <param name="type">Тип атрибута</param>
         /// <param name="memberInfo">Член, на котором ожидался атрибут</param>
-        public AttributeNotFoundException(string message, Exception innerException, Type type, MemberInfo memberInfo)
+        public AttributeNotFoundException(string message, Exception innerException, Type type, ICustomAttributeProvider memberInfo)
             : base(message, innerException, type)
         {
             MemberInfo = memberInfo;
@@ -57,7 +57,7 @@ namespace Rib.Common.Models.Exceptions
         /// <param name="context">Контекстные сведения об источнике или назначении. </param>
         /// <param name="type">Тип атрибута</param>
         /// <param name="memberInfo">Член, на котором ожидался атрибут</param>
-        protected AttributeNotFoundException([NotNull] SerializationInfo info, StreamingContext context, Type type, MemberInfo memberInfo)
+        protected AttributeNotFoundException([NotNull] SerializationInfo info, StreamingContext context, Type type, ICustomAttributeProvider memberInfo)
             : base(info, context, type)
         {
             MemberInfo = memberInfo;
@@ -66,6 +66,6 @@ namespace Rib.Common.Models.Exceptions
         /// <summary>
         ///     Член, на котором ожидался атрибут
         /// </summary>
-        public MemberInfo MemberInfo { get; }
+        public ICustomAttributeProvider MemberInfo { get; }
     }
 }
