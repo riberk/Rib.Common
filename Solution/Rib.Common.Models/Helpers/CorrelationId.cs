@@ -1,6 +1,7 @@
 ﻿namespace Rib.Common.Models.Helpers
 {
     using System;
+    using JetBrains.Annotations;
 
     /// <summary>
     ///     Идентификатор корреляции
@@ -30,12 +31,9 @@
 
         private Guid Value { get; }
 
-        public int CompareTo(CorrelationId other)
+        public int CompareTo([NotNull] CorrelationId other)
         {
-            if (other == null)
-            {
-                throw new NullReferenceException("CorelationId can not be null");
-            }
+            if (other == null) throw new ArgumentNullException(nameof(other), "CorelationId can not be null");
             return Value.CompareTo(other);
         }
 
@@ -63,7 +61,16 @@
 
         public int CompareTo(object value)
         {
-            return Value.CompareTo(value);
+            if (value is Guid)
+            {
+                return Value.CompareTo(value);
+            }
+            var cid = value as CorrelationId;
+            if (cid != null)
+            {
+                return CompareTo(cid);
+            }
+            throw new ArgumentException("value must be Guid or CorrelationId", nameof(value));
         }
 
         public string ToString(string format)
