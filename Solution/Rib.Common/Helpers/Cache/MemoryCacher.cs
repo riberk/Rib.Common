@@ -46,28 +46,36 @@ namespace Rib.Common.Helpers.Cache
             _policy = policy;
         }
 
+        public CacheTryGetResult TryGet(string key, out T value)
+        {
+            if (key == null) throw new ArgumentNullException(nameof(key));
+            var internalResult = GetResult(key);
+            value = default(T);
+            if (internalResult.Value == null)
+            {
+                return CacheTryGetResult.NotFound;
+            }
+            if (internalResult.Value == EmptyObject)
+            {
+                return CacheTryGetResult.Empty;
+            }
+            value = Cast(internalResult.Value);
+            return CacheTryGetResult.Found;
+        }
+
         public T GetOrAdd(string key, Func<string, T> valueFactory)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
             if (valueFactory == null) throw new ArgumentNullException(nameof(valueFactory));
-            var cacheKey = FullKey(_prefix, key);
-            var cache = _objectCacheFactory.Create();
-            var res = cache.Get(cacheKey);
-            if (res == null)
+            var internalResult = GetResult(key);
+            if (internalResult.Value == null)
             {
                 var factoryResult = valueFactory(key) ?? EmptyObject;
-                res = cache.AddOrGetExisting(cacheKey, factoryResult, _policy ?? _cacheItemPolicyFactory.Create<T>()) ?? factoryResult;
+                internalResult.Value =
+                    internalResult.Cache.AddOrGetExisting(internalResult.FullKey, factoryResult, _policy ?? _cacheItemPolicyFactory.Create<T>()) ??
+                    factoryResult;
             }
-            if (res == EmptyObject)
-            {
-                return null;
-            }
-            var typedRes = res as T;
-            if (typedRes == null)
-            {
-                throw new InvalidCastException($"Не удалось привести {res.GetType()} к {typeof (T)}");
-            }
-            return typedRes;
+            return internalResult.Value == EmptyObject ? null : Cast(internalResult.Value);
         }
 
         public T AddOrUpdate(string key, Func<string, T> createValueFactory)
@@ -80,10 +88,52 @@ namespace Rib.Common.Helpers.Cache
             return res;
         }
 
+        [NotNull]
+        private static T Cast([NotNull] object value)
+        {
+            var typedRes = value as T;
+            if (typedRes == null)
+            {
+                throw new InvalidCastException($"Не удалось привести {value.GetType()} к {typeof(T)}");
+            }
+            return typedRes;
+        }
+
+        private InternalCacheResult GetResult(string key)
+        {
+            var cacheKey = FullKey(_prefix, key);
+            var cache = _objectCacheFactory.Create();
+            var res = cache.Get(cacheKey);
+            return new InternalCacheResult(cacheKey, res, cache);
+        }
+
         public void Remove(string key)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
             _objectCacheFactory.Create().Remove(FullKey(_prefix, key));
+        }
+
+        private struct InternalCacheResult
+        {
+            /// <summary>
+            /// Инициализирует новый экземпляр класса <see cref="T:System.Object"/>.
+            /// </summary>
+            public InternalCacheResult([NotNull] string fullKey, object value, [NotNull] ObjectCache cache)
+            {
+                if (fullKey == null) throw new ArgumentNullException(nameof(fullKey));
+                if (cache == null) throw new ArgumentNullException(nameof(cache));
+                FullKey = fullKey;
+                Value = value;
+                Cache = cache;
+            }
+
+            [NotNull]
+            public string FullKey { get; }
+
+            public object Value { get; set; }
+
+            [NotNull]
+            public ObjectCache Cache { get; }
         }
     }
 }

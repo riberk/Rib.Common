@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Cache\CacheCleaner.cs" />
+    <Compile Include="Helpers\Cache\CacheTryGetResult.cs" />
     <Compile Include="Helpers\Cache\CacheUpdatedEventArgs.cs" />
     <Compile Include="Helpers\Cache\ICacheCleaner.cs" />
     <Compile Include="Helpers\Cache\IObjectCacheFactory.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="Helpers\Configuration\ISettingsManager.cs" />
     <Compile Include="Helpers\Configuration\ISettingsReader.cs" />
     <Compile Include="Helpers\Configuration\ISettingsWriter.cs" />
-    <Compile Include="Helpers\Configuration\Module.cs" />
     <Compile Include="Helpers\Configuration\Services\ConfigurationService.cs" />
     <Compile Include="Helpers\Configuration\Services\ICanEditItemChecker.cs" />
     <Compile Include="Helpers\Configuration\Services\IConfigurationService.cs" />
@@ -99,7 +99,6 @@
     <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricAlgorithmFactory.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricCryptoService.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricKeyFactory.cs" />
-    <Compile Include="Helpers\Encrypting\Symmetric\Module.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricAlgorithmFactory.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoService.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensions.cs" />
@@ -151,7 +150,7 @@
     <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />
     <Compile Include="Ninject\RibNinjectModule.cs" />
-    <Compile Include="Ninject\CommonModule.cs" />
+    <Compile Include="Ninject\RibCommonModule.cs" />
     <Compile Include="Ninject\IResolver.cs" />
     <Compile Include="Ninject\NinjectResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
