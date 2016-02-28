@@ -33,7 +33,7 @@ namespace Rib.Common.Models.Contract
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("Ќомер страницы должен быть положительным числом", nameof(value));
+                    throw new ArgumentOutOfRangeException(nameof(value), "Ќомер страницы должен быть положительным числом");
                 }
                 _pageNumber = value;
             }
@@ -46,7 +46,7 @@ namespace Rib.Common.Models.Contract
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("–азмер страницы должен быть положительным числом", nameof(value));
+                    throw new ArgumentOutOfRangeException(nameof(value), "–азмер страницы должен быть положительным числом");
                 }
                 _pageSize = value;
             }
