@@ -34,7 +34,7 @@
         public int CompareTo([NotNull] CorrelationId other)
         {
             if (other == null) throw new ArgumentNullException(nameof(other), "CorelationId can not be null");
-            return Value.CompareTo(other);
+            return Value.CompareTo(other.Value);
         }
 
         public int CompareTo(Guid value)
