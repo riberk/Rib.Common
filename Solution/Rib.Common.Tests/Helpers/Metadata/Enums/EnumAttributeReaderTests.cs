@@ -52,7 +52,7 @@
         public void AttributeGenericTest()
         {
             _fieldReader.Setup(x => x.Field(TestEnum.Value)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns(_da).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object []{ _da }).Verifiable();
 
             var actual = Create().Attribute<DescriptionAttribute, TestEnum>(TestEnum.Value);
 
@@ -63,7 +63,7 @@
         public void AttributeGenericWithNullTest()
         {
             _fieldReader.Setup(x => x.Field(TestEnum.Value)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns((DescriptionAttribute) null).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { (DescriptionAttribute)null }).Verifiable();
 
             var actual = Create().Attribute<DescriptionAttribute, TestEnum>(TestEnum.Value);
 
@@ -75,7 +75,7 @@
         {
             var withDescription = (Enum) TestEnum.Value;
             _fieldReader.Setup(x => x.Field(withDescription)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns(_da).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { _da }).Verifiable();
 
             var actual = Create().Attribute<DescriptionAttribute>(withDescription);
 
@@ -87,7 +87,7 @@
         {
             var withoutDescription = (Enum) TestEnum.Value;
             _fieldReader.Setup(x => x.Field(withoutDescription)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns((DescriptionAttribute) null).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { (DescriptionAttribute)null }).Verifiable();
 
             var actual = Create().Attribute<DescriptionAttribute>(withoutDescription);
 
@@ -98,7 +98,7 @@
         public void AttributeSafeGenericTest()
         {
             _fieldReader.Setup(x => x.Field(TestEnum.Value)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns(_da).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { _da }).Verifiable();
 
             var actual = Create().AttributeSafe<DescriptionAttribute, TestEnum>(TestEnum.Value);
 
@@ -110,7 +110,7 @@
         public void AttributeSafeGenericWithNullTest()
         {
             _fieldReader.Setup(x => x.Field(TestEnum.Value)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns((DescriptionAttribute) null).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { (DescriptionAttribute)null }).Verifiable();
 
             Create().AttributeSafe<DescriptionAttribute, TestEnum>(TestEnum.Value);
         }
@@ -120,7 +120,7 @@
         {
             var val = (Enum) TestEnum.Value;
             _fieldReader.Setup(x => x.Field(val)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns(_da).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { _da }).Verifiable();
 
             var actual = Create().AttributeSafe<DescriptionAttribute>(val);
 
@@ -133,7 +133,7 @@
         {
             var val = (Enum) TestEnum.Value;
             _fieldReader.Setup(x => x.Field(val)).Returns(_field).Verifiable();
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(_field)).Returns((DescriptionAttribute) null).Verifiable();
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), _field)).Returns(new object[] { (DescriptionAttribute)null }).Verifiable();
 
             Create().AttributeSafe<DescriptionAttribute>(val);
         }

@@ -46,8 +46,8 @@
         public void ReadWithoutDescriptionException()
         {
             _typeResolver.Setup(x => x.Resolve()).Returns(typeof (ConfigWithoutDescription)).Verifiable("Не вызван метод получения типа конфигурации");
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (ConfigWithoutDescription.InnerConfigClass)))
-                             .Returns(new DescriptionAttribute(null))
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof (ConfigWithoutDescription.InnerConfigClass)))
+                             .Returns(new object[] { new DescriptionAttribute(null)})
                              .Verifiable();
             _confHelper.Setup(x => x.GroupedTypes(typeof (ConfigWithoutDescription)))
                        .Returns(new[] {typeof (ConfigWithoutDescription.InnerConfigClass)})
@@ -61,8 +61,8 @@
         public void ReadWithNullFieldException()
         {
             _typeResolver.Setup(x => x.Resolve()).Returns(typeof (ConfigWithNull)).Verifiable("Не вызван метод получения типа конфигурации");
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (ConfigWithNull.InnerConfigClass)))
-                             .Returns(new DescriptionAttribute("123"))
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute),typeof (ConfigWithNull.InnerConfigClass)))
+                             .Returns(new object[] { new DescriptionAttribute("123")})
                              .Verifiable();
             _confHelper.Setup(x => x.GroupedTypes(typeof (ConfigWithNull))).Returns(new[] {typeof (ConfigWithNull.InnerConfigClass)}).Verifiable();
             _confHelper.Setup(x => x.Items(typeof (ConfigWithNull.InnerConfigClass)))
@@ -76,22 +76,23 @@
         public void ReadTest()
         {
             _typeResolver.Setup(x => x.Resolve()).Returns(typeof (Config)).Verifiable("Не вызван метод получения типа конфигурации");
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (Config.InnerConfigClass)))
-                             .Returns(new DescriptionAttribute(InnerConfig))
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof (Config.InnerConfigClass)))
+                             .Returns(new object [] { new DescriptionAttribute(InnerConfig)})
                              .Verifiable("Не получен атрибут описания класса");
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (Config.InnerConfigClass.InnerConfigClass2)))
-                             .Returns(new DescriptionAttribute(InnerConfig2))
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof (Config.InnerConfigClass.InnerConfigClass2)))
+                             .Returns(new object[] { new DescriptionAttribute(InnerConfig2) })
                              .Verifiable("Не получен атрибут описания класса");
             var bf = BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy;
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (Config.InnerConfigClass).GetField("InnerItem1Field", bf)))
-                             .Returns(new DescriptionAttribute(InnerItem1))
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof(Config.InnerConfigClass).GetField("InnerItem1Field", bf)))
+                 .Returns(new object[] { new DescriptionAttribute(InnerItem1) })
                              .Verifiable("Не получен атрибут описания поля");
-            _attributesReader.Setup(x => x.Read<DescriptionAttribute>(typeof (Config.InnerConfigClass).GetField("InnerItem2Field", bf)))
-                             .Returns(new DescriptionAttribute(InnerItem2))
+            
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof (Config.InnerConfigClass).GetField("InnerItem2Field", bf)))
+                             .Returns(new object[] { new DescriptionAttribute(InnerItem2)})
                              .Verifiable("Не получен атрибут описания поля");
             _attributesReader.Setup(
-                                    x => x.Read<DescriptionAttribute>(typeof (Config.InnerConfigClass.InnerConfigClass2).GetField("InnerItem3Field", bf)))
-                             .Returns(new DescriptionAttribute(InnerItem3))
+                                    x => x.ReadMany(typeof(DescriptionAttribute), typeof (Config.InnerConfigClass.InnerConfigClass2).GetField("InnerItem3Field", bf)))
+                             .Returns(new object [] { new DescriptionAttribute(InnerItem3)})
                              .Verifiable("Не получен атрибут описания поля");
             var value1 = "1";
             var value2 = "2";
