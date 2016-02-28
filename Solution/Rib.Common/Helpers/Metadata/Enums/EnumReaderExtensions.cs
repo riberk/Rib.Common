@@ -18,7 +18,7 @@ namespace Rib.Common.Helpers.Metadata.Enums
         /// <param name="enumReader">Читатель енумов</param>
         /// <returns>Все значения енума</returns>
         [NotNull, ItemNotNull]
-        public static IEnumerable<EnumModel<TEnum>> ReadMany<TEnum>([NotNull] this IEnumReader enumReader) where TEnum : struct
+        public static IEnumerable<IEnumModel<TEnum>> ReadMany<TEnum>([NotNull] this IEnumReader enumReader) where TEnum : struct
         {
             if (enumReader == null) throw new ArgumentNullException(nameof(enumReader));
             return Enum.GetValues(typeof (TEnum)).Cast<TEnum>().Select(enumReader.Read);
@@ -31,7 +31,7 @@ namespace Rib.Common.Helpers.Metadata.Enums
         /// <param name="enumType">Тип енума</param>
         /// <returns>Все значения енума</returns>
         [NotNull, ItemNotNull]
-        public static IEnumerable<EnumModel> ReadMany([NotNull] this IEnumReader enumReader, [NotNull] Type enumType)
+        public static IEnumerable<IEnumModel> ReadMany([NotNull] this IEnumReader enumReader, [NotNull] Type enumType)
         {
             if (enumReader == null) throw new ArgumentNullException(nameof(enumReader));
             if (enumType == null) throw new ArgumentNullException(nameof(enumType));

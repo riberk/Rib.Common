@@ -15,7 +15,7 @@
         /// <param name="e">Значение енума</param>
         /// <returns>Модель значения енума</returns>
         [NotNull]
-        EnumModel Read(Enum e);
+        IEnumModel Read(Enum e);
 
         /// <summary>
         ///     Прочитать значение енума в модель
@@ -24,6 +24,6 @@
         /// <param name="e">Значение енума</param>
         /// <returns>Generic-модель значения</returns>
         [NotNull]
-        EnumModel<TEnum> Read<TEnum>(TEnum e) where TEnum : struct;
+        IEnumModel<TEnum> Read<TEnum>(TEnum e) where TEnum : struct;
     }
 }

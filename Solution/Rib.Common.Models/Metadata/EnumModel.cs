@@ -3,7 +3,7 @@
     using System;
     using JetBrains.Annotations;
 
-    public abstract class EnumModel
+    public abstract class EnumModel : IEnumModel
     {
         [NotNull]
         public abstract object Value { get; }
@@ -14,8 +14,8 @@
         public abstract string Description { get; }
     }
 
-    public class EnumModel<T> : EnumModel
-            where T : struct
+    public class EnumModel<T> : EnumModel, IEnumModel<T> 
+        where T : struct
     {
         private string _name;
 
@@ -27,13 +27,9 @@
             Value = val;
         }
 
-
         public T EnumValue { get; }
-
         public override object Value { get; }
-
         public override string Name => _name ?? (_name = EnumValue.ToString());
-
         public override string Description { get; }
     }
 }
