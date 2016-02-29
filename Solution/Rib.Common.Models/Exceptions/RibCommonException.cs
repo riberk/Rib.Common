@@ -35,14 +35,5 @@
         public RibCommonException(string message, Exception innerException) : base(message, innerException)
         {
         }
-
-        /// <summary>
-        ///     Инициализирует новый экземпляр класса <see cref="T:System.ApplicationException" /> с сериализованными данными.
-        /// </summary>
-        /// <param name="info">Объект, содержащий сериализованные данные объекта. </param>
-        /// <param name="context">Контекстные сведения об источнике или назначении. </param>
-        protected RibCommonException([NotNull] SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
     }
 }

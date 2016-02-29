@@ -14,10 +14,10 @@ namespace Rib.Common.Models.Exceptions
         ///     »нициализирует новый экземпл€р класса <see cref="AttributeException" />.
         /// </summary>
         /// <param name="type">“ип атрибута</param>
-        /// <param name="memberInfo">„лен, на котором ожидалс€ атрибут</param>
-        public AttributeNotFoundException(Type type, ICustomAttributeProvider memberInfo) : base(type)
+        /// <param name="provider">„лен, на котором ожидалс€ атрибут</param>
+        public AttributeNotFoundException(Type type, ICustomAttributeProvider provider) : base(type)
         {
-            MemberInfo = memberInfo;
+            Provider = provider;
         }
 
         /// <summary>
@@ -26,10 +26,10 @@ namespace Rib.Common.Models.Exceptions
         /// </summary>
         /// <param name="message">—ообщение, описывающее ошибку. </param>
         /// <param name="type">“ип атрибута</param>
-        /// <param name="memberInfo">„лен, на котором ожидалс€ атрибут</param>
-        public AttributeNotFoundException(string message, Type type, ICustomAttributeProvider memberInfo) : base(message, type)
+        /// <param name="provider">„лен, на котором ожидалс€ атрибут</param>
+        public AttributeNotFoundException(string message, Type type, ICustomAttributeProvider provider) : base(message, type)
         {
-            MemberInfo = memberInfo;
+            Provider = provider;
         }
 
         /// <summary>
@@ -43,29 +43,16 @@ namespace Rib.Common.Models.Exceptions
         ///     обрабатывающем внутренние исключени€.
         /// </param>
         /// <param name="type">“ип атрибута</param>
-        /// <param name="memberInfo">„лен, на котором ожидалс€ атрибут</param>
-        public AttributeNotFoundException(string message, Exception innerException, Type type, ICustomAttributeProvider memberInfo)
+        /// <param name="provider">„лен, на котором ожидалс€ атрибут</param>
+        public AttributeNotFoundException(string message, Exception innerException, Type type, ICustomAttributeProvider provider)
             : base(message, innerException, type)
         {
-            MemberInfo = memberInfo;
-        }
-
-        /// <summary>
-        ///     »нициализирует новый экземпл€р класса <see cref="AttributeException" /> с сериализованными данными.
-        /// </summary>
-        /// <param name="info">ќбъект, содержащий сериализованные данные объекта. </param>
-        /// <param name="context"> онтекстные сведени€ об источнике или назначении. </param>
-        /// <param name="type">“ип атрибута</param>
-        /// <param name="memberInfo">„лен, на котором ожидалс€ атрибут</param>
-        protected AttributeNotFoundException([NotNull] SerializationInfo info, StreamingContext context, Type type, ICustomAttributeProvider memberInfo)
-            : base(info, context, type)
-        {
-            MemberInfo = memberInfo;
+            Provider = provider;
         }
 
         /// <summary>
         ///     „лен, на котором ожидалс€ атрибут
         /// </summary>
-        public ICustomAttributeProvider MemberInfo { get; }
+        public ICustomAttributeProvider Provider { get; }
     }
 }

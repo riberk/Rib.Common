@@ -46,17 +46,6 @@ namespace Rib.Common.Models.Exceptions
         }
 
         /// <summary>
-        ///     Инициализирует новый экземпляр класса <see cref="AttributeException" /> с сериализованными данными.
-        /// </summary>
-        /// <param name="info">Объект, содержащий сериализованные данные объекта. </param>
-        /// <param name="context">Контекстные сведения об источнике или назначении. </param>
-        /// <param name="type">Тип атрибута</param>
-        protected AttributeException([NotNull] SerializationInfo info, StreamingContext context, Type type) : base(info, context)
-        {
-            Type = type;
-        }
-
-        /// <summary>
         ///     Тип атрибута
         /// </summary>
         public Type Type { get; }
