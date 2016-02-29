@@ -59,16 +59,26 @@
             return true;
         }
 
-        [TestMethod]
-        public void GetTest()
+        private static void Clear(string keyName)
         {
-            const string keyContainerName = "RsaCryptoServiceProviderResolverTestsGetTest11";
-            var csp = GetCsp(keyContainerName);
+            var csp = new CspParameters
+            {
+                KeyContainerName = keyName,
+                Flags = CspProviderFlags.UseMachineKeyStore
+            };
             using (var provider = new RSACryptoServiceProvider(csp))
             {
                 provider.PersistKeyInCsp = false;
                 provider.Clear();
             }
+        }
+
+        [TestMethod]
+        public void GetTest()
+        {
+            const string keyContainerName = "RsaCryptoServiceProviderResolverTestsGetTest11";
+            Clear(keyContainerName);
+            var csp = GetCsp(keyContainerName);
             using (var exp = new RSACryptoServiceProvider(csp))
             using (var actual = _resolver.Get(keyContainerName))
             {
@@ -81,17 +91,19 @@
         public void GetWithExceptionBecauseNotFoundOnMachineTest()
         {
             const string keyContainerName = "RsaCryptoServiceProviderResolverTestsGetWithExceptionBecauseNotFoundOnMachineTest";
-            var csp = new CspParameters
-            {
-                KeyContainerName = keyContainerName,
-                Flags = CspProviderFlags.UseMachineKeyStore
-            };
-            using (var provider = new RSACryptoServiceProvider(csp))
-            {
-                provider.PersistKeyInCsp = false;
-                provider.Clear();
-            }
+            Clear(keyContainerName);
             _resolver.Get(keyContainerName);
+        }
+
+        [TestMethod]
+        public void TestCreateIfNotExists()
+        {
+            const string keyContainerName = "RsaCryptoServiceProviderResolverTestCreateIfNotExists";
+            Assert.IsFalse(DoesKeyExists(keyContainerName));
+            _resolver.CreateIfNotExists(keyContainerName);
+            Assert.IsTrue(DoesKeyExists(keyContainerName));
+            Clear(keyContainerName);
+            Assert.IsFalse(DoesKeyExists(keyContainerName));
         }
     }
 }
