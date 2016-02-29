@@ -17,7 +17,7 @@ namespace Rib.Common.Helpers.Configuration.ConfigurationItems
         {
             if (t == null) throw new ArgumentNullException(nameof(t));
             return t.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
-                    .Where(fi => fi != null && fi.IsInitOnly && typeof (ConfigurationItem).IsAssignableFrom(fi.FieldType));
+                    .Where(IsReadOnlyConfigurationItemField);
         }
 
         public FieldInfo Item(Type t, string name)
@@ -26,14 +26,14 @@ namespace Rib.Common.Helpers.Configuration.ConfigurationItems
             if (name == null) throw new ArgumentNullException(nameof(name));
             var f = t.GetField(name, BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 
-            if (!IsReadOnlyField(f))
+            if (!IsReadOnlyConfigurationItemField(f))
             {
                 throw new InvalidOperationException($"Field {name} on type {t} could not be found or it is not readonly static field");
             }
             return f;
         }
 
-        private static bool IsReadOnlyField(FieldInfo fi)
+        private static bool IsReadOnlyConfigurationItemField(FieldInfo fi)
         {
             return fi != null && fi.IsInitOnly && typeof (ConfigurationItem).IsAssignableFrom(fi.FieldType);
         }

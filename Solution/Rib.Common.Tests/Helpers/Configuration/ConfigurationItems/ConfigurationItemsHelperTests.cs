@@ -26,6 +26,14 @@
         public void GroupedTypesNullArgument2() => _helper.Items(null);
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ItemNullArgument1() => _helper.Item(null, "fasef");
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ItemNullArgument2() => _helper.Item(typeof(string), null);
+
+        [TestMethod]
         public void GroupedTypesTest()
         {
             var grouped = _helper.GroupedTypes(typeof (Root)).ToArray();
@@ -46,6 +54,21 @@
             Assert.AreEqual(2, hashItems.Count);
             Assert.IsTrue(hashItems.Contains(typeof (Root.NestedStatic1).GetField("Item1")));
             Assert.IsTrue(hashItems.Contains(typeof (Root.NestedStatic1).GetField("Item2")));
+        }
+
+        [TestMethod]
+        public void ItemTest()
+        {
+            var item = _helper.Item(typeof (Root.NestedStatic1), "Item1");
+
+            Assert.AreEqual(typeof(Root.NestedStatic1).GetField("Item1"), item);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ItemExceptionTest()
+        {
+            _helper.Item(typeof(Root.NestedStatic1), "Item4");
         }
 
         [TestCleanup]
