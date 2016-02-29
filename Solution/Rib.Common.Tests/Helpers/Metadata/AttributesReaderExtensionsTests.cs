@@ -22,10 +22,30 @@
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void ArgumentNullException1() => _attributesReader.Object.ReadSafe<DescriptionAttribute>(null);
-
+        
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void ArgumentNullException2() => AttributesReaderExtensions.ReadSafe<DescriptionAttribute>(null, typeof (string));
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ArgumentNullException3() => AttributesReaderExtensions.Read<DescriptionAttribute>(null, typeof(string));
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ArgumentNullException4() => AttributesReaderExtensions.ReadMany<DescriptionAttribute>(null, typeof(string));
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ArgumentNullException5() => AttributesReaderExtensions.Read(null, typeof(DescriptionAttribute), typeof(string));
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCastException))]
+        public void InvalidCastException()
+        {
+            _attributesReader.Setup(x => x.ReadMany(typeof(DescriptionAttribute), typeof(string))).Returns(new object[] {1}).Verifiable();
+            _attributesReader.Object.Read<DescriptionAttribute>(typeof (string));
+        }
 
         [TestMethod]
         [ExpectedException(typeof (AttributeNotFoundException))]
