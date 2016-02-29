@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Rib.Common</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <title>Rib.Common</title>
     <authors>Pavel Kurdikov</authors>
     <owners>Pavel Kurdikov</owners>
@@ -15,7 +15,7 @@
     <copyright>Copyright 2016</copyright>
     <tags></tags>
     <dependencies>
-      <dependency id="Rib.Common.Models" version="[1.0, 2.0)" />
+      <dependency id="Rib.Common.Models" version="[1.1, 2.0)" />
       <dependency id="Ninject" version="[3.2, 4.0)" />
     </dependencies>
   </metadata>
