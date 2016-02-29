@@ -18,7 +18,7 @@
             Assert.AreEqual("123", (nBody.Right as ConstantExpression).Value);
             Assert.AreEqual(ExpressionType.MemberAccess, nBody.Left.NodeType);
             var nMemberAccess = nBody.Left as MemberExpression;
-            Assert.AreEqual(typeof(ITestI).GetProperty("A"), nMemberAccess.Member);
+            Assert.AreEqual(typeof (ITestI).GetProperty("A"), nMemberAccess.Member);
             Assert.AreEqual(ExpressionType.Convert, nMemberAccess.Expression.NodeType);
             var nConvert = nMemberAccess.Expression as UnaryExpression;
             Assert.AreEqual(ExpressionType.Parameter, nConvert.Operand.NodeType);
@@ -30,19 +30,41 @@
             Assert.AreEqual("123", (body.Right as ConstantExpression).Value);
             Assert.AreEqual(ExpressionType.MemberAccess, body.Left.NodeType);
             var memberAccess = body.Left as MemberExpression;
-            Assert.AreEqual(typeof(ITestI).GetProperty("A"), memberAccess.Member);
+            Assert.AreEqual(typeof (ITestI).GetProperty("A"), memberAccess.Member);
             Assert.AreEqual(ExpressionType.Parameter, memberAccess.Expression.NodeType);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void RemoveNullArgumentTest() =>  ConvertRemover.Remove<string, bool>(null);
+        public void RemoveWithoutCastTest()
+        {
+            var notRemoveConvert = CreateObjectCast();
+            Assert.AreEqual(ExpressionType.Convert, notRemoveConvert.Body.NodeType);
+            var nBody = notRemoveConvert.Body as UnaryExpression;
+            Assert.AreEqual(ExpressionType.Parameter, nBody.Operand.NodeType);
+            
+            var expr = ConvertRemover.Remove(notRemoveConvert);
+
+            Assert.AreEqual(ExpressionType.Convert, expr.Body.NodeType);
+            var body = expr.Body as UnaryExpression;
+            Assert.AreEqual(ExpressionType.Parameter, body.Operand.NodeType);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void RemoveNullArgumentTest() => ConvertRemover.Remove<string, bool>(null);
 
         [NotNull]
         private static Expression<Func<T, bool>> Create<T>()
                 where T : ITestI
         {
             return arg => arg.A == "123";
+        }
+
+        [NotNull]
+        private static Expression<Func<Test, object>> CreateObjectCast()
+        {
+            // ReSharper disable once RedundantCast
+            return arg => (object)arg;
         }
 
         private interface ITestI
