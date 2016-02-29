@@ -51,8 +51,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationItemGroupTableModelTests.cs" />
     <Compile Include="Contract\PagedResponseTests.cs" />
     <Compile Include="Contract\PaginatorTests.cs" />
+    <Compile Include="Encrypting\SymmetricKeyTests.cs" />
+    <Compile Include="Exceptions\AttributeExceptionTests.cs" />
+    <Compile Include="Exceptions\AttributeNotFoundExceptionTests.cs" />
+    <Compile Include="Exceptions\MetadataExceptionTests.cs" />
+    <Compile Include="Exceptions\RibCommonExceptionTests.cs" />
     <Compile Include="Helpers\CorrelationIdExtensionsTests.cs" />
     <Compile Include="Helpers\CorrelationIdTests.cs" />
     <Compile Include="Metadata\EnumModelTests.cs" />
