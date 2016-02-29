@@ -2,12 +2,13 @@
 {
     using System;
     using System.Security.Cryptography;
+    using JetBrains.Annotations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class RsaCryptoServiceProviderResolverTests
     {
-        private RsaCryptoServiceProviderResolver _resolver;
+        [NotNull] private RsaCryptoServiceProviderResolver _resolver;
 
         [TestInitialize]
         public void Init()
