@@ -25,7 +25,7 @@ namespace Rib.Tests.Mock
                     {
                         Type = x,
                         Constructors = x.GetConstructors()
-                                        .Where(c => c.GetParameters().All(p => p.ParameterType.IsClass && p.ParameterType != typeof (string)))
+                                        .Where(c => c.GetParameters().All(p => ((p.ParameterType.IsClass && !p.ParameterType.IsSealed) || p.ParameterType.IsInterface) && p.ParameterType != typeof (string)))
                                         .ToArray()
                     }).Where(x => x.Constructors.Any())
                     .ToDictionary(x => x.Type, x => x.Constructors);

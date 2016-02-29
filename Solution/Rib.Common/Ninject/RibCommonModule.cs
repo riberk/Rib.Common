@@ -3,7 +3,7 @@
     /// <summary>
     ///     Загружает модули сборки <see cref="Rib.Common" />
     /// </summary>
-    public class CommonModule : RibNinjectModule
+    public class RibCommonModule : RibNinjectModule
     {
         /// <summary>
         ///     Loads the module into the kernel.

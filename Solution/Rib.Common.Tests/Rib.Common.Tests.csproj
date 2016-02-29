@@ -290,6 +290,7 @@
     <Compile Include="Helpers\Mailing\MailSenderTests.cs" />
     <Compile Include="Helpers\Mailing\SmtpClientFactoryTests.cs" />
     <Compile Include="Helpers\Metadata\AttributesReaderExtensionsTests.cs" />
+    <Compile Include="Helpers\Metadata\AttributesReaderKeyFactoryTests.cs" />
     <Compile Include="Helpers\Metadata\AttributesReaderTests.cs" />
     <Compile Include="Helpers\Metadata\Enums\EnumAttributeReaderExtensionsTests.cs" />
     <Compile Include="Helpers\Metadata\Enums\EnumFieldReaderTests.cs" />
@@ -298,6 +299,7 @@
     <Compile Include="Helpers\Metadata\Enums\EnumReaderTests.cs" />
     <Compile Include="Helpers\ObjectExtensionsTests.cs" />
     <Compile Include="Helpers\Tmp\TmpFolderTests.cs" />
+    <Compile Include="NinjectChecker.cs" />
     <Compile Include="Ninject\NinjectResolverTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

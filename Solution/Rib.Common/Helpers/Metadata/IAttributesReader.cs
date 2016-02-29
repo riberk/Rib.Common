@@ -5,11 +5,18 @@ namespace Rib.Common.Helpers.Metadata
     using System.Reflection;
     using JetBrains.Annotations;
 
+    /// <summary>
+    /// Читает пользовательские атрибуты
+    /// </summary>
     public interface IAttributesReader
     {
-        T Read<T>([NotNull] MemberInfo t) where T : Attribute;
-
+        /// <summary>
+        /// Прочитать атрибуты
+        /// </summary>
+        /// <param name="attr">Тип атрибута</param>
+        /// <param name="provider">Параметр</param>
+        /// <returns>Атрибуты или пустая коллекция, если отсутствуют</returns>
         [NotNull, ItemNotNull]
-        IReadOnlyCollection<T> ReadMany<T>([NotNull] MemberInfo t) where T : Attribute;
+        IReadOnlyCollection<object> ReadMany([NotNull] Type attr, [NotNull] ICustomAttributeProvider provider);
     }
 }

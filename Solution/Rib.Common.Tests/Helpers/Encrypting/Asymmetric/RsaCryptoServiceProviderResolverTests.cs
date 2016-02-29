@@ -13,6 +13,10 @@
         [TestInitialize]
         public void Init()
         {
+            if (!AsymmetricCryptoServiceTests.IsAdministrator())
+            {
+                Assert.Fail("All tests for crypto conteiners need administrative privileges");
+            }
             _resolver = new RsaCryptoServiceProviderResolver();
         }
 
