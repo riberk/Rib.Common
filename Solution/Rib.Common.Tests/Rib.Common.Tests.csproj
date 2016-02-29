@@ -289,6 +289,7 @@
     <Compile Include="Helpers\Mailing\MailMessageFactoryTests.cs" />
     <Compile Include="Helpers\Mailing\MailSenderTests.cs" />
     <Compile Include="Helpers\Mailing\SmtpClientFactoryTests.cs" />
+    <Compile Include="Helpers\Metadata\AssemblyInfoRetrieverTests.cs" />
     <Compile Include="Helpers\Metadata\AttributesReaderExtensionsTests.cs" />
     <Compile Include="Helpers\Metadata\AttributesReaderKeyFactoryTests.cs" />
     <Compile Include="Helpers\Metadata\AttributesReaderTests.cs" />
@@ -321,6 +322,11 @@
       <Project>{9bf49e22-995f-472b-90e1-d37c1d323598}</Project>
       <Name>Rib.Tests</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Helpers\Metadata\ClassLibrary1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
