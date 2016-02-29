@@ -51,13 +51,9 @@
     <Compile Include="Encrypting\ISymmetricKey.cs" />
     <Compile Include="Encrypting\SymmetricAlgorithmType.cs" />
     <Compile Include="Encrypting\SymmetricKey.cs" />
-    <Compile Include="Exceptions\ActionForbiddenException.cs" />
     <Compile Include="Exceptions\AttributeException.cs" />
     <Compile Include="Exceptions\AttributeNotFoundException.cs" />
     <Compile Include="Exceptions\RibCommonException.cs" />
-    <Compile Include="Exceptions\BitclickInvalidDataException.cs" />
-    <Compile Include="Exceptions\RibCommonLogicException.cs" />
-    <Compile Include="Exceptions\EntityNotFoundException.cs" />
     <Compile Include="Exceptions\MetadataException.cs" />
     <Compile Include="Helpers\IConfigurationEntry.cs" />
     <Compile Include="Helpers\CorrelationId.cs" />
