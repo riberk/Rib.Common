@@ -26,6 +26,11 @@
             return new AssemblyInfoRetriever(_cacherFactory.Object);
         }
 
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveNullArgumentTest() => Create().Retrieve(null);
+
         [TestMethod]
         [DeploymentItem(@"Helpers\Metadata\ClassLibrary1.dll")]
         public void RetrieveTest()
