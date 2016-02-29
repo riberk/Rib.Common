@@ -120,8 +120,6 @@ namespace Rib.Common.Helpers.Cache
             /// </summary>
             public InternalCacheResult([NotNull] string fullKey, object value, [NotNull] ObjectCache cache)
             {
-                if (fullKey == null) throw new ArgumentNullException(nameof(fullKey));
-                if (cache == null) throw new ArgumentNullException(nameof(cache));
                 FullKey = fullKey;
                 Value = value;
                 Cache = cache;
