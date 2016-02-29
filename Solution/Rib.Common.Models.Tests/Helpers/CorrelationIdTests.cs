@@ -96,7 +96,9 @@
         {
             var c = new CorrelationId();
             Assert.IsTrue(c.Equals(c));
+            Assert.IsTrue(c.Equals((object)c));
             Assert.IsFalse(c.Equals((object)null));
+            Assert.IsFalse(c.Equals((CorrelationId)null));
         }
     }
 }
