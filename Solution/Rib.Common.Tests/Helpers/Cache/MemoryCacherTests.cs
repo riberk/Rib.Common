@@ -204,7 +204,16 @@
             cache.Update(key);
             Assert.IsTrue(raised);
         }
-        
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MemoryCacherOnUpdateArgumentNull1Test()
+        {
+            const string key = "dsfgsdsdfgh";
+            var cache = new Testcache();
+            cache.NullUpdate();
+        }
+
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
@@ -231,6 +240,11 @@
             public void Update(string key)
             {
                 OnCacheItemUpdated(this, new CacheUpdatedEventArgs(key));
+            }
+
+            public void NullUpdate()
+            {
+                OnCacheItemUpdated(this, null);
             }
         }
     }
