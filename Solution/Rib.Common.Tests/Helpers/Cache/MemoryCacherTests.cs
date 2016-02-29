@@ -1,7 +1,6 @@
 ﻿namespace Rib.Common.Helpers.Cache
 {
     using System;
-    using System.Linq;
     using System.Runtime.Caching;
     using JetBrains.Annotations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -170,7 +169,7 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void AddOrUpdateNullArgument1Test()
                 => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").AddOrUpdate(null, s => new One());
 
@@ -180,11 +179,11 @@
                 => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").AddOrUpdate("dadwad", null);
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void RemoveArgumentNullTest() => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").Remove(null);
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void MemoryCacherOnUpdateArgumentNullTest() => new Testcache().Update(null);
 
         [TestMethod]
@@ -206,10 +205,9 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void MemoryCacherOnUpdateArgumentNull1Test()
         {
-            const string key = "dsfgsdsdfgh";
             var cache = new Testcache();
             cache.NullUpdate();
         }
@@ -218,12 +216,71 @@
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void GetOrAddNullArgument1()
-            => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).GetOrAdd(null, s => new One());
+                => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).GetOrAdd(null, s => new One());
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void GetOrAddNullArgument2()
-            => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).GetOrAdd("123", null);
+                => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).GetOrAdd("123", null);
+
+        [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void TryGetNullArgument()
+        {
+            One v;
+            new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, typeof (One).Name).TryGet(null, out v);
+        }
+
+        [TestMethod]
+        public void TryGetNullResultTest()
+        {
+            const string prefix = "123123aawdawdawdf";
+            const string key = "321awdawawdawd";
+
+            var mCache = MemoryCache.Default;
+            _objectCacheFactory.Setup(x => x.Create()).Returns(mCache).Verifiable();
+
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, prefix);
+            One actual;
+            var tryGetResult = cacher.TryGet(key, out actual);
+            Assert.AreEqual(CacheTryGetResult.NotFound, tryGetResult);
+            Assert.IsNull(actual);
+        }
+
+        [TestMethod]
+        public void TryGetEmptyResultTest()
+        {
+            const string prefix = "123123aawdawdawdf";
+            const string key = "321awdawawdawd";
+
+            var mCache = MemoryCache.Default;
+            _objectCacheFactory.Setup(x => x.Create()).Returns(mCache).Verifiable();
+            var fullKey = FullKey(prefix, key);
+            mCache.Add(fullKey, Testcache.EmptyObjectValue, DateTimeOffset.MaxValue);
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, prefix);
+            One actual;
+            var tryGetResult = cacher.TryGet(key, out actual);
+            Assert.AreEqual(CacheTryGetResult.Empty, tryGetResult);
+            Assert.IsNull(actual);
+        }
+
+        [TestMethod]
+        public void TryGetFoundResultTest()
+        {
+            const string prefix = "123123aawdawdsegsegsegawdf";
+            const string key = "321awdawawdasefgsfgsegsegwd";
+
+            var mCache = MemoryCache.Default;
+            _objectCacheFactory.Setup(x => x.Create()).Returns(mCache).Verifiable();
+            var fullKey = FullKey(prefix, key);
+            var exp = new One();
+            mCache.Add(fullKey, exp, DateTimeOffset.MaxValue);
+            var cacher = new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, prefix);
+            One actual;
+            var tryGetResult = cacher.TryGet(key, out actual);
+            Assert.AreEqual(CacheTryGetResult.Found, tryGetResult);
+            Assert.AreEqual(exp, actual);
+        }
 
         [TestCleanup]
         public void Clean()
@@ -237,6 +294,9 @@
 
         public class Testcache : MemoryCacher
         {
+            [NotNull]
+            public static object EmptyObjectValue => EmptyObject;
+
             public void Update(string key)
             {
                 OnCacheItemUpdated(this, new CacheUpdatedEventArgs(key));
