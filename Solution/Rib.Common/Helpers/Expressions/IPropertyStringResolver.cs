@@ -4,10 +4,12 @@
     using System.Collections.Generic;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     ///     Получатель свойств из строкового пути
     /// </summary>
+    [BindTo(typeof(PropertyStringResolver))]
     public interface IPropertyStringResolver
     {
         /// <summary>

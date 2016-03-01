@@ -2,7 +2,9 @@ namespace Rib.Common.Ninject
 {
     using System;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
+    [BindTo(typeof(NinjectResolver))]
     public interface IResolver
     {
         [NotNull]

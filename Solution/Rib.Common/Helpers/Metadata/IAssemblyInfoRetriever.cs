@@ -7,6 +7,7 @@
     /// <summary>
     ///     Получатель информации о сборке
     /// </summary>
+    [BindTo(typeof(AssemblyInfoRetriever))]
     public interface IAssemblyInfoRetriever
     {
         /// <summary>

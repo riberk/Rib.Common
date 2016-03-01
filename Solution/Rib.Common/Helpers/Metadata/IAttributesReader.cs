@@ -4,10 +4,12 @@ namespace Rib.Common.Helpers.Metadata
     using System.Collections.Generic;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     /// Читает пользовательские атрибуты
     /// </summary>
+    [BindTo(typeof(AttributesReader))]
     public interface IAttributesReader
     {
         /// <summary>

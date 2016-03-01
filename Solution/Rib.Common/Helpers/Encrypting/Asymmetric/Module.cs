@@ -9,8 +9,6 @@
         /// </summary>
         public override void Load()
         {
-            Bind<IAsymmetricCryptoService>().To<AsymmetricCryptoService>().InSingletonScope();
-            Bind<IMaxBlockLengthResolver>().To<MaxBlockLengthResolver>().InSingletonScope();
             Bind<IRsaCryptoServiceProviderResolver, IRsaKeyCreator>().To<RsaCryptoServiceProviderResolver>().InSingletonScope();
         }
     }

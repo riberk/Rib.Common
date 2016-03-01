@@ -2,7 +2,9 @@ namespace Rib.Common.Helpers.Encrypting.Asymmetric
 {
     using System.Security.Cryptography;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
+    [BindTo(typeof(MaxBlockLengthResolver))]
     public interface IMaxBlockLengthResolver
     {
         /// <summary>

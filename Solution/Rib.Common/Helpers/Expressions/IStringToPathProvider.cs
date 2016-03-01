@@ -4,10 +4,12 @@ namespace Rib.Common.Helpers.Expressions
     using System.Collections.Generic;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     ///     Преобразователь строковых значений в свойства для типа
     /// </summary>
+    [BindTo(typeof(StringToPathProvider))]
     public interface IStringToPathProvider
     {
         /// <summary>

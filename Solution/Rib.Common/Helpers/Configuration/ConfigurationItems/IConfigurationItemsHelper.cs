@@ -4,7 +4,9 @@ namespace Rib.Common.Helpers.Configuration.ConfigurationItems
     using System.Collections.Generic;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
+    [BindTo(typeof(ConfigurationItemsHelper))]
     public interface IConfigurationItemsHelper
     {
         [NotNull, ItemNotNull]

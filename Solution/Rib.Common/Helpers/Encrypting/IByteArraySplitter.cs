@@ -1,7 +1,9 @@
 namespace Rib.Common.Helpers.Encrypting
 {
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
+    [BindTo(typeof(ByteArraySplitter))]
     public interface IByteArraySplitter
     {
         /// <summary>

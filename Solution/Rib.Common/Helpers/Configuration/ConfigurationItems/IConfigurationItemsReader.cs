@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
+    [BindTo(typeof(ConfigurationItemsReader))]
     public interface IConfigurationItemsReader
     {
         [NotNull, ItemNotNull]

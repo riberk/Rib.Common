@@ -52,7 +52,6 @@
     <Compile Include="Helpers\Cache\CacheUpdatedEventArgs.cs" />
     <Compile Include="Helpers\Cache\ICacheCleaner.cs" />
     <Compile Include="Helpers\Cache\IObjectCacheFactory.cs" />
-    <Compile Include="Helpers\Cache\Module.cs" />
     <Compile Include="Helpers\Cache\ObjectCacheFactory.cs" />
     <Compile Include="Helpers\Cache\StubCachePolicyFactory.cs" />
     <Compile Include="Helpers\Configuration\AppSettingsManager.cs" />
@@ -63,7 +62,6 @@
     <Compile Include="Helpers\Configuration\ConfigurationItems\IConfigurationItemResolver.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\IConfigurationItemsHelper.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\IConfigurationItemsReader.cs" />
-    <Compile Include="Helpers\Configuration\ConfigurationItems\Module.cs" />
     <Compile Include="Helpers\Configuration\ISettingsManager.cs" />
     <Compile Include="Helpers\Configuration\ISettingsReader.cs" />
     <Compile Include="Helpers\Configuration\ISettingsWriter.cs" />
@@ -71,7 +69,6 @@
     <Compile Include="Helpers\Configuration\Services\ICanEditItemChecker.cs" />
     <Compile Include="Helpers\Configuration\Services\IConfigurationService.cs" />
     <Compile Include="Helpers\Configuration\Services\IConfigurationTypeResolver.cs" />
-    <Compile Include="Helpers\Configuration\Services\Module.cs" />
     <Compile Include="Helpers\Configuration\SettingsManagers\ConfigurationManager.cs" />
     <Compile Include="Helpers\Configuration\SettingsManagers\IConfigurationEntryCreator.cs" />
     <Compile Include="Helpers\Configuration\SettingsManagers\IConfigurationManager.cs" />
@@ -94,7 +91,6 @@
     <Compile Include="Helpers\Encrypting\Asymmetric\IRsaCryptoServiceProviderResolver.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\MaxBlockLengthResolver.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\RsaCryptoServiceProviderResolver.cs" />
-    <Compile Include="Helpers\Encrypting\Module.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricAlgorithmTypeReader.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricAlgorithmFactory.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\ISymmetricCryptoService.cs" />
@@ -109,7 +105,6 @@
     <Compile Include="Helpers\Expressions\IPropertyStringResolver.cs" />
     <Compile Include="Helpers\Expressions\IPropertyHelper.cs" />
     <Compile Include="Helpers\Expressions\IStringToPathProvider.cs" />
-    <Compile Include="Helpers\Expressions\Module.cs" />
     <Compile Include="Helpers\Expressions\NewMaker.cs" />
     <Compile Include="Helpers\Expressions\PathConvertRemover.cs" />
     <Compile Include="Helpers\Expressions\PropertyHelper.cs" />
@@ -124,7 +119,6 @@
     <Compile Include="Helpers\Mailing\MailBuilderFactory.cs" />
     <Compile Include="Helpers\Mailing\MailMessageFactory.cs" />
     <Compile Include="Helpers\Mailing\MailSender.cs" />
-    <Compile Include="Helpers\Mailing\Module.cs" />
     <Compile Include="Helpers\Mailing\SmtpClientFactory.cs" />
     <Compile Include="Helpers\Metadata\AssemblyInfoRetriever.cs" />
     <Compile Include="Helpers\Metadata\AttributesReader.cs" />
@@ -145,7 +139,6 @@
     <Compile Include="Helpers\Cache\ICacherFactory.cs" />
     <Compile Include="Helpers\Cache\MemoryCacher.cs" />
     <Compile Include="Helpers\Cache\MemoryCacherFactory.cs" />
-    <Compile Include="Helpers\Metadata\Module.cs" />
     <Compile Include="Helpers\ObjectExtensions.cs" />
     <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />

@@ -3,7 +3,9 @@ namespace Rib.Common.Helpers.Mailing
     using System.Net.Mail;
     using System.Threading.Tasks;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
+    [BindTo(typeof(MailBuilder))]
     public interface IMailBuilder
     {
         [NotNull]

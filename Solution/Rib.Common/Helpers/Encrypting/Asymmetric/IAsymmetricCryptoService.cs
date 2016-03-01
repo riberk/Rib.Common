@@ -1,10 +1,12 @@
 ﻿namespace Rib.Common.Helpers.Encrypting.Asymmetric
 {
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     ///     Шифратор/дешифратор
     /// </summary>
+    [BindTo(typeof(AsymmetricCryptoService))]
     public interface IAsymmetricCryptoService
     {
         /// <summary>
