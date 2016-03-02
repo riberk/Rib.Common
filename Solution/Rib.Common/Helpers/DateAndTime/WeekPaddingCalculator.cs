@@ -8,15 +8,27 @@ namespace Rib.Common.Helpers.DateAndTime
 
     internal class WeekPaddingCalculator : IWeekPaddingCalculator
     {
-        [NotNull] private readonly LinkedList<DayOfWeek> _days = new LinkedList<DayOfWeek>(Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>());
+        [NotNull] private static readonly List<DayOfWeek> DaysOfWeek = Enum.GetValues(typeof (DayOfWeek)).Cast<DayOfWeek>().ToList();
+        [NotNull] private readonly LinkedList<DayOfWeek> _days;
+        [NotNull] private readonly HashSet<DayOfWeek> _daysHash;
+
+        public WeekPaddingCalculator()
+        {
+            _days = new LinkedList<DayOfWeek>(DaysOfWeek);
+            _daysHash = new HashSet<DayOfWeek>(DaysOfWeek);
+        }
 
         public int Calculate(DayOfWeek firstDayOfWeek, DayOfWeek dow)
         {
-            var node = _days.Find(firstDayOfWeek);
-            if (node == null)
+            if (!_daysHash.Contains(firstDayOfWeek))
             {
                 throw new KeyNotFoundException($"Day of week {firstDayOfWeek} could not be found");
             }
+            if (!_daysHash.Contains(dow))
+            {
+                throw new KeyNotFoundException($"Day of week {dow} could not be found");
+            }
+            var node = _days.Find(firstDayOfWeek);
             var i = 0;
             for (; node.Value != dow; node = node.NextOrFirst())
             {
