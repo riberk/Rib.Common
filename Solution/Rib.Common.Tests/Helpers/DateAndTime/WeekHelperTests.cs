@@ -29,7 +29,7 @@
         public void GetFirstDayOfWeekTest()
         {
             _fdResolver.Setup(x => x.Resolve()).Returns(DayOfWeek.Monday).Verifiable();
-            _weekPadding.Setup(x => x.Calculate(DayOfWeek.Monday, DayOfWeek.Friday)).Returns(-2).Verifiable();
+            _weekPadding.Setup(x => x.Calculate(DayOfWeek.Monday, DayOfWeek.Wednesday)).Returns(2).Verifiable();
             var fdow = Create().GetFirstDayOfWeek(new DateTime(2016, 3, 2));
             Assert.AreEqual(new DateTime(2016, 2, 29), fdow);
         }
@@ -38,7 +38,7 @@
         public void GetFirstDayOfWeekTest1()
         {
             _fdResolver.Setup(x => x.Resolve()).Returns(DayOfWeek.Monday).Verifiable();
-            _weekPadding.Setup(x => x.Calculate(DayOfWeek.Monday, DayOfWeek.Friday)).Returns(-2).Verifiable();
+            _weekPadding.Setup(x => x.Calculate(DayOfWeek.Monday, DayOfWeek.Friday)).Returns(4).Verifiable();
             var fdow = Create().GetFirstDayOfWeek(2016, 10);
             Assert.AreEqual(new DateTime(2016, 2, 29), fdow);
         }

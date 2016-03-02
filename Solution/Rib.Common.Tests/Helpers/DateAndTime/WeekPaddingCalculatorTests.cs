@@ -1,11 +1,26 @@
 ﻿namespace Rib.Common.Helpers.DateAndTime
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class WeekPaddingCalculatorTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void CalculateNotFoundTest1()
+        {
+            new WeekPaddingCalculator().Calculate((DayOfWeek)1000, DayOfWeek.Friday);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void CalculateNotFoundTest2()
+        {
+            new WeekPaddingCalculator().Calculate(DayOfWeek.Friday, (DayOfWeek)1000);
+        }
+
         [TestMethod]
         public void CalculateTest()
         {

@@ -74,6 +74,16 @@
         }
 
         [TestMethod]
+        public void UtcToUtcTest()
+        {
+            var dt = new DateTime(2015, 1, 1, 20, 22, 20, DateTimeKind.Utc);
+
+            var actual = Create().ToUtc(dt, TimeZoneInfo.Local.Id);
+
+            Assert.AreEqual(dt, actual);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void LocalToLocalTokioTest()
         {
@@ -83,12 +93,12 @@
         }
 
         [TestMethod]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void NullToLocalTest() => Create().ToLocal(DateTime.Now, null);
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void NullToLocalTest()
-        {
-            var dt = DateTime.Now;
-            Create().ToLocal(dt, null);
-        }
+        public void NullToUtcTest() => Create().ToUtc(DateTime.Now, null);
 
         [TestMethod]
         public void UnspecifiedToLocalTest()
