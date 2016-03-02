@@ -8,6 +8,7 @@
     using Rib.Common.Helpers.Configuration.Services;
     using Rib.Common.Helpers.Configuration.SettingsManagers;
     using Rib.Common.Helpers.CorrelationId;
+    using Rib.Common.Helpers.DateAndTime;
     using Rib.Common.Helpers.Encrypting.Symmetric;
     using Rib.Common.Helpers.Tmp;
     using Rib.Common.Ninject;
@@ -33,6 +34,7 @@
                 .Exclude<ITmpFolder>()
                 .Exclude(typeof(IConfigurationEntryCreator<>))
                 .Exclude(typeof(ICacher<>))
+                .Exclude<IFirstDayOfWeekResolver>()
                 .CheckAllInterfacesCanCreate()
                 .Errors;
             if (errors.Any())

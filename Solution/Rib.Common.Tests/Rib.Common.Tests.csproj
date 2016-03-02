@@ -260,6 +260,7 @@
     <Compile Include="Helpers\Cache\MemoryCacherTests.cs" />
     <Compile Include="Helpers\Cache\ObjectCacheFactoryTests.cs" />
     <Compile Include="Helpers\Cache\StubCachePolicyFactoryTests.cs" />
+    <Compile Include="Helpers\Collections\LinkedListNodeExtensionsTests.cs" />
     <Compile Include="Helpers\Configuration\AppSettingsReaderTests.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemResolverTests.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemsHelperTests.cs" />
@@ -269,6 +270,9 @@
     <Compile Include="Helpers\Configuration\SettingsManagers\ConfigurationReaderTests.cs" />
     <Compile Include="Helpers\Configuration\SettingsReaderExtensionsTests.cs" />
     <Compile Include="Helpers\Configuration\SettingsWriterExtensionsTests.cs" />
+    <Compile Include="Helpers\DateAndTime\DateTimeLocalizerTests.cs" />
+    <Compile Include="Helpers\DateAndTime\WeekHelperTests.cs" />
+    <Compile Include="Helpers\DateAndTime\WeekPaddingCalculatorTests.cs" />
     <Compile Include="Helpers\Encrypting\ByteArraySplitterTests.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\AsymmetricCryptoServiceExtensionsTests.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\AsymmetricCryptoServiceTests.cs" />

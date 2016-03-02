@@ -80,6 +80,14 @@
     <Compile Include="Helpers\Configuration\SettingsReaderExtensions.cs" />
     <Compile Include="Helpers\Configuration\SettingsWriterExtensions.cs" />
     <Compile Include="Helpers\CorrelationId\ICorrelationIdStore.cs" />
+    <Compile Include="Helpers\Collections\LinkedListNodeExtensions.cs" />
+    <Compile Include="Helpers\DateAndTime\DateTimeLocalizer.cs" />
+    <Compile Include="Helpers\DateAndTime\IDateTimeLocalizer.cs" />
+    <Compile Include="Helpers\DateAndTime\IFirstDayOfWeekResolver.cs" />
+    <Compile Include="Helpers\DateAndTime\IWeekHelper.cs" />
+    <Compile Include="Helpers\DateAndTime\IWeekPaddingCalculator.cs" />
+    <Compile Include="Helpers\DateAndTime\WeekHelper.cs" />
+    <Compile Include="Helpers\DateAndTime\WeekPaddingCalculator.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\IRsaKeyCreator.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\Module.cs" />
     <Compile Include="Helpers\Encrypting\ByteArraySplitter.cs" />
