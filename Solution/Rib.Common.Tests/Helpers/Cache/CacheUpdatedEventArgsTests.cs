@@ -12,11 +12,11 @@
         }
 
         [TestMethod]
-        public void Constructor() => new CacheUpdatedEventArgs("321");
+        public void Constructor() => new CacheEventArgs("321");
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
-        public void ConstructorNullArgument1() => new CacheUpdatedEventArgs(null);
+        public void ConstructorNullArgument1() => new CacheEventArgs(null);
 
         [TestCleanup]
         public void Clean()
@@ -27,7 +27,7 @@
         public void CacheUpdatedEventArgsTest()
         {
             const string fullKey = "123";
-            var ea = new CacheUpdatedEventArgs(fullKey);
+            var ea = new CacheEventArgs(fullKey);
             Assert.AreEqual(fullKey, ea.FullKey);
         }
     }

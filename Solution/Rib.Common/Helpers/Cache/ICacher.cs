@@ -8,7 +8,6 @@ namespace Rib.Common.Helpers.Cache
     {
         CacheTryGetResult TryGet([NotNull] string key, out T value);
         T GetOrAdd([NotNull] string key, [NotNull] Func<string, T> valueFactory);
-        T AddOrUpdate(string key, Func<string, T> createValueFactory);
         void Remove(string key);
     }
 }

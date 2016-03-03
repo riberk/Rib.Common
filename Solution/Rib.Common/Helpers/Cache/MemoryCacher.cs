@@ -8,12 +8,21 @@ namespace Rib.Common.Helpers.Cache
     {
         [NotNull] protected static readonly object EmptyObject = new object();
 
-        public static event EventHandler<CacheUpdatedEventArgs> CacheItemUpdated;
+        public static event EventHandler<CacheEventArgs> CacheItemRemoved;
+        public static event EventHandler<CacheEventArgs> CacheItemAdded;
 
-        protected static void OnCacheItemUpdated(object invoker, [NotNull] CacheUpdatedEventArgs args)
+        protected static void OnCacheItemAdd(object invoker, [NotNull] CacheEventArgs args)
         {
             if (args == null) throw new ArgumentNullException(nameof(args));
-            var h = CacheItemUpdated;
+            var h = CacheItemAdded;
+            h?.Invoke(invoker, args);
+        }
+
+
+        protected static void OnCacheItemRemove(object invoker, [NotNull] CacheEventArgs args)
+        {
+            if (args == null) throw new ArgumentNullException(nameof(args));
+            var h = CacheItemRemoved;
             h?.Invoke(invoker, args);
         }
 
@@ -74,18 +83,9 @@ namespace Rib.Common.Helpers.Cache
                 internalResult.Value =
                     internalResult.Cache.AddOrGetExisting(internalResult.FullKey, factoryResult, _policy ?? _cacheItemPolicyFactory.Create<T>()) ??
                     factoryResult;
+                OnCacheItemAdd(this, new CacheEventArgs(internalResult.FullKey));
             }
             return internalResult.Value == EmptyObject ? null : Cast(internalResult.Value);
-        }
-
-        public T AddOrUpdate(string key, Func<string, T> createValueFactory)
-        {
-            if (key == null) throw new ArgumentNullException(nameof(key));
-            if (createValueFactory == null) throw new ArgumentNullException(nameof(createValueFactory));
-            Remove(key);
-            var res = GetOrAdd(key, createValueFactory);
-            OnCacheItemUpdated(this, new CacheUpdatedEventArgs(FullKey(_prefix, key)));
-            return res;
         }
 
         [NotNull]
@@ -110,7 +110,9 @@ namespace Rib.Common.Helpers.Cache
         public void Remove(string key)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
-            _objectCacheFactory.Create().Remove(FullKey(_prefix, key));
+            var fullKey = FullKey(_prefix, key);
+            _objectCacheFactory.Create().Remove(fullKey);
+            OnCacheItemRemove(this, new CacheEventArgs(fullKey));
         }
 
         private struct InternalCacheResult

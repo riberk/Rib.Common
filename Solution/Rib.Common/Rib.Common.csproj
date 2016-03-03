@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Cache\CacheCleaner.cs" />
     <Compile Include="Helpers\Cache\CacheTryGetResult.cs" />
-    <Compile Include="Helpers\Cache\CacheUpdatedEventArgs.cs" />
+    <Compile Include="Helpers\Cache\CacheItemRemovedEventArgs.cs" />
     <Compile Include="Helpers\Cache\ICacheCleaner.cs" />
     <Compile Include="Helpers\Cache\IObjectCacheFactory.cs" />
     <Compile Include="Helpers\Cache\ObjectCacheFactory.cs" />

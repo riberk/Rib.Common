@@ -170,21 +170,11 @@
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
-        public void AddOrUpdateNullArgument1Test()
-                => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").AddOrUpdate(null, s => new One());
-
-        [TestMethod]
-        [ExpectedException(typeof (ArgumentNullException))]
-        public void AddOrUpdateNullArgument2Test()
-                => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").AddOrUpdate("dadwad", null);
-
-        [TestMethod]
-        [ExpectedException(typeof (ArgumentNullException))]
         public void RemoveArgumentNullTest() => new MemoryCacher<One>(_itemPolicyMock.Object, _objectCacheFactory.Object, "12414").Remove(null);
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
-        public void MemoryCacherOnUpdateArgumentNullTest() => new Testcache().Update(null);
+        public void MemoryCacherOnUpdateArgumentNullTest() => new Testcache().Remove(null);
 
         [TestMethod]
         public void MemoryCacherOnUpdateTest()
@@ -192,7 +182,7 @@
             const string key = "dsfgsdsdfgh";
             var cache = new Testcache();
             var raised = false;
-            MemoryCacher.CacheItemUpdated += (sender, args) =>
+            MemoryCacher.CacheItemRemoved += (sender, args) =>
             {
                 Assert.IsNotNull(sender);
                 Assert.AreEqual(cache, sender);
@@ -200,7 +190,7 @@
                 Assert.AreEqual(key, args.FullKey);
                 raised = true;
             };
-            cache.Update(key);
+            cache.Remove(key);
             Assert.IsTrue(raised);
         }
 
@@ -209,7 +199,7 @@
         public void MemoryCacherOnUpdateArgumentNull1Test()
         {
             var cache = new Testcache();
-            cache.NullUpdate();
+            cache.NullRemove();
         }
 
 
@@ -297,14 +287,24 @@
             [NotNull]
             public static object EmptyObjectValue => EmptyObject;
 
-            public void Update(string key)
+            public void Remove(string key)
             {
-                OnCacheItemUpdated(this, new CacheUpdatedEventArgs(key));
+                OnCacheItemRemove(this, new CacheEventArgs(key));
             }
 
-            public void NullUpdate()
+            public void NullRemove()
             {
-                OnCacheItemUpdated(this, null);
+                OnCacheItemRemove(this, null);
+            }
+
+            public void Add(string key)
+            {
+                OnCacheItemAdd(this, new CacheEventArgs(key));
+            }
+
+            public void NullAdd()
+            {
+                OnCacheItemAdd(this, null);
             }
         }
     }
