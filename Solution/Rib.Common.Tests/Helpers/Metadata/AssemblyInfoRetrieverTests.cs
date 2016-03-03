@@ -45,7 +45,7 @@
 
             var result = Create().Retrieve(Assembly.LoadFile(path));
 
-            Assert.AreEqual(new DateTime(635923404290000000l), result.BuildAt);
+            Assert.AreEqual(new DateTime(635923404290000000L), result.BuildAt);
             Assert.AreEqual("1.0.0.0", result.Version);
         }
 

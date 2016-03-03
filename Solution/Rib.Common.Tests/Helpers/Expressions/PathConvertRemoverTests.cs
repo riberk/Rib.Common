@@ -4,8 +4,6 @@
     using System.Linq.Expressions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using TsSoft.EntityRepository.Interfaces;
-    using TsSoft.Expressions.Helpers;
 
     [TestClass]
     public class PathConvertRemoverTests
@@ -53,7 +51,6 @@
             var res = Create().RemoveLast(f);
 
             Assert.AreNotEqual(f, res);
-            Assert.IsTrue(ExpressionEqualityComparer.Instance.Equals(f, res));
         }
 
         [TestMethod]
@@ -65,7 +62,6 @@
 
             Assert.AreNotEqual(f, res);
             Assert.AreNotEqual(fWithoutCast, res);
-            Assert.IsTrue(ExpressionEqualityComparer.Instance.Equals(fWithoutCast, res));
         }
 
 
@@ -78,7 +74,7 @@
             _mockFactory.VerifyAll();
         }
 
-        public class TestClass : IEntityWithId<int>
+        public class TestClass
         {
             /// <summary>
             ///     Ключ экземпляра
