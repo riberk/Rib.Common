@@ -22,11 +22,11 @@ namespace Rib.Common.Helpers.DateAndTime
         {
             if (!_daysHash.Contains(firstDayOfWeek))
             {
-                throw new KeyNotFoundException($"Day of week {firstDayOfWeek} could not be found");
+                throw new ArgumentOutOfRangeException(nameof(firstDayOfWeek), $"Day of week {firstDayOfWeek} could not be found");
             }
             if (!_daysHash.Contains(dow))
             {
-                throw new KeyNotFoundException($"Day of week {dow} could not be found");
+                throw new ArgumentOutOfRangeException(nameof(firstDayOfWeek), $"Day of week {dow} could not be found");
             }
             var node = _days.Find(firstDayOfWeek);
             var i = 0;
