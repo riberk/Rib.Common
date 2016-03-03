@@ -174,10 +174,10 @@
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
-        public void MemoryCacherOnUpdateArgumentNullTest() => new Testcache().Remove(null);
+        public void MemoryCacherOnRemoveArgumentNullTest() => new Testcache().Remove(null);
 
         [TestMethod]
-        public void MemoryCacherOnUpdateTest()
+        public void MemoryCacherOnRemoveTest()
         {
             const string key = "dsfgsdsdfgh";
             var cache = new Testcache();
@@ -196,12 +196,37 @@
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
-        public void MemoryCacherOnUpdateArgumentNull1Test()
+        public void MemoryCacherOnRemoveArgumentNull1Test()
         {
             var cache = new Testcache();
             cache.NullRemove();
         }
 
+        [TestMethod]
+        public void MemoryCacherOnAddTest()
+        {
+            const string key = "dsfgsdsdfgh";
+            var cache = new Testcache();
+            var raised = false;
+            MemoryCacher.CacheItemAdded += (sender, args) =>
+            {
+                Assert.IsNotNull(sender);
+                Assert.AreEqual(cache, sender);
+                Assert.IsNotNull(args);
+                Assert.AreEqual(key, args.FullKey);
+                raised = true;
+            };
+            cache.Add(key);
+            Assert.IsTrue(raised);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MemoryCacherOnAddArgumentNull1Test()
+        {
+            var cache = new Testcache();
+            cache.NullAdd();
+        }
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
