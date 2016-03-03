@@ -3,7 +3,9 @@
     using global::Ninject;
     using global::Ninject.Modules;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.Models.Exceptions;
     using Rib.Common.Models.Metadata;
+    using TestForNinjectBindingsErrorNamed.Ninject;
 
     [TestClass]
     public class RibNinjectModuleTests
@@ -23,6 +25,13 @@
             Assert.AreEqual(typeof(C1), i1.GetType());
             Assert.AreEqual(typeof(C2), i2.GetType());
             Assert.AreEqual(typeof(C3), i3.GetType());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MetadataException))]
+        public void ManyUnnamedAttributeTest()
+        {
+            new StandardKernel(new TestNinjectModule());
         }
 
         public class TestModule : RibNinjectModule

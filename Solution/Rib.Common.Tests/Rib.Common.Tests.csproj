@@ -327,6 +327,10 @@
       <Project>{9bf49e22-995f-472b-90e1-d37c1d323598}</Project>
       <Name>Rib.Tests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestForNinjectBindingsErrorNamed\TestForNinjectBindingsErrorNamed.csproj">
+      <Project>{8F811F3C-9D2D-4AA7-8D10-A6CEA8BB0A1E}</Project>
+      <Name>TestForNinjectBindingsErrorNamed</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Helpers\Metadata\ClassLibrary1.dll">
