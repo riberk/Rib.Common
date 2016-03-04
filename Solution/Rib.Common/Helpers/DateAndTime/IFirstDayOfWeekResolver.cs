@@ -2,7 +2,7 @@ namespace Rib.Common.Helpers.DateAndTime
 {
     using System;
 
-    internal interface IFirstDayOfWeekResolver
+    public interface IFirstDayOfWeekResolver
     {
         DayOfWeek Resolve();
     }
