@@ -4,6 +4,7 @@
     using Rib.Common.Helpers.Cache;
     using Rib.Tests.Mock;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.Helpers.Expressions;
 
     [TestClass]
     public class NullArgumentTest
@@ -13,6 +14,7 @@
         {
             var res =
                 ArgumentsVerifier.Builder(typeof (ICacher<>))
+                    .Exclude<ParameterRebinder.ParameterRebinderVisiter>()
                     .ToVerifier()
                     .CheckAllVoidCtorsCreateObject()
                     .CheckNullArgumentsOnConstructors()
