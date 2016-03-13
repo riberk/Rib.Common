@@ -27,5 +27,7 @@
         public Type ToType { get; }
 
         public string Name { get; }
+
+        public string Scope { get; set; }
     }
 }

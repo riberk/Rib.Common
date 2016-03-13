@@ -35,6 +35,7 @@
                 .Exclude(typeof(IConfigurationEntryCreator<>))
                 .Exclude(typeof(ICacher<>))
                 .Exclude<IFirstDayOfWeekResolver>()
+                .Exclude<IBindInfo>()
                 .CheckAllInterfacesCanCreate()
                 .Errors;
             if (errors.Any())
