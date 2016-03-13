@@ -34,7 +34,7 @@
         protected override Expression VisitUnary(UnaryExpression node)
         {
             // Replace explicit Convert to implicit one. (Except converion to Object).
-            if (node.Type != typeof (object) && node.Type.IsAssignableFrom(node.Operand.Type))
+            if (node.NodeType == ExpressionType.Convert && node.Type != typeof (object) && node.Type.IsAssignableFrom(node.Operand.Type))
                 return Visit(node.Operand);
             return base.VisitUnary(node);
         }

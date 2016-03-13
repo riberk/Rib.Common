@@ -50,6 +50,27 @@
         }
 
         [TestMethod]
+        public void RemoveWithoutCastUnary1Test()
+        {
+            Expression<Func<Test, bool>> notRemoveConvert = test => !test.B;
+            Assert.AreEqual(ExpressionType.Not, notRemoveConvert.Body.NodeType);
+            var nBody = notRemoveConvert.Body as UnaryExpression;
+            Assert.AreEqual(ExpressionType.MemberAccess, nBody.Operand.NodeType);
+            var ma = nBody.Operand as MemberExpression;
+            Assert.AreEqual(typeof(Test).GetProperty(nameof(Test.B)), ma.Member);
+            Assert.AreEqual(ExpressionType.Parameter, ma.Expression.NodeType);
+
+            var expr = ConvertRemover.Remove(notRemoveConvert);
+
+            Assert.AreEqual(ExpressionType.Not, expr.Body.NodeType);
+            var eBody = expr.Body as UnaryExpression;
+            Assert.AreEqual(ExpressionType.MemberAccess, eBody.Operand.NodeType);
+            var ema = eBody.Operand as MemberExpression;
+            Assert.AreEqual(typeof(Test).GetProperty(nameof(Test.B)), ema.Member);
+            Assert.AreEqual(ExpressionType.Parameter, ema.Expression.NodeType);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void RemoveNullArgumentTest() => ConvertRemover.Remove<string, bool>(null);
 
@@ -76,6 +97,7 @@
         private class Test : ITestI
         {
             public string A { get; set; }
+            public bool B { get; set; }
         }
     }
 }
