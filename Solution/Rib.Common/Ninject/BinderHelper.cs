@@ -5,6 +5,7 @@ namespace Rib.Common.Ninject
     using System.Linq;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Binding;
     using Rib.Common.Models.Exceptions;
     using Rib.Common.Models.Metadata;
 

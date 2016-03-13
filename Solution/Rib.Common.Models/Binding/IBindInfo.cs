@@ -1,4 +1,4 @@
-namespace Rib.Common.Ninject
+namespace Rib.Common.Models.Binding
 {
     using System;
     using System.Collections.Generic;

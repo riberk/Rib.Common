@@ -11,6 +11,7 @@
     using Rib.Common.Helpers.DateAndTime;
     using Rib.Common.Helpers.Encrypting.Symmetric;
     using Rib.Common.Helpers.Tmp;
+    using Rib.Common.Models.Binding;
     using Rib.Common.Ninject;
     using Rib.Tests.Ninject;
 

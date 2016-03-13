@@ -157,9 +157,6 @@
     <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />
     <Compile Include="Ninject\BinderHelper.cs" />
-    <Compile Include="Ninject\BindInfo.cs" />
-    <Compile Include="Ninject\BindingScope.cs" />
-    <Compile Include="Ninject\IBindInfo.cs" />
     <Compile Include="Ninject\RibNinjectModule.cs" />
     <Compile Include="Ninject\RibCommonModule.cs" />
     <Compile Include="Ninject\IResolver.cs" />

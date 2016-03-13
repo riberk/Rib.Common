@@ -6,6 +6,7 @@ namespace Rib.Common.Ninject
     using global::Ninject.Modules;
     using global::Ninject.Syntax;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Binding;
 
     public abstract class RibNinjectModule : NinjectModule
     {

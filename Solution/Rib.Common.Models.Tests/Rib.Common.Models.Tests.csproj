@@ -51,6 +51,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Binding\BindInfoTests.cs" />
+    <Compile Include="Binding\BindingScopeTests.cs" />
     <Compile Include="Configuration\ConfigurationItemGroupTableModelTests.cs" />
     <Compile Include="Contract\PagedResponseTests.cs" />
     <Compile Include="Contract\PaginatorTests.cs" />

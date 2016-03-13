@@ -1,4 +1,4 @@
-namespace Rib.Common.Ninject
+namespace Rib.Common.Models.Binding
 {
     using System;
     using JetBrains.Annotations;
@@ -20,6 +20,7 @@ namespace Rib.Common.Ninject
         [NotNull]
         public static readonly BindingScope TransientScope = new BindingScope(Transient);
 
+        [NotNull]
         internal string Scope { get; }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Rib.Common.Ninject
         /// </returns>
         public override int GetHashCode()
         {
-            return (Scope != null ? Scope.GetHashCode() : 0);
+            return Scope.GetHashCode();
         }
 
         public static bool operator ==(BindingScope left, BindingScope right)

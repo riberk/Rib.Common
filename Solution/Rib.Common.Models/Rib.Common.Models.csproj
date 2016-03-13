@@ -43,6 +43,9 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binding\BindInfo.cs" />
+    <Compile Include="Binding\BindingScope.cs" />
+    <Compile Include="Binding\IBindInfo.cs" />
     <Compile Include="Configuration\ConfigurationItemGroupTableModel.cs" />
     <Compile Include="Configuration\ConfigurationItemTableModel.cs" />
     <Compile Include="Contract\IPagedResponse.cs" />
