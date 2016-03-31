@@ -123,6 +123,7 @@
     <Compile Include="Helpers\ObjectExtensionsTests.cs" />
     <Compile Include="Helpers\Tmp\TmpFolderTests.cs" />
     <Compile Include="NinjectChecker.cs" />
+    <Compile Include="Ninject\BinderHelperTests.cs" />
     <Compile Include="Ninject\NinjectResolverTests.cs" />
     <Compile Include="Ninject\RibNinjectModuleTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
