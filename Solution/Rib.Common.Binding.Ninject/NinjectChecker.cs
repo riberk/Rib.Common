@@ -1,4 +1,4 @@
-﻿namespace Rib.Common
+﻿namespace Rib.Common.Binding.Ninject
 {
     using System.Linq;
     using global::Ninject;

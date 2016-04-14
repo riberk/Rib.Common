@@ -1,8 +1,9 @@
-﻿namespace Rib.Common.Ninject
+﻿namespace Rib.Common.Binding.Ninject
 {
     using System;
     using global::Ninject;
     using JetBrains.Annotations;
+    using Rib.Common.Ninject;
 
     internal class NinjectResolver : IResolver
     {

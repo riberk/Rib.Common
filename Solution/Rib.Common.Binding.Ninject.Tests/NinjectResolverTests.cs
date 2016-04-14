@@ -7,6 +7,7 @@
     using global::Ninject.Planning.Bindings;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+    using Rib.Common.Binding.Ninject;
 
     [TestClass]
     public class NinjectResolverTests

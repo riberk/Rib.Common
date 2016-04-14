@@ -1,10 +1,12 @@
 namespace Rib.Common.Helpers.Encrypting.Asymmetric
 {
     using System.Security.Cryptography;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     ///     Получает контейнеры Rsa
     /// </summary>
+    [BindFrom(typeof(IRsaCryptoServiceProviderResolver), typeof(IRsaKeyCreator))]
     internal class RsaCryptoServiceProviderResolver : IRsaCryptoServiceProviderResolver, IRsaKeyCreator
     {
         /// <summary>

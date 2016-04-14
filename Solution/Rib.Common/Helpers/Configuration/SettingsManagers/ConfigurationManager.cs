@@ -3,7 +3,9 @@
     using System;
     using JetBrains.Annotations;
     using Rib.Common.Helpers.Configuration.ConfigurationItems;
+    using Rib.Common.Models.Metadata;
 
+    [BindFrom(typeof(IConfigurationReader), typeof(IConfigurationWriter), typeof(IConfigurationManager))]
     internal class ConfigurationManager : IConfigurationManager
     {
         [NotNull] private readonly IConfigurationItemResolver _configurationItemResolver;

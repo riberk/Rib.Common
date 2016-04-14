@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8F811F3C-9D2D-4AA7-8D10-A6CEA8BB0A1E}</ProjectGuid>
+    <ProjectGuid>{EFE6DD01-A017-4E2D-9C16-822C6CAACCD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestForNinjectBindingsErrorNamed</RootNamespace>
-    <AssemblyName>TestForNinjectBindingsErrorNamed</AssemblyName>
+    <RootNamespace>Rib.Common.Binding</RootNamespace>
+    <AssemblyName>Rib.Common.Binding</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,10 +34,6 @@
       <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,28 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C1.cs" />
-    <Compile Include="C2.cs" />
-    <Compile Include="I1.cs" />
-    <Compile Include="Ninject\TestNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rib.Common.Binding.Ninject\Rib.Common.Binding.Ninject.csproj">
-      <Project>{F9AF52F5-3122-4732-8123-3C8D0A76B23F}</Project>
-      <Name>Rib.Common.Binding.Ninject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
-      <Project>{a7118fa8-3eaf-4e2f-84c7-d70a5f14f023}</Project>
-      <Name>Rib.Common.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rib.Common\Rib.Common.csproj">
-      <Project>{d73231ce-3808-4c23-8fd5-06c879df75e4}</Project>
-      <Name>Rib.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

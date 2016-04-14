@@ -3,10 +3,12 @@ namespace Rib.Common.Helpers.Metadata.Enums
     using System;
     using System.Reflection;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     ///     „итает пол€, сопоставленные со значени€ми енума
     /// </summary>
+    [BindTo(typeof(EnumFieldReader))]
     public interface IEnumFieldReader
     {
         /// <summary>

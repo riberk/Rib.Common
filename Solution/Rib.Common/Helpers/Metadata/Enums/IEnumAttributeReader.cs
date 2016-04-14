@@ -2,10 +2,12 @@
 {
     using System;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
 
     /// <summary>
     ///     Помогает решать задачи, связанные с перечислениями
     /// </summary>
+    [BindTo(typeof(EnumAttributeReader))]
     public interface IEnumAttributeReader
     {
         /// <summary>
