@@ -11,20 +11,20 @@ namespace Rib.Common.DependencyInjection
 
     public class BinderHelper : IBinderHelper
     {
-        public IEnumerable<IBindInfo> ReadFromTypes(IReadOnlyCollection<Type> types)
+        public IEnumerable<IBindInfo> ReadFromTypes(IReadOnlyCollection<Type> types, string defaultScope = BindingScope.Transient)
         {
-            return ReadFromAssemblyTypes(types);
+            return ReadFromAssemblyTypes(types, defaultScope);
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<IBindInfo> ReadFromAssemblyTypes([NotNull] IReadOnlyCollection<Type> types)
+        private static IEnumerable<IBindInfo> ReadFromAssemblyTypes([NotNull] IReadOnlyCollection<Type> types, string defaultScope)
         {
             if (types == null) throw new ArgumentNullException(nameof(types));
-            return ReadBindFrom(types).Union(ReadBindTo(types));
+            return ReadBindFrom(types, defaultScope).Union(ReadBindTo(types, defaultScope));
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<IBindInfo> ReadBindFrom([NotNull] IEnumerable<Type> assemblyTypes)
+        private static IEnumerable<IBindInfo> ReadBindFrom([NotNull] IEnumerable<Type> assemblyTypes, string defaultScope)
         {
             return assemblyTypes.Where(x => x.IsClass && !x.IsAbstract).Select(
                 x => new
@@ -35,14 +35,14 @@ namespace Rib.Common.DependencyInjection
                 .Where(x => x.Attr != null)
                 .Select(
                     @class => new BindInfo(
-                        new BindingScope(@class.Attr.Scope ?? BindingScope.Singleton),
+                        new BindingScope(@class.Attr.Scope ?? defaultScope),
                         @class.Attr.From,
                         @class.Class,
                         @class.Attr.Name));
         }
 
         [NotNull, ItemNotNull]
-        private static IEnumerable<IBindInfo> ReadBindTo([NotNull] IEnumerable<Type> assemblyTypes, string defaultScope = BindingScope.Transient)
+        private static IEnumerable<IBindInfo> ReadBindTo([NotNull] IEnumerable<Type> assemblyTypes, string defaultScope)
         {
             var unbindedInterfaces = assemblyTypes.Where(x => x.IsInterface).Select(
                 x => new

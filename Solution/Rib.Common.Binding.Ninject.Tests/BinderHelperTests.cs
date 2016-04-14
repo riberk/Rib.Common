@@ -11,7 +11,7 @@
         [ExpectedException(typeof (ArgumentNullException))]
         public void ReadFromAssemblyTypesNullArgTest()
         {
-            BinderHelper.ReadFromAssemblyTypes(null);
+            new BinderHelper().ReadFromTypes(null);
         }
     }
 }

@@ -4,7 +4,9 @@
     using global::Ninject;
     using JetBrains.Annotations;
     using Rib.Common.DependencyInjection;
+    using Rib.Common.Models.Metadata;
 
+    [BindFrom(typeof(IResolver))]
     internal class NinjectResolver : IResolver
     {
         [NotNull] private readonly IKernel _kernel;

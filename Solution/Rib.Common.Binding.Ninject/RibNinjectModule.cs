@@ -3,52 +3,50 @@ namespace Rib.Common.Binding.Ninject
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using global::Ninject.Modules;
-    using global::Ninject.Syntax;
     using JetBrains.Annotations;
     using Rib.Common.DependencyInjection;
     using Rib.Common.Models.Binding;
 
     public abstract class RibNinjectModule : NinjectModule
     {
+        [NotNull] private readonly IBinder _binder;
+        [NotNull] private readonly IBinderHelper _binderHelper;
+
+        protected RibNinjectModule() : this(new BinderHelper())
+        {
+        }
+
+        protected RibNinjectModule([NotNull] IBinderHelper binderHelper)
+        {
+            if (binderHelper == null) throw new ArgumentNullException(nameof(binderHelper));
+            _binderHelper = binderHelper;
+            _binder = new NinjectBinder(Bind);
+        }
+
+        protected RibNinjectModule([NotNull] IBinderHelper binderHelper, [NotNull] IBinder binder)
+        {
+            if (binderHelper == null) throw new ArgumentNullException(nameof(binderHelper));
+            if (binder == null) throw new ArgumentNullException(nameof(binder));
+            _binderHelper = binderHelper;
+            _binder = binder;
+        }
+
         private void BindModules(IEnumerable<Type> assemblyTypes)
         {
             var currentType = GetType();
             var innerModules = assemblyTypes
-                .Where(x => !x.IsAbstract && !x.IsInterface && x != currentType && x.GetInterfaces().Any(i => i == typeof (INinjectModule)))
-                .Select(x => Activator.CreateInstance(x) as INinjectModule);
+                    .Where(x => !x.IsAbstract && !x.IsInterface && x != currentType && x.GetInterfaces().Any(i => i == typeof (INinjectModule)))
+                    .Select(x => Activator.CreateInstance(x) as INinjectModule);
 
             Kernel.Load(innerModules);
         }
 
         private void BindInterfaceMetadata([NotNull] IReadOnlyCollection<Type> assemblyTypes)
         {
-            var bindings = BinderHelper.ReadFromAssemblyTypes(assemblyTypes);
-            foreach (var bindInfo in bindings)
-            {
-                var b = Bind(bindInfo.From.ToArray()).To(bindInfo.To);
-                IBindingNamedWithOrOnSyntax<object> scoped;
-                if (bindInfo.Scope == BindingScope.SingletonScope)
-                {
-                    scoped = b.InSingletonScope();
-                }
-                else if (bindInfo.Scope == BindingScope.ThreadScope)
-                {
-                    scoped = b.InThreadScope();
-                }
-                else if (bindInfo.Scope == BindingScope.TransientScope)
-                {
-                    scoped = b.InTransientScope();
-                }
-                else
-                {
-                    throw new NotSupportedException($"Undefined scope {bindInfo.Scope}");
-                }
-                if (!string.IsNullOrWhiteSpace(bindInfo.Name))
-                {
-                    scoped.Named(bindInfo.Name);
-                }
-            }
+            var bindings = _binderHelper.ReadFromTypes(assemblyTypes, BindingScope.Singleton);
+            _binder.Bind(bindings);
         }
 
         /// <summary>
@@ -57,11 +55,10 @@ namespace Rib.Common.Binding.Ninject
         public override void Load()
         {
             var assemblyTypes = GetType()
-                .Assembly
-                .GetTypes();
+                    .Assembly
+                    .GetTypes();
+
             BindModules(assemblyTypes);
-
-
             BindInterfaceMetadata(assemblyTypes);
         }
     }

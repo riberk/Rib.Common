@@ -43,7 +43,6 @@
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DependencyInjection\BindingEngine.cs" />
     <Compile Include="DependencyInjection\IBinder.cs" />
     <Compile Include="DependencyInjection\IBinderHelper.cs" />
     <Compile Include="Helpers\Cache\CacheCleaner.cs" />
