@@ -1,8 +1,11 @@
 ﻿namespace Rib.Common.Binding.Ninject
 {
+    using System;
     using global::Ninject;
     using global::Ninject.Modules;
+    using JetBrains.Annotations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.DependencyInjection;
     using Rib.Common.Models.Binding;
     using Rib.Common.Models.Metadata;
 
@@ -53,8 +56,34 @@
             Assert.AreEqual(i7, kernel.TryGet<I7>());
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArg1() => new TestModule(null);
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArg2() => new TestModule(null, new NinjectBinder(types => null));
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArg3() => new TestModule(new BinderHelper(), null);
+
+        [TestMethod]
+        public void NullArg2TwoArgsCtorTest() => new TestModule(new BinderHelper(), new NinjectBinder(types => null));
+
         public class TestModule : RibNinjectModule
         {
+            public TestModule()
+            {
+            }
+
+            public TestModule([NotNull] IBinderHelper binderHelper) : base(binderHelper)
+            {
+            }
+
+            public TestModule([NotNull] IBinderHelper binderHelper, [NotNull] IBinder binder) : base(binderHelper, binder)
+            {
+            }
         }
 
         public class InternalNinjectModule : NinjectModule
