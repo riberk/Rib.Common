@@ -3,7 +3,7 @@
     using System;
     using global::Ninject;
     using JetBrains.Annotations;
-    using Rib.Common.Ninject;
+    using Rib.Common.DependencyInjection;
 
     internal class NinjectResolver : IResolver
     {

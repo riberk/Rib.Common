@@ -6,7 +6,6 @@
     using Rib.Common.Models.Binding;
     using Rib.Common.Models.Exceptions;
     using Rib.Common.Models.Metadata;
-    using Rib.Common.Ninject;
     using TestForNinjectBindingsErrorNamed.Ninject;
 
     [TestClass]

@@ -3,6 +3,7 @@
     using System.Linq;
     using global::Ninject;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.DependencyInjection;
     using Rib.Common.Helpers.Cache;
     using Rib.Common.Helpers.Configuration;
     using Rib.Common.Helpers.Configuration.Services;
@@ -12,7 +13,6 @@
     using Rib.Common.Helpers.Encrypting.Symmetric;
     using Rib.Common.Helpers.Tmp;
     using Rib.Common.Models.Binding;
-    using Rib.Common.Ninject;
     using Rib.Tests.Ninject;
 
     [TestClass]

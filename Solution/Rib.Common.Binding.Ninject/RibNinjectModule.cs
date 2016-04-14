@@ -1,4 +1,4 @@
-namespace Rib.Common.Ninject
+namespace Rib.Common.Binding.Ninject
 {
     using System;
     using System.Collections.Generic;
@@ -6,6 +6,7 @@ namespace Rib.Common.Ninject
     using global::Ninject.Modules;
     using global::Ninject.Syntax;
     using JetBrains.Annotations;
+    using Rib.Common.DependencyInjection;
     using Rib.Common.Models.Binding;
 
     public abstract class RibNinjectModule : NinjectModule
@@ -41,7 +42,7 @@ namespace Rib.Common.Ninject
                 }
                 else
                 {
-                    scoped = b.InSingletonScope();
+                    throw new NotSupportedException($"Undefined scope {bindInfo.Scope}");
                 }
                 if (!string.IsNullOrWhiteSpace(bindInfo.Name))
                 {

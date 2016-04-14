@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.DependencyInjection;
 
     [TestClass]
     public class BinderHelperTests

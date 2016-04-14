@@ -1,4 +1,4 @@
-namespace Rib.Common.Ninject
+namespace Rib.Common.DependencyInjection
 {
     using System;
     using JetBrains.Annotations;

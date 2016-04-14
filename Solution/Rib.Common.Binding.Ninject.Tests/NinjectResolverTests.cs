@@ -1,4 +1,4 @@
-﻿namespace Rib.Common.Ninject
+﻿namespace Rib.Common.Binding.Ninject
 {
     using System;
     using global::Ninject;
@@ -7,7 +7,6 @@
     using global::Ninject.Planning.Bindings;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using Rib.Common.Binding.Ninject;
 
     [TestClass]
     public class NinjectResolverTests
