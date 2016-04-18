@@ -11,11 +11,13 @@ namespace Rib.Common.Binding.Ninject
     public class NinjectBinder : IBinder
     {
         [NotNull] private readonly Func<Type[], IBindingToSyntax<object>> _binder;
+        private readonly IScopeBinder _scopeBinder;
 
-        public NinjectBinder([NotNull] Func<Type[], IBindingToSyntax<object>> binder)
+        public NinjectBinder([NotNull] Func<Type[], IBindingToSyntax<object>> binder, IScopeBinder scopeBinder = null)
         {
             if (binder == null) throw new ArgumentNullException(nameof(binder));
             _binder = binder;
+            _scopeBinder = scopeBinder ?? new DefaultScopeBinder();
         }
 
         public void Bind(IEnumerable<IBindInfo> bindings)
@@ -24,27 +26,38 @@ namespace Rib.Common.Binding.Ninject
             foreach (var bindInfo in bindings)
             {
                 var b = _binder(bindInfo.From.ToArray()).To(bindInfo.To);
-                IBindingNamedWithOrOnSyntax<object> scoped;
-                if (bindInfo.Scope == BindingScope.SingletonScope)
-                {
-                    scoped = b.InSingletonScope();
-                }
-                else if (bindInfo.Scope == BindingScope.ThreadScope)
-                {
-                    scoped = b.InThreadScope();
-                }
-                else if (bindInfo.Scope == BindingScope.TransientScope)
-                {
-                    scoped = b.InTransientScope();
-                }
-                else
-                {
-                    throw new NotSupportedException($"Undefined scope {bindInfo.Scope}");
-                }
+                var scoped = _scopeBinder.InScope(b, bindInfo.Scope);
                 if (!string.IsNullOrWhiteSpace(bindInfo.Name))
                 {
                     scoped.Named(bindInfo.Name);
                 }
+            }
+        }
+
+        public class DefaultScopeBinder : IScopeBinder
+        {
+            public IBindingNamedWithOrOnSyntax<object> InScope(IBindingWhenInNamedWithOrOnSyntax<object> binded, BindingScope scope)
+            {
+                if (binded == null) throw new ArgumentNullException(nameof(binded));
+                if (scope == null) throw new ArgumentNullException(nameof(scope));
+                IBindingNamedWithOrOnSyntax<object> scoped;
+                if (scope == BindingScope.SingletonScope)
+                {
+                    scoped = binded.InSingletonScope();
+                }
+                else if (scope == BindingScope.ThreadScope)
+                {
+                    scoped = binded.InThreadScope();
+                }
+                else if (scope == BindingScope.TransientScope)
+                {
+                    scoped = binded.InTransientScope();
+                }
+                else
+                {
+                    throw new NotSupportedException($"Undefined scope {scope}");
+                }
+                return scoped;
             }
         }
     }

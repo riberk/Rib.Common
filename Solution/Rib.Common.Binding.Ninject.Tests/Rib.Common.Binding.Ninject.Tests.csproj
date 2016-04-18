@@ -63,6 +63,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BinderHelperTests.cs" />
+    <Compile Include="DefaultScopeBinderTests.cs" />
     <Compile Include="NinjectBinderTests.cs" />
     <Compile Include="NinjectChecker.cs" />
     <Compile Include="NinjectResolverTests.cs" />
