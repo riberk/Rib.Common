@@ -6,7 +6,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class ConvertRemoverTests
+    public class ExpressionsExtensionsConvertRemoverTests
     {
         [TestMethod]
         public void RemoveTest()
@@ -23,7 +23,7 @@
             var nConvert = nMemberAccess.Expression as UnaryExpression;
             Assert.AreEqual(ExpressionType.Parameter, nConvert.Operand.NodeType);
 
-            var expr = ConvertRemover.Remove(notRemoveConvert);
+            var expr = notRemoveConvert.RemoveConvert();
             Assert.AreEqual(ExpressionType.Equal, expr.Body.NodeType);
             var body = expr.Body as BinaryExpression;
             Assert.AreEqual(ExpressionType.Constant, body.Right.NodeType);
@@ -42,7 +42,7 @@
             var nBody = notRemoveConvert.Body as UnaryExpression;
             Assert.AreEqual(ExpressionType.Parameter, nBody.Operand.NodeType);
             
-            var expr = ConvertRemover.Remove(notRemoveConvert);
+            var expr =notRemoveConvert.RemoveConvert();
 
             Assert.AreEqual(ExpressionType.Convert, expr.Body.NodeType);
             var body = expr.Body as UnaryExpression;
@@ -60,7 +60,7 @@
             Assert.AreEqual(typeof(Test).GetProperty(nameof(Test.B)), ma.Member);
             Assert.AreEqual(ExpressionType.Parameter, ma.Expression.NodeType);
 
-            var expr = ConvertRemover.Remove(notRemoveConvert);
+            var expr =notRemoveConvert.RemoveConvert();
 
             Assert.AreEqual(ExpressionType.Not, expr.Body.NodeType);
             var eBody = expr.Body as UnaryExpression;
@@ -72,7 +72,7 @@
 
         [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
-        public void RemoveNullArgumentTest() => ConvertRemover.Remove<string, bool>(null);
+        public void RemoveNullArgumentTest() => ExpressionExtensions.RemoveConvert<Expression>(null);
 
         [NotNull]
         private static Expression<Func<T, bool>> Create<T>()

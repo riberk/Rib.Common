@@ -93,7 +93,7 @@
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensionsTests.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceTests.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactoryTests.cs" />
-    <Compile Include="Helpers\Expressions\ConvertRemoverTests.cs" />
+    <Compile Include="Helpers\Expressions\ExpressionsExtensionsConvertRemoverTests.cs" />
     <Compile Include="Helpers\Expressions\MemberInitMergerTests.cs" />
     <Compile Include="Helpers\Expressions\NewMakerTests.cs" />
     <Compile Include="Helpers\Expressions\ParameterMapFactoryTests.cs" />

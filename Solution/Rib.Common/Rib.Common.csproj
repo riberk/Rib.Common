@@ -103,7 +103,7 @@
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoService.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensions.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactory.cs" />
-    <Compile Include="Helpers\Expressions\ConvertRemover.cs" />
+    <Compile Include="Helpers\Expressions\ExpressionExtensions.cs" />
     <Compile Include="Helpers\Expressions\IMemberInitMerger.cs" />
     <Compile Include="Helpers\Expressions\INewMaker.cs" />
     <Compile Include="Helpers\Expressions\IParameterMapFactory.cs" />
