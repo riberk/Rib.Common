@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.DependencyInjection;
 
     [TestClass]
     public class BinderHelperTests
@@ -10,7 +11,7 @@
         [ExpectedException(typeof (ArgumentNullException))]
         public void ReadFromAssemblyTypesNullArgTest()
         {
-            BinderHelper.ReadFromAssemblyTypes(null);
+            new BinderHelper().ReadFromTypes(null);
         }
     }
 }

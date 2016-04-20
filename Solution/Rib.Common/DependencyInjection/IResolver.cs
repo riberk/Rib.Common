@@ -1,10 +1,8 @@
-namespace Rib.Common.Ninject
+namespace Rib.Common.DependencyInjection
 {
     using System;
     using JetBrains.Annotations;
-    using Rib.Common.Models.Metadata;
 
-    [BindTo(typeof(NinjectResolver))]
     public interface IResolver
     {
         [NotNull]

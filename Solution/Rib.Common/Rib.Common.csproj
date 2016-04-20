@@ -33,12 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=10.1.4.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -47,6 +43,10 @@
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyInjection\BinderHelper.cs" />
+    <Compile Include="DependencyInjection\IBinder.cs" />
+    <Compile Include="DependencyInjection\IBinderHelper.cs" />
+    <Compile Include="DependencyInjection\IResolver.cs" />
     <Compile Include="Helpers\Cache\CacheCleaner.cs" />
     <Compile Include="Helpers\Cache\CacheTryGetResult.cs" />
     <Compile Include="Helpers\Cache\CacheItemRemovedEventArgs.cs" />
@@ -76,7 +76,6 @@
     <Compile Include="Helpers\Configuration\SettingsManagers\IConfigurationWriter.cs" />
     <Compile Include="Helpers\Configuration\SettingsManagers\ISettingsReaderFactory.cs" />
     <Compile Include="Helpers\Configuration\SettingsManagers\ISettingsWriterFactory.cs" />
-    <Compile Include="Helpers\Configuration\SettingsManagers\Module.cs" />
     <Compile Include="Helpers\Configuration\SettingsReaderExtensions.cs" />
     <Compile Include="Helpers\Configuration\SettingsWriterExtensions.cs" />
     <Compile Include="Helpers\CorrelationId\ICorrelationIdStore.cs" />
@@ -89,7 +88,6 @@
     <Compile Include="Helpers\DateAndTime\WeekHelper.cs" />
     <Compile Include="Helpers\DateAndTime\WeekPaddingCalculator.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\IRsaKeyCreator.cs" />
-    <Compile Include="Helpers\Encrypting\Asymmetric\Module.cs" />
     <Compile Include="Helpers\Encrypting\ByteArraySplitter.cs" />
     <Compile Include="Helpers\Encrypting\IByteArraySplitter.cs" />
     <Compile Include="Helpers\Encrypting\Asymmetric\AsymmetricCryptoService.cs" />
@@ -107,7 +105,7 @@
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoService.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensions.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactory.cs" />
-    <Compile Include="Helpers\Expressions\ConvertRemover.cs" />
+    <Compile Include="Helpers\Expressions\ExpressionExtensions.cs" />
     <Compile Include="Helpers\Expressions\IMemberInitMerger.cs" />
     <Compile Include="Helpers\Expressions\INewMaker.cs" />
     <Compile Include="Helpers\Expressions\IParameterMapFactory.cs" />
@@ -145,7 +143,6 @@
     <Compile Include="Helpers\Metadata\Enums\IEnumAttributeReader.cs" />
     <Compile Include="Helpers\Metadata\Enums\IEnumFieldReader.cs" />
     <Compile Include="Helpers\Metadata\Enums\IEnumReader.cs" />
-    <Compile Include="Helpers\Metadata\Enums\Module.cs" />
     <Compile Include="Helpers\Metadata\IAssemblyInfoRetriever.cs" />
     <Compile Include="Helpers\Metadata\IAttributesReader.cs" />
     <Compile Include="Helpers\Cache\ICachePolicyFactory.cs" />
@@ -156,11 +153,6 @@
     <Compile Include="Helpers\ObjectExtensions.cs" />
     <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />
-    <Compile Include="Ninject\BinderHelper.cs" />
-    <Compile Include="Ninject\RibNinjectModule.cs" />
-    <Compile Include="Ninject\RibCommonModule.cs" />
-    <Compile Include="Ninject\IResolver.cs" />
-    <Compile Include="Ninject\NinjectResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,13 @@
-﻿namespace Rib.Common.Ninject
+﻿namespace Rib.Common.Binding.Ninject
 {
     using System;
-    using System.Linq;
     using global::Ninject;
     using global::Ninject.Modules;
+    using JetBrains.Annotations;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.DependencyInjection;
     using Rib.Common.Models.Binding;
-    using Rib.Common.Models.Exceptions;
     using Rib.Common.Models.Metadata;
-    using TestForNinjectBindingsErrorNamed.Ninject;
 
     [TestClass]
     public class RibNinjectModuleTests
@@ -37,14 +36,14 @@
             Assert.IsNotNull(i6);
             Assert.IsNotNull(i7);
 
-            Assert.AreEqual(typeof(C1), i1.GetType());
-            Assert.AreEqual(typeof(C2), i2.GetType());
-            Assert.AreEqual(typeof(C3), i23.GetType());
-            Assert.AreEqual(typeof(C4), i3.GetType());
-            Assert.AreEqual(typeof(C4), i4.GetType());
-            Assert.AreEqual(typeof(C5), i5.GetType());
-            Assert.AreEqual(typeof(C6), i6.GetType());
-            Assert.AreEqual(typeof(C7), i7.GetType());
+            Assert.AreEqual(typeof (C1), i1.GetType());
+            Assert.AreEqual(typeof (C2), i2.GetType());
+            Assert.AreEqual(typeof (C3), i23.GetType());
+            Assert.AreEqual(typeof (C4), i3.GetType());
+            Assert.AreEqual(typeof (C4), i4.GetType());
+            Assert.AreEqual(typeof (C5), i5.GetType());
+            Assert.AreEqual(typeof (C6), i6.GetType());
+            Assert.AreEqual(typeof (C7), i7.GetType());
 
             Assert.AreNotEqual(i1, kernel.TryGet<I1>());
             Assert.AreEqual(i2, kernel.TryGet<I2>("adawd"));
@@ -55,18 +54,36 @@
             Assert.AreEqual(i5, kernel.TryGet<I5>());
             Assert.AreEqual(i6, kernel.TryGet<I6>());
             Assert.AreEqual(i7, kernel.TryGet<I7>());
-
         }
 
         [TestMethod]
-        [ExpectedException(typeof(MetadataException))]
-        public void ManyUnnamedAttributeTest()
-        {
-            new StandardKernel(new TestNinjectModule());
-        }
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArg1() => new TestModule(null);
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArg2() => new TestModule(null, new NinjectBinder(types => null));
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArg3() => new TestModule(new BinderHelper(), null);
+
+        [TestMethod]
+        public void NullArg2TwoArgsCtorTest() => new TestModule(new BinderHelper(), new NinjectBinder(types => null));
 
         public class TestModule : RibNinjectModule
         {
+            public TestModule()
+            {
+            }
+
+            public TestModule([NotNull] IBinderHelper binderHelper) : base(binderHelper)
+            {
+            }
+
+            public TestModule([NotNull] IBinderHelper binderHelper, [NotNull] IBinder binder) : base(binderHelper, binder)
+            {
+            }
         }
 
         public class InternalNinjectModule : NinjectModule
@@ -114,7 +131,7 @@
         {
         }
 
-        [BindTo(typeof(C6), Scope = BindingScope.Thread)]
+        [BindTo(typeof (C6), Scope = BindingScope.Thread)]
         public interface I6
         {
         }
@@ -127,17 +144,17 @@
         {
         }
 
-        [BindFrom(typeof(I7), Scope = "lsdkfgnsdfoosdfhnolhnol")]
+        [BindFrom(typeof (I7))]
         public class C7 : I7
         {
         }
 
-        [BindFrom(typeof(I3), typeof(I4), Scope = BindingScope.Transient)]
+        [BindFrom(typeof (I3), typeof (I4), Scope = BindingScope.Transient)]
         public class C4 : I3, I4
         {
         }
 
-        [BindFrom(typeof(I5), Scope = BindingScope.Singleton)]
+        [BindFrom(typeof (I5), Scope = BindingScope.Singleton)]
         public class C5 : I5
         {
         }

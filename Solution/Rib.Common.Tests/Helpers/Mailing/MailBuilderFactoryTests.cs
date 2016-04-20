@@ -1,9 +1,9 @@
 ﻿namespace Rib.Common.Helpers.Mailing
 {
     using System;
-    using Rib.Common.Ninject;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+    using Rib.Common.DependencyInjection;
 
     [TestClass]
     public class MailBuilderFactoryTests

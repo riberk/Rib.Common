@@ -1,8 +1,8 @@
 namespace Rib.Common.Helpers.Mailing
 {
     using System;
-    using Rib.Common.Ninject;
     using JetBrains.Annotations;
+    using Rib.Common.DependencyInjection;
 
     internal class MailBuilderFactory : IMailBuilderFactory
     {

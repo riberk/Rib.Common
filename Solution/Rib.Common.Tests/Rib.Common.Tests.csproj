@@ -40,16 +40,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=10.1.4.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -97,7 +93,7 @@
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensionsTests.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceTests.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactoryTests.cs" />
-    <Compile Include="Helpers\Expressions\ConvertRemoverTests.cs" />
+    <Compile Include="Helpers\Expressions\ExpressionExtensionsConvertRemoverTests.cs" />
     <Compile Include="Helpers\Expressions\MemberInitMergerTests.cs" />
     <Compile Include="Helpers\Expressions\NewMakerTests.cs" />
     <Compile Include="Helpers\Expressions\ParameterMapFactoryTests.cs" />
@@ -122,10 +118,6 @@
     <Compile Include="Helpers\Metadata\Enums\EnumReaderTests.cs" />
     <Compile Include="Helpers\ObjectExtensionsTests.cs" />
     <Compile Include="Helpers\Tmp\TmpFolderTests.cs" />
-    <Compile Include="NinjectChecker.cs" />
-    <Compile Include="Ninject\BinderHelperTests.cs" />
-    <Compile Include="Ninject\NinjectResolverTests.cs" />
-    <Compile Include="Ninject\RibNinjectModuleTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +126,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rib.Common.Binding.Ninject\Rib.Common.Binding.Ninject.csproj">
+      <Project>{F9AF52F5-3122-4732-8123-3C8D0A76B23F}</Project>
+      <Name>Rib.Common.Binding.Ninject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
       <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
       <Name>Rib.Common.Models</Name>
@@ -145,10 +141,6 @@
     <ProjectReference Include="..\Rib.Tests\Rib.Tests.csproj">
       <Project>{9bf49e22-995f-472b-90e1-d37c1d323598}</Project>
       <Name>Rib.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestForNinjectBindingsErrorNamed\TestForNinjectBindingsErrorNamed.csproj">
-      <Project>{8F811F3C-9D2D-4AA7-8D10-A6CEA8BB0A1E}</Project>
-      <Name>TestForNinjectBindingsErrorNamed</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

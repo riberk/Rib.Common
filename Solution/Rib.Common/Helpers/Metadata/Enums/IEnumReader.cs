@@ -7,6 +7,7 @@
     /// <summary>
     ///     Читатель енумов
     /// </summary>
+    [BindTo(typeof(EnumReader))]
     public interface IEnumReader
     {
         /// <summary>
