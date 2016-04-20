@@ -6,7 +6,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class ExpressionsExtensionsConvertRemoverTests
+    public class ExpressionExtensionsConvertRemoverTests
     {
         [TestMethod]
         public void RemoveTest()

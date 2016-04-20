@@ -93,7 +93,7 @@
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensionsTests.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceTests.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactoryTests.cs" />
-    <Compile Include="Helpers\Expressions\ExpressionsExtensionsConvertRemoverTests.cs" />
+    <Compile Include="Helpers\Expressions\ExpressionExtensionsConvertRemoverTests.cs" />
     <Compile Include="Helpers\Expressions\MemberInitMergerTests.cs" />
     <Compile Include="Helpers\Expressions\NewMakerTests.cs" />
     <Compile Include="Helpers\Expressions\ParameterMapFactoryTests.cs" />
@@ -129,10 +129,6 @@
     <ProjectReference Include="..\Rib.Common.Binding.Ninject\Rib.Common.Binding.Ninject.csproj">
       <Project>{F9AF52F5-3122-4732-8123-3C8D0A76B23F}</Project>
       <Name>Rib.Common.Binding.Ninject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rib.Common.Binding\Rib.Common.Binding.csproj">
-      <Project>{EFE6DD01-A017-4E2D-9C16-822C6CAACCD4}</Project>
-      <Name>Rib.Common.Binding</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
       <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>

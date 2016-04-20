@@ -43,8 +43,10 @@
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyInjection\BinderHelper.cs" />
     <Compile Include="DependencyInjection\IBinder.cs" />
     <Compile Include="DependencyInjection\IBinderHelper.cs" />
+    <Compile Include="DependencyInjection\IResolver.cs" />
     <Compile Include="Helpers\Cache\CacheCleaner.cs" />
     <Compile Include="Helpers\Cache\CacheTryGetResult.cs" />
     <Compile Include="Helpers\Cache\CacheItemRemovedEventArgs.cs" />
@@ -151,8 +153,6 @@
     <Compile Include="Helpers\ObjectExtensions.cs" />
     <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />
-    <Compile Include="DependencyInjection\BinderHelper.cs" />
-    <Compile Include="DependencyInjection\IResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
