@@ -16,7 +16,7 @@
     <tags></tags>
     <dependencies>
       <dependency id="Rib.Common" version="[2.0, 3.0)" />
-      <dependency id="Rib.Common.Model." version="[2.0, 3.0)" />
+      <dependency id="Rib.Common.Models" version="[2.0, 3.0)" />
       <dependency id="Ninject" version="[3.2, 4.0)" />
     </dependencies>
   </metadata>
