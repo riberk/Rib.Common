@@ -45,12 +45,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="TsSoft.AbstractMapper, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
       <HintPath>..\packages\TsSoft.AbstractMapper.1.0.5946.22256\lib\net45\TsSoft.AbstractMapper.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +67,10 @@
     </Reference>
     <Reference Include="TsSoft.BindingsDescription, Version=1.0.5878.32057, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
       <HintPath>..\packages\TsSoft.BindingsDescription.1.0.5878.32057\lib\net45\TsSoft.BindingsDescription.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.ContextWrapper, Version=1.0.5974.34095, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.ContextWrapper.1.0.5974.34095\lib\net45\TsSoft.ContextWrapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TsSoft.ContextWrapper.Interfaces, Version=1.0.5798.24618, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
@@ -121,6 +123,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientEnums\ClientEnumInitializer.cs" />
+    <Compile Include="ClientEnums\IClientEnumInitializer.cs" />
+    <Compile Include="CorrelationId\CorrelationIdFactory.cs" />
+    <Compile Include="Hierarchy\HierarchyCache.cs" />
+    <Compile Include="Hierarchy\HierarchyCollection.cs" />
+    <Compile Include="Hierarchy\IHierarchyCache.cs" />
+    <Compile Include="Hierarchy\IHierarchyCollection.cs" />
+    <Compile Include="Hierarchy\IReorderer.cs" />
+    <Compile Include="Hierarchy\Reorderer.cs" />
+    <Compile Include="Models\Hierarchy\IHierarchyOrderedEntity.cs" />
+    <Compile Include="Models\Hierarchy\IHierarchycalCacheModel.cs" />
     <Compile Include="Models\Rest\CriteriaBase.cs" />
     <Compile Include="Models\Rest\IHasPaginator.cs" />
     <Compile Include="Models\Rest\IOrderedPaginationPredicateRequest.cs" />
@@ -136,15 +149,21 @@
     <Compile Include="Services\Rest\IRestGetService.cs" />
     <Compile Include="Services\Rest\IRestService.cs" />
     <Compile Include="Services\Rest\IRestUpdateService.cs" />
-    <Compile Include="Services\Rest\Module.cs" />
     <Compile Include="Services\Rest\RestCreateService.cs" />
     <Compile Include="Services\Rest\RestDeleteService.cs" />
     <Compile Include="Services\Rest\RestGetService.cs" />
     <Compile Include="Services\Rest\RestService.cs" />
     <Compile Include="Services\Rest\RestUpdateService.cs" />
+    <Compile Include="Wrappers\IWrappersDisposer.cs" />
+    <Compile Include="Wrappers\IWrappersFactory.cs" />
+    <Compile Include="Wrappers\IWrappersInitializer.cs" />
+    <Compile Include="Wrappers\IWrappersManager.cs" />
+    <Compile Include="Wrappers\IWrapperTypesResolver.cs" />
+    <Compile Include="Wrappers\WrappersFactory.cs" />
+    <Compile Include="Wrappers\WrappersManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Wrappers\" />
+    <Folder Include="Services\Owin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -154,6 +173,10 @@
     <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
       <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
       <Name>Rib.Common.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rib.Common\Rib.Common.csproj">
+      <Project>{D73231CE-3808-4C23-8FD5-06C879DF75E4}</Project>
+      <Name>Rib.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

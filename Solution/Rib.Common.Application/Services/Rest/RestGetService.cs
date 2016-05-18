@@ -15,13 +15,13 @@ namespace Rib.Common.Application.Services.Rest
     using TsSoft.Expressions.OrderBy;
 
     public class RestGetService<TEntity, TTableModel> : IRestGetService<TEntity, TTableModel>
-        where TEntity : class
-        where TTableModel : class
+            where TEntity : class
+            where TTableModel : class
     {
         [NotNull] private readonly IOrderCreator<TEntity> _orderCreator;
 
         public RestGetService([NotNull] IReadDatabaseService<TEntity, TTableModel> dbService,
-            [NotNull] IOrderCreator<TEntity> orderCreator)
+                              [NotNull] IOrderCreator<TEntity> orderCreator)
         {
             if (dbService == null) throw new ArgumentNullException(nameof(dbService));
             if (orderCreator == null) throw new ArgumentNullException(nameof(orderCreator));
@@ -56,7 +56,7 @@ namespace Rib.Common.Application.Services.Rest
         /// <param name="order">Порядок сортировки</param>
         /// <returns>Перечисление табличных моделей</returns>
         public async Task<IReadOnlyCollection<TTableModel>> GetTableAsync(Expression<Func<TEntity, bool>> filter,
-            IEnumerable<IOrderByClause<TEntity>> order = null)
+                                                                          IEnumerable<IOrderByClause<TEntity>> order = null)
         {
             return (await ReadService.GetAsync(filter, order)).ToList();
         }
@@ -65,8 +65,8 @@ namespace Rib.Common.Application.Services.Rest
         ///     Отдает страницу записей
         /// </summary>
         public async Task<IPagedResponse<TTableModel>> GetPagedAsync(IPaginator paginator,
-            Expression<Func<TEntity, bool>> filter,
-            IEnumerable<IOrderByClause<TEntity>> order = null)
+                                                                     Expression<Func<TEntity, bool>> filter,
+                                                                     IEnumerable<IOrderByClause<TEntity>> order = null)
         {
             if (paginator == null) throw new ArgumentNullException(nameof(paginator));
             var res = await ReadService.GetPagedAsync(filter, paginator.PageNumber, paginator.PageSize, order);
@@ -78,7 +78,8 @@ namespace Rib.Common.Application.Services.Rest
         /// </summary>
         public Task<IPagedResponse<TTableModel>> GetPagedAsync(Expression<Func<TEntity, bool>> filter, IOrderedPaginationRequest request)
         {
-            return GetPagedAsync(request?.Pagination ?? Paginator.Full, filter ?? PredicateBuilder.True<TEntity>(), _orderCreator.Create(request?.Order));
+            return GetPagedAsync(request?.Pagination ?? Paginator.Full, filter ?? PredicateBuilder.True<TEntity>(),
+                                 _orderCreator.Create(request?.Order));
         }
 
         /// <summary>

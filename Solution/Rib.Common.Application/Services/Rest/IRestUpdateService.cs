@@ -12,7 +12,7 @@
     /// <typeparam name="TEntity">Тип сущности</typeparam>
     /// <typeparam name="TChangeModel">Тип модели</typeparam>
     public interface IRestUpdateService<TEntity, in TChangeModel>
-        where TEntity : class
+            where TEntity : class
     {
         /// <summary>
         ///     Репозиторий

@@ -8,9 +8,9 @@
     ///     Создает правила сортировки для сущности
     /// </summary>
     /// <typeparam name="T">Тип сущности</typeparam>
-    [BindTo(typeof (OrderCreator<>))]
+    [BindTo(typeof(OrderCreator<>))]
     public interface IOrderCreator<T>
-        where T : class
+            where T : class
     {
         /// <summary>
         ///     Создать правила сортировки из словаря

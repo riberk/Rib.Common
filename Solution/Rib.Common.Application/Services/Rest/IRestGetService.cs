@@ -35,7 +35,8 @@
         /// <param name="order">Порядок сортировки</param>
         /// <returns>Перечисление табличных моделей</returns>
         [NotNull, ItemNotNull]
-        Task<IReadOnlyCollection<TTableModel>> GetTableAsync(Expression<Func<TEntity, bool>> filter, IEnumerable<IOrderByClause<TEntity>> order = null);
+        Task<IReadOnlyCollection<TTableModel>> GetTableAsync(Expression<Func<TEntity, bool>> filter,
+                                                             IEnumerable<IOrderByClause<TEntity>> order = null);
 
         /// <summary>
         ///     Отдает страницу записей

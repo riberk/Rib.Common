@@ -11,7 +11,7 @@
     /// </summary>
     /// <typeparam name="TEntity">Тип сущности</typeparam>
     public interface IRestDeleteService<TEntity>
-        where TEntity : class
+            where TEntity : class
     {
         /// <summary>
         ///     Репозиторий удаления

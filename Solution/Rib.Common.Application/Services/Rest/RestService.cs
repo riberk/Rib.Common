@@ -13,8 +13,8 @@ namespace Rib.Common.Application.Services.Rest
     using TsSoft.Expressions.OrderBy;
 
     internal class RestService<TEntity, TCreateModel, TUpdateModel, TTableModel, TId> :
-        IRestService<TEntity, TCreateModel, TUpdateModel, TTableModel, TId>
-        where TEntity : class, IEntityWithId<TId> where TCreateModel : class where TTableModel : class where TId : struct
+            IRestService<TEntity, TCreateModel, TUpdateModel, TTableModel, TId>
+            where TEntity : class, IEntityWithId<TId> where TCreateModel : class where TTableModel : class where TId : struct
     {
         [NotNull] private readonly IRestCreateService<TEntity, TCreateModel, TId> _create;
         [NotNull] private readonly IRestDeleteService<TEntity> _delete;
@@ -22,9 +22,9 @@ namespace Rib.Common.Application.Services.Rest
         [NotNull] private readonly IRestUpdateService<TEntity, TUpdateModel> _update;
 
         public RestService([NotNull] IRestGetService<TEntity, TTableModel> get,
-            [NotNull] IRestCreateService<TEntity, TCreateModel, TId> create,
-            [NotNull] IRestUpdateService<TEntity, TUpdateModel> update,
-            [NotNull] IRestDeleteService<TEntity> delete)
+                           [NotNull] IRestCreateService<TEntity, TCreateModel, TId> create,
+                           [NotNull] IRestUpdateService<TEntity, TUpdateModel> update,
+                           [NotNull] IRestDeleteService<TEntity> delete)
         {
             if (get == null) throw new ArgumentNullException(nameof(get));
             if (create == null) throw new ArgumentNullException(nameof(create));
@@ -95,7 +95,7 @@ namespace Rib.Common.Application.Services.Rest
         /// <param name="order">Порядок сортировки</param>
         /// <returns>Перечисление табличных моделей</returns>
         public Task<IReadOnlyCollection<TTableModel>> GetTableAsync(Expression<Func<TEntity, bool>> filter,
-            IEnumerable<IOrderByClause<TEntity>> order = null)
+                                                                    IEnumerable<IOrderByClause<TEntity>> order = null)
         {
             return _get.GetTableAsync(filter, order);
         }
@@ -104,8 +104,8 @@ namespace Rib.Common.Application.Services.Rest
         ///     Отдает страницу записей
         /// </summary>
         public Task<IPagedResponse<TTableModel>> GetPagedAsync(IPaginator paginator,
-            Expression<Func<TEntity, bool>> filter,
-            IEnumerable<IOrderByClause<TEntity>> order = null)
+                                                               Expression<Func<TEntity, bool>> filter,
+                                                               IEnumerable<IOrderByClause<TEntity>> order = null)
         {
             return _get.GetPagedAsync(paginator, filter, order);
         }

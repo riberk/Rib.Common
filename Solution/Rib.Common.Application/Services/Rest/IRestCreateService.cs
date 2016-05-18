@@ -7,9 +7,9 @@
     using TsSoft.EntityRepository.Interfaces;
 
     public interface IRestCreateService<TEntity, in TCreateModel, TEntityId>
-        where TEntity : class, IEntityWithId<TEntityId>
-        where TEntityId : struct
-        where TCreateModel : class
+            where TEntity : class, IEntityWithId<TEntityId>
+            where TEntityId : struct
+            where TCreateModel : class
     {
         [NotNull]
         ICreateRepository<TEntity> CreateRepository { get; }

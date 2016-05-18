@@ -4,12 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
     using JetBrains.Annotations;
+    using Rib.Common.Helpers.Cache;
+    using Rib.Common.Helpers.Expressions;
     using TsSoft.Expressions.Helpers;
     using TsSoft.Expressions.Helpers.Extensions;
     using TsSoft.Expressions.OrderBy;
 
     internal class OrderCreator<T> : IOrderCreator<T>
-        where T : class
+            where T : class
     {
         [NotNull] private readonly ICacherFactory _cacherFactory;
         [NotNull] private readonly IPathConvertRemover _convertRemover;
@@ -44,7 +46,7 @@
 
         private IOrderByClause<T> CreateInternal(KeyValuePair<string, bool> order)
         {
-            var path = _expressionBuilder.Build(_propertyStringResolver.GetProperties(typeof (T), order.Key));
+            var path = _expressionBuilder.Build(_propertyStringResolver.GetProperties(typeof(T), order.Key));
             return OrderByClause<T>.Create<T>(_convertRemover.RemoveLast(path), order.Value);
         }
     }

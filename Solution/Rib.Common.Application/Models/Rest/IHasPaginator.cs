@@ -5,6 +5,5 @@ namespace Rib.Common.Application.Models.Rest
     public interface IHasPaginator
     {
         Paginator Pagination { get; }
-
     }
 }

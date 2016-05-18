@@ -7,12 +7,12 @@ namespace Rib.Common.Application.Models.Rest
 
     public abstract class CriteriaBase<T> : IPredicateProvider<T>
     {
+        public abstract Expression<Func<T, bool>> Predicate();
+
         [NotNull]
         protected IPredicateBuilder<T> CreateBuilder()
         {
             return PredicateBuilder.True<T>().ToBuilder();
         }
-
-        public abstract Expression<Func<T, bool>> Predicate();
     }
 }

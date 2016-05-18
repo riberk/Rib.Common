@@ -17,7 +17,7 @@
     /// <typeparam name="TEntity">Тип сущности</typeparam>
     /// <typeparam name="TChangeModel">Тип модели</typeparam>
     internal class RestUpdateService<TEntity, TChangeModel> : IRestUpdateService<TEntity, TChangeModel>
-        where TEntity : class
+            where TEntity : class
     {
         [NotNull] private readonly ICollection<Expression<Func<TEntity, object>>> _updateIncludes;
         [NotNull] private readonly IUpdatePathProviderMapper<TChangeModel, TEntity> _updateMapper;
@@ -27,9 +27,9 @@
         ///     Инициализирует новый экземпляр класса <see cref="T:RestUpdateService" />.
         /// </summary>
         public RestUpdateService([NotNull] IUpdateRepository<TEntity> updateRepository,
-            [NotNull] IUpdatePathProviderMapper<TChangeModel, TEntity> updateMapper,
-            [NotNull] IUpdateEntityActionFactory updateEntityActionFactory,
-            [NotNull] IPathToDbIncludeConverter pathToDbIncludeConverter)
+                                 [NotNull] IUpdatePathProviderMapper<TChangeModel, TEntity> updateMapper,
+                                 [NotNull] IUpdateEntityActionFactory updateEntityActionFactory,
+                                 [NotNull] IPathToDbIncludeConverter pathToDbIncludeConverter)
         {
             if (updateRepository == null) throw new ArgumentNullException(nameof(updateRepository));
             if (updateMapper == null) throw new ArgumentNullException(nameof(updateMapper));
