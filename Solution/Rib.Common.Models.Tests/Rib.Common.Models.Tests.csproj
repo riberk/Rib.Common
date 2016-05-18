@@ -76,6 +76,8 @@
     <Compile Include="Helpers\CorrelationIdExtensionsTests.cs" />
     <Compile Include="Helpers\CorrelationIdTests.cs" />
     <Compile Include="Metadata\BindFromAttributeTests.cs" />
+    <Compile Include="Metadata\ClientEnumAttributeTests.cs" />
+    <Compile Include="Metadata\ContextPropertyAttributeTests.cs" />
     <Compile Include="Metadata\EnumModelTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

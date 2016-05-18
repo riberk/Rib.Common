@@ -18,7 +18,7 @@
             var kernel = new StandardKernel();
             var bh = new BinderHelper();
             var b = new NinjectBinder(kernel.Bind);
-            b.Bind(bh.ReadFromTypes(new [] { typeof(BinderHelper) }));
+            b.Bind(bh.ReadFromTypes(typeof(BinderHelper).Assembly.GetTypes() ));
 
             var errors = new EnumsChecker(new[]
             {

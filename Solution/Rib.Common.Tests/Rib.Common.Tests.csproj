@@ -75,6 +75,7 @@
     <Compile Include="Helpers\Cache\MemoryCacherTests.cs" />
     <Compile Include="Helpers\Cache\ObjectCacheFactoryTests.cs" />
     <Compile Include="Helpers\Cache\StubCachePolicyFactoryTests.cs" />
+    <Compile Include="Helpers\CallContext\CallContextResolverTests.cs" />
     <Compile Include="Helpers\Collections\LinkedListNodeExtensionsTests.cs" />
     <Compile Include="Helpers\Configuration\AppSettingsReaderTests.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemResolverTests.cs" />

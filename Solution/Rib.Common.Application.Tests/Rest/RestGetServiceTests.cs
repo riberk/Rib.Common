@@ -112,8 +112,7 @@
         [TestMethod]
         public async Task GetTableAsyncGetRequestWithNull()
         {
-            _orderCreator.Setup(x => x.Create(null)).Returns(_orderByClauses).Verifiable();
-            _readDbService.Setup(x => x.GetAsync(_expression, _orderByClauses))
+            _readDbService.Setup(x => x.GetAsync(null, null))
                           .Returns(Task.FromResult(_testEntityTableModel.ToEnumerable()))
                           .Verifiable();
 

@@ -1,20 +1,29 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rib.Common.Helpers.Reflection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Rib.Common.Helpers.Reflection
+﻿namespace Rib.Common.Helpers.Reflection
 {
-    [TestClass()]
+    using System;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
     public class TypeExtensionsTests
     {
-        [TestMethod()]
+        public const string A = "A";
+        internal const string B = "B";
+        private const string C = "C";
+
+        [TestMethod]
         public void ConstantsTest()
         {
-            Assert.Fail();
+            var constants = typeof(TypeExtensionsTests).Constants().ToList();
+            Assert.AreEqual(1, constants.Count);
+            Assert.AreEqual(typeof(TypeExtensionsTests).GetField("A"), constants[0]);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConstantsArgNullTest()
+        {
+            TypeExtensions.Constants(null);
         }
     }
 }
