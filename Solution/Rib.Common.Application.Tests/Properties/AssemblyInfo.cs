@@ -2,26 +2,25 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Управление общими сведениями о сборке осуществляется с помощью 
+// Управление общими сведениями о сборке осуществляется посредством следующего 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Rib.Common.Application.Web")]
+[assembly: AssemblyTitle("Rib.Common.Application.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Rib.Common.Application.Web")]
+[assembly: AssemblyProduct("Rib.Common.Application.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("Rib.Common.Application.Web.Tests")]
 
-// Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
-// для COM-компонентов.  Если требуется обратиться к типу в этой сборке через 
-// COM, задайте атрибуту ComVisible значение TRUE для этого типа.
+// Задание значения false для атрибута ComVisible приведет к тому, что типы из этой сборки станут невидимыми 
+// для COM-компонентов.  Если к одному из типов этой сборки необходимо обращаться из 
+// модели COM, задайте для атрибута ComVisible этого типа значение true.
 [assembly: ComVisible(false)]
 
-// Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("028999d6-8906-47b3-bf9c-319dd30496d7")]
+// Если данный проект доступен для модели COM, следующий GUID используется в качестве идентификатора библиотеки типов
+[assembly: Guid("1d06e6ea-c791-4cfc-86b3-5cafe043becc")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
@@ -32,6 +31,6 @@ using System.Runtime.InteropServices;
 //
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
-// [assembly: AssemblyVersion("1.0.*")]
+// [сборка: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

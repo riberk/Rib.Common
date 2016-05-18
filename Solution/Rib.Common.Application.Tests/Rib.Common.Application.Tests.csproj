@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}</ProjectGuid>
+    <ProjectGuid>{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rib.Common.Application</RootNamespace>
-    <AssemblyName>Rib.Common.Application</AssemblyName>
+    <AssemblyName>Rib.Common.Application.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,13 +48,18 @@
       <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="TsSoft.AbstractMapper, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
       <HintPath>..\packages\TsSoft.AbstractMapper.1.0.5946.22256\lib\net45\TsSoft.AbstractMapper.dll</HintPath>
       <Private>True</Private>
@@ -122,52 +133,40 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
   <ItemGroup>
-    <Compile Include="ClientEnums\ClientEnumInitializer.cs" />
-    <Compile Include="ClientEnums\IClientEnumInitializer.cs" />
-    <Compile Include="CorrelationId\CorrelationIdFactory.cs" />
-    <Compile Include="Hierarchy\HierarchyCache.cs" />
-    <Compile Include="Hierarchy\HierarchyCollection.cs" />
-    <Compile Include="Hierarchy\IHierarchyCache.cs" />
-    <Compile Include="Hierarchy\IHierarchyCollection.cs" />
-    <Compile Include="Hierarchy\IReorderer.cs" />
-    <Compile Include="Hierarchy\Reorderer.cs" />
-    <Compile Include="Models\Hierarchy\IHierarchyOrderedEntity.cs" />
-    <Compile Include="Models\Hierarchy\IHierarchycalCacheModel.cs" />
-    <Compile Include="Models\Rest\CriteriaBase.cs" />
-    <Compile Include="Models\Rest\IHasPaginator.cs" />
-    <Compile Include="Models\Rest\IOrderedPaginationPredicateRequest.cs" />
-    <Compile Include="Models\Rest\IOrderedPaginationRequest.cs" />
-    <Compile Include="Models\Rest\IOrderedRequest.cs" />
-    <Compile Include="Models\Rest\IPredicateProvider.cs" />
-    <Compile Include="Models\Rest\PredicateBuilderExrensions.cs" />
+    <Compile Include="CorrelationId\CorrelationIdFactoryTests.cs" />
+    <Compile Include="EnumsTest.cs" />
+    <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rest\Infrastructure\IOrderCreator.cs" />
-    <Compile Include="Rest\Infrastructure\OrderCreator.cs" />
-    <Compile Include="Rest\IRestCreateService.cs" />
-    <Compile Include="Rest\IRestDeleteService.cs" />
-    <Compile Include="Rest\IRestGetService.cs" />
-    <Compile Include="Rest\IRestService.cs" />
-    <Compile Include="Rest\IRestUpdateService.cs" />
-    <Compile Include="Rest\RestCreateService.cs" />
-    <Compile Include="Rest\RestDeleteService.cs" />
-    <Compile Include="Rest\RestGetService.cs" />
-    <Compile Include="Rest\RestService.cs" />
-    <Compile Include="Rest\RestUpdateService.cs" />
-    <Compile Include="Wrappers\IWrappersDisposer.cs" />
-    <Compile Include="Wrappers\IWrappersFactory.cs" />
-    <Compile Include="Wrappers\IWrappersInitializer.cs" />
-    <Compile Include="Wrappers\IWrappersManager.cs" />
-    <Compile Include="Wrappers\IWrapperTypesResolver.cs" />
-    <Compile Include="Wrappers\WrappersFactory.cs" />
-    <Compile Include="Wrappers\WrappersManager.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="Rest\Infrastructure\OrderCreatorTests.cs" />
+    <Compile Include="Rest\RestCreateServiceTests.cs" />
+    <Compile Include="Rest\RestDeleteServiceTests.cs" />
+    <Compile Include="Rest\RestGetServiceTests.cs" />
+    <Compile Include="Rest\RestUpdateServiceTests.cs" />
+    <Compile Include="Wrappers\WrappersFactoryTests.cs" />
+    <Compile Include="Wrappers\WrappersManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rib.Common.Application\Rib.Common.Application.csproj">
+      <Project>{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}</Project>
+      <Name>Rib.Common.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rib.Common.Binding.Ninject\Rib.Common.Binding.Ninject.csproj">
+      <Project>{F9AF52F5-3122-4732-8123-3C8D0A76B23F}</Project>
+      <Name>Rib.Common.Binding.Ninject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
       <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
       <Name>Rib.Common.Models</Name>
@@ -176,7 +175,35 @@
       <Project>{D73231CE-3808-4C23-8FD5-06C879DF75E4}</Project>
       <Name>Rib.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Rib.Tests\Rib.Tests.csproj">
+      <Project>{9BF49E22-995F-472B-90E1-D37C1D323598}</Project>
+      <Name>Rib.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

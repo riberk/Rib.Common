@@ -1,4 +1,4 @@
-namespace Rib.Common.Application.Services.Rest
+namespace Rib.Common.Application.Rest
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace Rib.Common.Application.Services.Rest
     using System.Threading.Tasks;
     using JetBrains.Annotations;
     using Rib.Common.Application.Models.Rest;
-    using Rib.Common.Application.Services.Rest.Infrastructure;
+    using Rib.Common.Application.Rest.Infrastructure;
     using Rib.Common.Models.Contract;
     using TsSoft.EntityService;
     using TsSoft.Expressions.Helpers;

@@ -1,4 +1,4 @@
-namespace Rib.Common.Application.Services.Rest
+namespace Rib.Common.Application.Rest
 {
     using System;
     using System.Linq.Expressions;

@@ -1,8 +1,9 @@
-namespace TsSoft.Expressions.Helpers
+namespace Rib.Common.Application.Models.Rest
 {
     using System;
     using System.Linq.Expressions;
     using JetBrains.Annotations;
+    using TsSoft.Expressions.Helpers;
 
     public static class PredicateBuilderExrensions
     {

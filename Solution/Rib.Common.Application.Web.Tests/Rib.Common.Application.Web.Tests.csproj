@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}</ProjectGuid>
+    <ProjectGuid>{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rib.Common.Application</RootNamespace>
-    <AssemblyName>Rib.Common.Application</AssemblyName>
+    <RootNamespace>Rib.Common.Application.Web</RootNamespace>
+    <AssemblyName>Rib.Common.Application.Web.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -42,13 +56,45 @@
       <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.8.2.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.8.2\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="TsSoft.AbstractMapper, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
       <HintPath>..\packages\TsSoft.AbstractMapper.1.0.5946.22256\lib\net45\TsSoft.AbstractMapper.dll</HintPath>
       <Private>True</Private>
@@ -122,61 +168,57 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
   <ItemGroup>
-    <Compile Include="ClientEnums\ClientEnumInitializer.cs" />
-    <Compile Include="ClientEnums\IClientEnumInitializer.cs" />
-    <Compile Include="CorrelationId\CorrelationIdFactory.cs" />
-    <Compile Include="Hierarchy\HierarchyCache.cs" />
-    <Compile Include="Hierarchy\HierarchyCollection.cs" />
-    <Compile Include="Hierarchy\IHierarchyCache.cs" />
-    <Compile Include="Hierarchy\IHierarchyCollection.cs" />
-    <Compile Include="Hierarchy\IReorderer.cs" />
-    <Compile Include="Hierarchy\Reorderer.cs" />
-    <Compile Include="Models\Hierarchy\IHierarchyOrderedEntity.cs" />
-    <Compile Include="Models\Hierarchy\IHierarchycalCacheModel.cs" />
-    <Compile Include="Models\Rest\CriteriaBase.cs" />
-    <Compile Include="Models\Rest\IHasPaginator.cs" />
-    <Compile Include="Models\Rest\IOrderedPaginationPredicateRequest.cs" />
-    <Compile Include="Models\Rest\IOrderedPaginationRequest.cs" />
-    <Compile Include="Models\Rest\IOrderedRequest.cs" />
-    <Compile Include="Models\Rest\IPredicateProvider.cs" />
-    <Compile Include="Models\Rest\PredicateBuilderExrensions.cs" />
+    <Compile Include="NullArgumentTest.cs" />
+    <Compile Include="Owin\OwinStoreTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rest\Infrastructure\IOrderCreator.cs" />
-    <Compile Include="Rest\Infrastructure\OrderCreator.cs" />
-    <Compile Include="Rest\IRestCreateService.cs" />
-    <Compile Include="Rest\IRestDeleteService.cs" />
-    <Compile Include="Rest\IRestGetService.cs" />
-    <Compile Include="Rest\IRestService.cs" />
-    <Compile Include="Rest\IRestUpdateService.cs" />
-    <Compile Include="Rest\RestCreateService.cs" />
-    <Compile Include="Rest\RestDeleteService.cs" />
-    <Compile Include="Rest\RestGetService.cs" />
-    <Compile Include="Rest\RestService.cs" />
-    <Compile Include="Rest\RestUpdateService.cs" />
-    <Compile Include="Wrappers\IWrappersDisposer.cs" />
-    <Compile Include="Wrappers\IWrappersFactory.cs" />
-    <Compile Include="Wrappers\IWrappersInitializer.cs" />
-    <Compile Include="Wrappers\IWrappersManager.cs" />
-    <Compile Include="Wrappers\IWrapperTypesResolver.cs" />
-    <Compile Include="Wrappers\WrappersFactory.cs" />
-    <Compile Include="Wrappers\WrappersManager.cs" />
+    <Compile Include="Razor\RazorTemplateRunerTests.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Rib.Common.Application.Web\Rib.Common.Application.Web.csproj">
+      <Project>{028999D6-8906-47B3-BF9C-319DD30496D7}</Project>
+      <Name>Rib.Common.Application.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rib.Tests\Rib.Tests.csproj">
+      <Project>{9BF49E22-995F-472B-90E1-D37C1D323598}</Project>
+      <Name>Rib.Tests</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
-      <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
-      <Name>Rib.Common.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rib.Common\Rib.Common.csproj">
-      <Project>{D73231CE-3808-4C23-8FD5-06C879DF75E4}</Project>
-      <Name>Rib.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

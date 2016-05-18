@@ -1,4 +1,4 @@
-﻿namespace Rib.Common.Application.Services.Rest.Infrastructure
+﻿namespace Rib.Common.Application.Rest.Infrastructure
 {
     using System.Collections.Generic;
     using Rib.Common.Models.Metadata;

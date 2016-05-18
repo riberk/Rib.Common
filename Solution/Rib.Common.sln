@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application.Web", "Rib.Common.Application.Web\Rib.Common.Application.Web.csproj", "{028999D6-8906-47B3-BF9C-319DD30496D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application.Tests", "Rib.Common.Application.Tests\Rib.Common.Application.Tests.csproj", "{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application.Web.Tests", "Rib.Common.Application.Web.Tests\Rib.Common.Application.Web.Tests.csproj", "{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,14 @@ Global
 		{028999D6-8906-47B3-BF9C-319DD30496D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{028999D6-8906-47B3-BF9C-319DD30496D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{028999D6-8906-47B3-BF9C-319DD30496D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
