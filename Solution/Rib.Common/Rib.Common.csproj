@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
@@ -54,6 +55,7 @@
     <Compile Include="Helpers\Cache\IObjectCacheFactory.cs" />
     <Compile Include="Helpers\Cache\ObjectCacheFactory.cs" />
     <Compile Include="Helpers\Cache\StubCachePolicyFactory.cs" />
+    <Compile Include="Helpers\CallContext\CallContextResolver.cs" />
     <Compile Include="Helpers\Configuration\AppSettingsManager.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItem.cs" />
     <Compile Include="Helpers\Configuration\ConfigurationItems\ConfigurationItemResolver.cs" />
@@ -151,12 +153,23 @@
     <Compile Include="Helpers\Cache\MemoryCacher.cs" />
     <Compile Include="Helpers\Cache\MemoryCacherFactory.cs" />
     <Compile Include="Helpers\ObjectExtensions.cs" />
+    <Compile Include="Helpers\Reflection\TypeExtensions.cs" />
     <Compile Include="Helpers\Tmp\ITmpFolder.cs" />
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumAssembliesResolver.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumAssemblyStore.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumResolver.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumTypesResolver.cs" />
+    <Compile Include="Metadata\ClientEnums\IClientEnumAssembliesResolver.cs" />
+    <Compile Include="Metadata\ClientEnums\IClientEnumAssemblyStore.cs" />
+    <Compile Include="Metadata\ClientEnums\IClientEnumResolver.cs" />
+    <Compile Include="Metadata\ClientEnums\IClientEnumTypesResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Rib.Common.nuspec" />
   </ItemGroup>
@@ -166,7 +179,9 @@
       <Name>Rib.Common.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Validation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

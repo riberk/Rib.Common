@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Binding.Ninject"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Binding.Ninject.Tests", "Rib.Common.Binding.Ninject.Tests\Rib.Common.Binding.Ninject.Tests.csproj", "{D60ABEC4-A900-4A20-8922-28100D9EA8FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application", "Rib.Common.Application\Rib.Common.Application.csproj", "{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{D60ABEC4-A900-4A20-8922-28100D9EA8FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D60ABEC4-A900-4A20-8922-28100D9EA8FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D60ABEC4-A900-4A20-8922-28100D9EA8FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

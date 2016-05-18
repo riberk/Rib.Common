@@ -117,6 +117,7 @@
     <Compile Include="Helpers\Metadata\Enums\EnumReaderExtensionsTests.cs" />
     <Compile Include="Helpers\Metadata\Enums\EnumReaderTests.cs" />
     <Compile Include="Helpers\ObjectExtensionsTests.cs" />
+    <Compile Include="Helpers\Reflection\TypeExtensionsTests.cs" />
     <Compile Include="Helpers\Tmp\TmpFolderTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
