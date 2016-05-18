@@ -1,6 +1,7 @@
 namespace Rib.Common.DependencyInjection
 {
     using System;
+    using System.Collections.Generic;
     using JetBrains.Annotations;
 
     public interface IResolver
@@ -16,5 +17,7 @@ namespace Rib.Common.DependencyInjection
 
         [CanBeNull]
         object TryGet(Type t, string name = null);
+
+        IEnumerable<object> GetAll(Type type);
     }
 }

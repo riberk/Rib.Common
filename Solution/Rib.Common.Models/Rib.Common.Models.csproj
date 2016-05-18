@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\IHasModifierId.cs" />
     <Compile Include="Interfaces\IHasModifierLink.cs" />
     <Compile Include="Interfaces\IOrderedEntity.cs" />
+    <Compile Include="Interfaces\IUploadedFile.cs" />
     <Compile Include="Metadata\BindFromAttribute.cs" />
     <Compile Include="Metadata\BindToAttribute.cs" />
     <Compile Include="Metadata\ClientEnumAttribute.cs" />

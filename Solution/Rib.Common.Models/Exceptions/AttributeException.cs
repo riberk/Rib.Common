@@ -1,8 +1,6 @@
 namespace Rib.Common.Models.Exceptions
 {
     using System;
-    using System.Runtime.Serialization;
-    using JetBrains.Annotations;
 
     /// <summary>
     ///     Ошибка из-за неправильно сконфигурированного атрибута

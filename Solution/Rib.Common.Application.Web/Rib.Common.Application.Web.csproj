@@ -30,17 +30,210 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.1.4.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.8.2.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.8.2\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TsSoft.AbstractMapper, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.1.0.5946.22256\lib\net45\TsSoft.AbstractMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.AbstractMapper.Entity, Version=1.0.5882.18784, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.Entity.1.0.5882.18784\lib\net45\TsSoft.AbstractMapper.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.AbstractMapper.Select, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.Select.1.0.5878.32058\lib\net45\TsSoft.AbstractMapper.Select.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.AbstractMapper.Update, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.Update.1.0.5878.32058\lib\net45\TsSoft.AbstractMapper.Update.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.BindingsDescription, Version=1.0.5878.32057, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.BindingsDescription.1.0.5878.32057\lib\net45\TsSoft.BindingsDescription.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.ContextWrapper, Version=1.0.5974.34095, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.ContextWrapper.1.0.5974.34095\lib\net45\TsSoft.ContextWrapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.ContextWrapper.Interfaces, Version=1.0.5798.24618, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.ContextWrapper.Interfaces.1.0.5798.24618\lib\net45\TsSoft.ContextWrapper.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.EntityRepository, Version=1.0.5946.22261, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.EntityRepository.1.0.5946.22261\lib\net45\TsSoft.EntityRepository.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.EntityRepository.Interfaces, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.EntityRepository.Interfaces.1.0.5946.22256\lib\net45\TsSoft.EntityRepository.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.EntityService, Version=1.0.5946.22261, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.EntityService.1.0.5946.22261\lib\net45\TsSoft.EntityService.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.Helpers, Version=1.0.5947.29043, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.Helpers.1.0.5947.29043\lib\net45\TsSoft.Expressions.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.Helpers.Entity, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.Helpers.Entity.1.0.5946.22256\lib\net45\TsSoft.Expressions.Helpers.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.IncludeBuilder, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.IncludeBuilder.1.0.5946.22256\lib\net45\TsSoft.Expressions.IncludeBuilder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.IncludeBuilder.Models, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.IncludeBuilder.Models.1.0.5878.32058\lib\net45\TsSoft.Expressions.IncludeBuilder.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.Models, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.Models.1.0.5946.22256\lib\net45\TsSoft.Expressions.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.OrderBy, Version=1.0.5634.19022, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.OrderBy.1.0.5634.19022\lib\net45\TsSoft.Expressions.OrderBy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.SelectBuilder, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.SelectBuilder.1.0.5946.22256\lib\net45\TsSoft.Expressions.SelectBuilder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.SelectBuilder.Models, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.SelectBuilder.Models.1.0.5878.32058\lib\net45\TsSoft.Expressions.SelectBuilder.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Owin\AppBuilderExtensions.cs" />
+    <Compile Include="Owin\IOwinContextResolver.cs" />
+    <Compile Include="Owin\Modules\Error404RedirectMiddleware.cs" />
+    <Compile Include="Owin\Modules\ExceptionHandlerMiddleware.cs" />
+    <Compile Include="Owin\Modules\InitializeWrappersMiddleware.cs" />
+    <Compile Include="Owin\Modules\LoggerMiddleware.cs" />
+    <Compile Include="Owin\Modules\SetCorrelationIdHeaderModule.cs" />
+    <Compile Include="Owin\Modules\SetOwinContextToCallContext.cs" />
+    <Compile Include="Owin\OwinStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Razor\IViewsPathResolver.cs" />
+    <Compile Include="Razor\RazorActivator.cs" />
+    <Compile Include="Razor\TemplateManager.cs" />
+    <Compile Include="WebApi\DependencyResolver.cs" />
+    <Compile Include="WebApi\Filters\AutoPropertiesSetter.cs" />
+    <Compile Include="WebApi\Filters\ExceptionFilterAttribute.cs" />
+    <Compile Include="WebApi\Filters\HtmlActionFilterAttribute.cs" />
+    <Compile Include="WebApi\Filters\IAppExceptionFilterAttribute.cs" />
+    <Compile Include="WebApi\Filters\IAutoPropertiesSetter.cs" />
+    <Compile Include="WebApi\Filters\IHtmlActionFilter.cs" />
+    <Compile Include="WebApi\Filters\IValidationFilter.cs" />
+    <Compile Include="WebApi\Filters\LogRequestAttribute.cs" />
+    <Compile Include="WebApi\Filters\SettingsIncludeErrorDetailsResolver.cs" />
+    <Compile Include="WebApi\Filters\SettingsIncludeErrorDetailsResolverImpl.cs" />
+    <Compile Include="WebApi\Filters\ValidateModelFilterAttribute.cs" />
+    <Compile Include="WebApi\Helpers\ApplicationErrorFactory.cs" />
+    <Compile Include="WebApi\Helpers\CorrelationIdStore.cs" />
+    <Compile Include="WebApi\Helpers\Html\HtmlActionResolver.cs" />
+    <Compile Include="WebApi\Helpers\Html\HtmlAttribute.cs" />
+    <Compile Include="WebApi\Helpers\Html\HtmlContentFactory.cs" />
+    <Compile Include="WebApi\Helpers\Html\HtmlResponseFactory.cs" />
+    <Compile Include="WebApi\Helpers\Html\IHtmlActionResolver.cs" />
+    <Compile Include="WebApi\Helpers\Html\IHtmlContentFactory.cs" />
+    <Compile Include="WebApi\Helpers\Html\IHtmlResponseFactory.cs" />
+    <Compile Include="WebApi\Helpers\Http\HttpActionContextReader.cs" />
+    <Compile Include="WebApi\Helpers\Http\HttpRequestMessageResolver.cs" />
+    <Compile Include="WebApi\Helpers\Http\IActionInfo.cs" />
+    <Compile Include="WebApi\Helpers\Http\IHttpActionContextReader.cs" />
+    <Compile Include="WebApi\Helpers\Http\IHttpClientBuildResult.cs" />
+    <Compile Include="WebApi\Helpers\IApplicationError.cs" />
+    <Compile Include="WebApi\Helpers\IApplicationErrorFactory.cs" />
+    <Compile Include="WebApi\Helpers\IHttpStatusFactory.cs" />
+    <Compile Include="WebApi\Helpers\IIncludeErrorDetailsResolver.cs" />
+    <Compile Include="WebApi\Helpers\IRazorResponseFactory.cs" />
+    <Compile Include="Razor\IRazorTemplateRuner.cs" />
+    <Compile Include="WebApi\Helpers\RazorResponseFactory.cs" />
+    <Compile Include="Razor\RazorTemplateRuner.cs" />
+    <Compile Include="WebApi\Helpers\UrlHelperItemFactory.cs" />
+    <Compile Include="WebApi\TypeFormatters\MultipartMediaTypeFormatter.cs" />
+    <Compile Include="WebApi\TypeFormatters\StreramMediaTypeFormatter.cs" />
+    <Compile Include="WebApi\TypeFormatters\StrHelper.cs" />
+    <Compile Include="WebApi\HttpRequestMessageResolver.cs" />
+    <Compile Include="WebApi\IHttpRequestMessageResolver.cs" />
+    <Compile Include="WebApi\IWebApiConfigurationFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rib.Common.Application\Rib.Common.Application.csproj">
+      <Project>{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}</Project>
+      <Name>Rib.Common.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
+      <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
+      <Name>Rib.Common.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rib.Common\Rib.Common.csproj">
+      <Project>{D73231CE-3808-4C23-8FD5-06C879DF75E4}</Project>
+      <Name>Rib.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
