@@ -6,6 +6,7 @@ namespace Rib.Common.Application.Hierarchy
     using System.Linq.Expressions;
     using System.Threading.Tasks;
     using JetBrains.Annotations;
+    using Rib.Common.Helpers.Expressions;
     using Rib.Common.Models.Interfaces;
     using TsSoft.EntityRepository;
     using TsSoft.EntityRepository.Interfaces;
@@ -32,9 +33,10 @@ namespace Rib.Common.Application.Hierarchy
                     arg.Order
                 }
             };
+            Expression<Func<T, int>> keySelector = arg => arg.Order;
             _orderByClauses = new IOrderByClause<T>[]
             {
-                OrderByClause<T>.Create(arg => arg.Order)
+                OrderByClause<T>.Create(keySelector.RemoveConvert())
             };
         }
 
