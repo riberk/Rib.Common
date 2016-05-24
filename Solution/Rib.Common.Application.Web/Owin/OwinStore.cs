@@ -26,14 +26,10 @@
         /// <param name="key">Ключ</param>
         public override T Get<T>(string key)
         {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-            return
-                    Owin != null
-                            ? GetFromContext(key, GetFromOwin<ILazy<T>>, StoreName)
-                            : base.Get<T>(key);
+            if (key == null) throw new ArgumentNullException(nameof(key));
+            return Owin != null
+                           ? GetFromContext<T>(key, GetFromOwin<ILazy<T>>, StoreName)
+                           : base.Get<T>(key);
         }
 
         /// <summary>
