@@ -105,6 +105,7 @@
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoService.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricCryptoServiceExtensions.cs" />
     <Compile Include="Helpers\Encrypting\Symmetric\SymmetricKeyFactory.cs" />
+    <Compile Include="Helpers\Expressions\Clousure.cs" />
     <Compile Include="Helpers\Expressions\ExpressionExtensions.cs" />
     <Compile Include="Helpers\Expressions\IMemberInitMerger.cs" />
     <Compile Include="Helpers\Expressions\INewMaker.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Helpers\Expressions\NewMaker.cs" />
     <Compile Include="Helpers\Expressions\ParameterMapFactory.cs" />
     <Compile Include="Helpers\Expressions\ParameterRebinder.cs" />
+    <Compile Include="Helpers\Expressions\ParameterRebinderVisiter.cs" />
     <Compile Include="Helpers\Expressions\PathConvertRemover.cs" />
     <Compile Include="Helpers\Expressions\PropertyHelper.cs" />
     <Compile Include="Helpers\Expressions\PropertyStringResolver.cs" />

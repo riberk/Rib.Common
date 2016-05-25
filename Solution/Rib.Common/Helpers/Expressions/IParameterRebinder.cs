@@ -10,5 +10,8 @@ namespace Rib.Common.Helpers.Expressions
     {
         [NotNull]
         IEnumerable<Expression> ReplaceParametersByFirst([NotNull] params LambdaExpression[] expressions);
+
+        [NotNull]
+        Expression ReplaceParameter([NotNull] Expression e, [NotNull] ParameterExpression peFrom, [NotNull] ParameterExpression peTo);
     }
 }

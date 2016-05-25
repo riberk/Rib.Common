@@ -31,24 +31,15 @@ namespace Rib.Common.Helpers.Expressions
             }
         }
 
-        internal class ParameterRebinderVisiter : ExpressionVisitor
+        public Expression ReplaceParameter(Expression e, ParameterExpression peFrom, ParameterExpression peTo)
         {
-            [NotNull] private readonly IDictionary<ParameterExpression, ParameterExpression> _map;
-
-            public ParameterRebinderVisiter(IDictionary<ParameterExpression, ParameterExpression> map)
+            var visiter = new ParameterRebinderVisiter(new Dictionary<ParameterExpression, ParameterExpression>
             {
-                _map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
-            }
-
-            protected override Expression VisitParameter(ParameterExpression p)
-            {
-                ParameterExpression parameterExpression;
-                if (_map.TryGetValue(p, out parameterExpression) && parameterExpression != null)
-                {
-                    p = parameterExpression;
-                }
-                return base.VisitParameter(p);
-            }
+                {peFrom, peTo}
+            });
+            return visiter.Visit(e);
         }
+
+        
     }
 }

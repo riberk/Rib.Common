@@ -39,6 +39,23 @@
 
 
         [TestMethod]
+        public void ReplaceParameter()
+        {
+            var p1 = Expression.Parameter(typeof(int), "p1");
+
+            var p2 = Expression.Parameter(typeof(int), "p2");
+            var l2 = Expression.Lambda(Expression.Add(p2, p2), p2);
+
+            var lambda = Create().ReplaceParameter(l2, p2, p1) as LambdaExpression;
+
+            Assert.IsNotNull(lambda);
+            var binaryExpression = lambda.Body as BinaryExpression;
+            Assert.IsNotNull(binaryExpression);
+            Assert.AreEqual(p1, binaryExpression.Left);
+            Assert.AreEqual(p1, binaryExpression.Right);
+        }
+
+        [TestMethod]
         public void ReplaceParametersByFirstTest()
         {
             var p1 = Expression.Parameter(typeof (int), "p1");
