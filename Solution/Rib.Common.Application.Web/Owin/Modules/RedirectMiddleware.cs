@@ -5,7 +5,7 @@
     using JetBrains.Annotations;
     using Microsoft.Owin;
 
-    public class Error404RedirectMiddleware : OwinMiddleware
+    public class RedirectMiddleware : OwinMiddleware
     {
         [NotNull] private readonly string _redirectToPage;
 
@@ -14,7 +14,7 @@
         /// </summary>
         /// <param name="next"/>
         /// <param name="redirectToPage"></param>
-        public Error404RedirectMiddleware(OwinMiddleware next, [NotNull] string redirectToPage) : base(next)
+        public RedirectMiddleware(OwinMiddleware next, [NotNull] string redirectToPage) : base(next)
         {
             if (redirectToPage == null) throw new ArgumentNullException(nameof(redirectToPage));
             _redirectToPage = redirectToPage;

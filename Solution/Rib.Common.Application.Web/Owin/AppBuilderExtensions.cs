@@ -54,7 +54,7 @@
         public static IAppBuilder Use404RedirectPage([NotNull] this IAppBuilder appBuilder, [NotNull] string page)
         {
             if (appBuilder == null) throw new ArgumentNullException(nameof(appBuilder));
-            return appBuilder.Use(typeof(Error404RedirectMiddleware), page);
+            return appBuilder.Use(typeof(RedirectMiddleware), page);
         }
     }
 }

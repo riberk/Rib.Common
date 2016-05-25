@@ -164,7 +164,7 @@
   <ItemGroup>
     <Compile Include="Owin\AppBuilderExtensions.cs" />
     <Compile Include="Owin\IOwinContextResolver.cs" />
-    <Compile Include="Owin\Modules\Error404RedirectMiddleware.cs" />
+    <Compile Include="Owin\Modules\RedirectMiddleware.cs" />
     <Compile Include="Owin\Modules\ExceptionHandlerMiddleware.cs" />
     <Compile Include="Owin\Modules\InitializeWrappersMiddleware.cs" />
     <Compile Include="Owin\Modules\LoggerMiddleware.cs" />

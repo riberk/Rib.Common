@@ -14,7 +14,7 @@
         {
             var res =
                 ArgumentsVerifier.Builder(typeof (ICacher<>))
-                    .Exclude<ParameterRebinder.ParameterRebinderVisiter>()
+                    .Exclude<ParameterRebinderVisiter>()
                     .ToVerifier()
                     .CheckAllVoidCtorsCreateObject()
                     .CheckNullArgumentsOnConstructors()
