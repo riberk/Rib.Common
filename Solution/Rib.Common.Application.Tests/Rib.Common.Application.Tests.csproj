@@ -148,6 +148,9 @@
   <ItemGroup>
     <Compile Include="CorrelationId\CorrelationIdFactoryTests.cs" />
     <Compile Include="EnumsTest.cs" />
+    <Compile Include="Hierarchy\HierarchyCacheTests.cs" />
+    <Compile Include="Hierarchy\HierarchyCollectionTests.cs" />
+    <Compile Include="Hierarchy\ReordererTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rest\Infrastructure\OrderCreatorTests.cs" />
