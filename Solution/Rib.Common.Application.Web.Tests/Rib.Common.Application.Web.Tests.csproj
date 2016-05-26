@@ -190,7 +190,9 @@
     <Compile Include="Owin\Modules\SetOwinContextToCallContextMiddlewareTests.cs" />
     <Compile Include="Owin\OwinStoreTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Razor\RazorActivatorTests.cs" />
     <Compile Include="Razor\RazorTemplateRunerTests.cs" />
+    <Compile Include="Razor\TemplateManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rib.Common.Application.Web\Rib.Common.Application.Web.csproj">
