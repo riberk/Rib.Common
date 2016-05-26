@@ -1,5 +1,6 @@
 ﻿namespace Rib.Common.Application.Web.Owin.Modules
 {
+    using System;
     using System.Runtime.Remoting.Messaging;
     using System.Threading.Tasks;
     using Microsoft.Owin;
@@ -9,6 +10,10 @@
     [TestClass]
     public class SetOwinContextToCallContextMiddlewareTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArgTest() => new SetOwinContextToCallContextMiddleware(null, null);
+
         [TestMethod]
         public async Task InvokeTest()
         {

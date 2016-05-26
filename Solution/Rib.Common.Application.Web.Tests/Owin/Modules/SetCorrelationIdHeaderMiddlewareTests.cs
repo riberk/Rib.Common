@@ -1,5 +1,6 @@
 ﻿namespace Rib.Common.Application.Web.Owin.Modules
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.Owin;
@@ -12,6 +13,10 @@
     [TestClass]
     public class SetCorrelationIdHeaderMiddlewareTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArgTest() => new SetCorrelationIdHeaderMiddleware(null, null); 
+
         [TestMethod]
         public async Task InvokeTest()
         {

@@ -11,6 +11,10 @@
     public class ExceptionHandlerMiddlewareTests
     {
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArgTest() => new ExceptionHandlerMiddleware(null, null);
+
+        [TestMethod]
         public async Task InvokeTest()
         {
             var mr = new MockRepository(MockBehavior.Strict);

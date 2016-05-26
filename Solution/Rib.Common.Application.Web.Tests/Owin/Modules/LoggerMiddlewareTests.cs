@@ -10,6 +10,9 @@
     [TestClass]
     public class LoggerMiddlewareTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArgTest() => new LoggerMiddleware(null, null);
 
         [TestMethod]
         public async Task InvokeTest()

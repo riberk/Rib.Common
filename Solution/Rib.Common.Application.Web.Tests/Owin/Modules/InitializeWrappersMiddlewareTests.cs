@@ -1,5 +1,6 @@
 ﻿namespace Rib.Common.Application.Web.Owin.Modules
 {
+    using System;
     using System.Threading.Tasks;
     using global::Common.Logging;
     using Microsoft.Owin;
@@ -10,6 +11,9 @@
     [TestClass]
     public class InitializeWrappersMiddlewareTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void NullArgTest() => new InitializeWrappersMiddleware(null, null);
 
         [TestMethod]
         public async Task InvokeTest()
