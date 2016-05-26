@@ -70,6 +70,19 @@
         }
 
         [TestMethod]
+        public void CreateByMethodWithOverload()
+        {
+            var provider1 = typeof(Container).GetMethod("Create", new [] {typeof(string)});
+            var provider2 = typeof(Container).GetMethod("Create", new [] {typeof(int)});
+            var attrType = typeof (DescriptionAttribute);
+            var str1 = Create().Create(attrType, provider1);
+            var str2 = Create().Create(attrType, provider2);
+            Assert.AreNotEqual(str1, str2);
+            Assert.AreEqual($"{attrType.FullName}|{provider1.DeclaringType.FullName}|{provider1}",str1);
+            Assert.AreEqual($"{attrType.FullName}|{provider2.DeclaringType.FullName}|{provider2}",str2);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof (ArgumentNullException))]
         public void CreateNullArg1Test() => Create().Create(null, typeof (string));
 
@@ -80,7 +93,16 @@
         public void MethodWithParameter(int a)
         {
         }
+        private class Container
+        {
+            public void Create(string s)
+            {
+            }
 
+            public void Create(int s)
+            {
+            }
+        }
         private class ToStringer : ICustomAttributeProvider
         {
             public const string Name = "dfflkgndfhkln";

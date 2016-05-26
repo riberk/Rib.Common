@@ -71,7 +71,7 @@ namespace Rib.Common.Helpers.Metadata
                 else if (mi != null)
                 {
                     var decType = mi.DeclaringType ?? mi.ReflectedType;
-                    name = $"{decType?.FullName}|{mi.Name}";
+                    name = $"{decType?.FullName}|{mi}";
                 }
                 else if (a != null)
                 {
