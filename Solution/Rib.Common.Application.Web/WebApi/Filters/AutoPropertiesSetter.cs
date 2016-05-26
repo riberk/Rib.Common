@@ -7,6 +7,7 @@ namespace Rib.Common.Application.Web.WebApi.Filters
     using System.Web.Http.Filters;
     using JetBrains.Annotations;
     using Rib.Common.DependencyInjection;
+    using Rib.Common.Helpers.Cache;
     using Rib.Common.Helpers.Expressions;
     using Rib.Common.Helpers.Metadata;
     using Rib.Common.Models.Metadata;
@@ -14,19 +15,23 @@ namespace Rib.Common.Application.Web.WebApi.Filters
     internal class AutoPropertiesSetter : ActionFilterAttribute, IAutoPropertiesSetter
     {
         [NotNull] private readonly IAttributesReader _attributesReader;
+        [NotNull] private readonly ICacherFactory _cacherFactory;
         [NotNull] private readonly IPropertyHelper _propertyHelper;
         [NotNull] private readonly IResolver _resolver;
 
         public AutoPropertiesSetter([NotNull] IAttributesReader attributesReader,
-            [NotNull] IResolver resolver,
-            [NotNull] IPropertyHelper propertyHelper)
+                                    [NotNull] IResolver resolver,
+                                    [NotNull] IPropertyHelper propertyHelper,
+                                    [NotNull] ICacherFactory cacherFactory)
         {
             if (attributesReader == null) throw new ArgumentNullException(nameof(attributesReader));
             if (resolver == null) throw new ArgumentNullException(nameof(resolver));
             if (propertyHelper == null) throw new ArgumentNullException(nameof(propertyHelper));
+            if (cacherFactory == null) throw new ArgumentNullException(nameof(cacherFactory));
             _attributesReader = attributesReader;
             _resolver = resolver;
             _propertyHelper = propertyHelper;
+            _cacherFactory = cacherFactory;
         }
 
         /// <summary>Occurs before the action method is invoked.</summary>
@@ -40,7 +45,7 @@ namespace Rib.Common.Application.Web.WebApi.Filters
                     return;
                 }
                 IReadOnlyCollection<ContextPropertyInfo> infos;
-                if (!TryGetInfos(actionArgument.Value.GetType(), out infos))
+                if (!TryGetInfosFromCache(actionArgument.Value.GetType(), out infos))
                 {
                     return;
                 }
@@ -50,6 +55,18 @@ namespace Rib.Common.Application.Web.WebApi.Filters
                 }
             }
             base.OnActionExecuting(actionContext);
+        }
+
+        private bool TryGetInfosFromCache(Type t, [NotNull] out IReadOnlyCollection<ContextPropertyInfo> infos)
+        {
+            var res = _cacherFactory
+                    .Create<IReadOnlyCollection<ContextPropertyInfo>>(GetType().FullName).GetOrAdd(t.AssemblyQualifiedName, s =>
+                    {
+                        IReadOnlyCollection<ContextPropertyInfo> i;
+                        return TryGetInfos(t, out i) ? i : null;
+                    });
+            infos = res;
+            return infos != null;
         }
 
         private bool TryGetInfos(Type t, [NotNull] out IReadOnlyCollection<ContextPropertyInfo> infos)
