@@ -8,7 +8,7 @@
         [TestMethod]
         public void CreateTest()
         {
-            var correlationId = new CorrelationIdFactory().Create("123");
+            new CorrelationIdFactory().Create("123");
         }
     }
 }
