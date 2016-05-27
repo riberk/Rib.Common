@@ -124,6 +124,10 @@
     <Compile Include="Helpers\ObjectExtensionsTests.cs" />
     <Compile Include="Helpers\Reflection\TypeExtensionsTests.cs" />
     <Compile Include="Helpers\Tmp\TmpFolderTests.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumAssembliesResolverTests.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumAssemblyStoreTests.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumResolverTests.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumTypesResolverTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
