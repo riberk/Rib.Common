@@ -67,6 +67,27 @@
         }
 
         [TestMethod]
+        public void GetCacherTest()
+        {
+            var cf = new MemoryCacherFactory(new StubCachePolicyFactory(), new ObjectCacheFactory());
+            var ph = new PropertyHelper(cf);
+            var tci = new TestClassImpl
+            {
+                I = 1
+            };
+            var tc = new TestClass
+            {
+                I = 2
+            };
+
+            var r1 = ph.Get(tci.GetType().GetProperty("I"), tci);
+            var r2 = ph.Get(tc.GetType().GetProperty("I"), tc);
+
+            Assert.AreEqual(tci.I, r1);
+            Assert.AreEqual(tc.I, r2);
+        }
+
+        [TestMethod]
         public void SetTest()
         {
             var cacher = _mockFactory.Create<ICacher<Delegate>>();
@@ -81,6 +102,21 @@
             Assert.AreEqual(expected, testClass.S);
         }
 
+        [TestMethod]
+        public void SetCacherTest()
+        {
+            var cf = new MemoryCacherFactory(new StubCachePolicyFactory(), new ObjectCacheFactory());
+            var ph = new PropertyHelper(cf);
+            var tci = new TestClassImpl();
+            var tc = new TestClass();
+
+            ph.Set(tci.GetType().GetProperty("I"), tci, 1);
+            ph.Set(tc.GetType().GetProperty("I"), tc, 2);
+
+            Assert.AreEqual(tci.I, 1);
+            Assert.AreEqual(tc.I, 2);
+        }
+
 
         [TestCleanup]
         public void Clean()
@@ -93,6 +129,10 @@
             public string S { get; set; }
 
             public int I { get; set; }
+        }
+
+        public class TestClassImpl : TestClass
+        {
         }
     }
 }
