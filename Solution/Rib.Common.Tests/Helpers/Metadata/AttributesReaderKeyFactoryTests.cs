@@ -48,7 +48,7 @@
             var provider = GetType().GetMethods().First();
             var attrType = typeof (DescriptionAttribute);
             var str = Create().Create(attrType, provider);
-            Assert.AreEqual($"{attrType.FullName}|{provider.DeclaringType.FullName}|{provider.Name}", str);
+            Assert.AreEqual($"{attrType.FullName}|{provider.DeclaringType.FullName}|{provider}", str);
         }
 
         [TestMethod]
