@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Rib.Common.Ef.Enums.nuspec" />
     <Compile Include="EnumEntityInitializer.cs" />
     <Compile Include="IEnumEntity.cs" />
     <Compile Include="IEnumEntityInitializer.cs" />

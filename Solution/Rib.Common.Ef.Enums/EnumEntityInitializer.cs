@@ -10,7 +10,7 @@ namespace Rib.Common.Ef.Enums
     using Rib.Common.Helpers.Expressions;
     using Rib.Common.Helpers.Metadata.Enums;
 
-    public class EnumEntityInitializer : IEnumEntityInitializer
+    internal class EnumEntityInitializer : IEnumEntityInitializer
     {
         [NotNull] private readonly IEnumAttributeReader _enumAttributeReader;
         [NotNull] private readonly INewMaker _newMaker;
