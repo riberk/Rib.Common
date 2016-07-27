@@ -117,6 +117,11 @@
             longFi1.Setup(x => x.GetHashCode()).Returns(3).Verifiable();
             uintFi1.Setup(x => x.GetHashCode()).Returns(4).Verifiable();
 
+            intFi1.Setup(x => x.ToString()).Returns("1").Verifiable();
+            intFi2.Setup(x => x.ToString()).Returns("2").Verifiable();
+            longFi1.Setup(x => x.ToString()).Returns("3").Verifiable();
+            uintFi1.Setup(x => x.ToString()).Returns("4").Verifiable();
+
             intFi1.Setup(x => x.Equals(intFi1.Object)).Returns(true).Verifiable();
             intFi2.Setup(x => x.Equals(intFi2.Object)).Returns(true).Verifiable();
             longFi1.Setup(x => x.Equals(longFi1.Object)).Returns(true).Verifiable();
