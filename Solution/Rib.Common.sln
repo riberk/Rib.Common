@@ -29,6 +29,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application.Tests", "Rib.Common.Application.Tests\Rib.Common.Application.Tests.csproj", "{1D06E6EA-C791-4CFC-86B3-5CAFE043BECC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Application.Web.Tests", "Rib.Common.Application.Web.Tests\Rib.Common.Application.Web.Tests.csproj", "{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Ef.Enums", "Rib.Common.Ef.Enums\Rib.Common.Ef.Enums.csproj", "{2C357405-3F34-4791-A380-347B28ECE8A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rib.Common.Ef.Enums.Tests", "Rib.Common.Ef.Enums.Tests\Rib.Common.Ef.Enums.Tests.csproj", "{E47A1015-FD58-4FAB-A0CC-EFAF290CD494}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +83,14 @@ Global
 		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A29A372-3E92-44B1-B6C6-C531FFAB7FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C357405-3F34-4791-A380-347B28ECE8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C357405-3F34-4791-A380-347B28ECE8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C357405-3F34-4791-A380-347B28ECE8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C357405-3F34-4791-A380-347B28ECE8A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E47A1015-FD58-4FAB-A0CC-EFAF290CD494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E47A1015-FD58-4FAB-A0CC-EFAF290CD494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E47A1015-FD58-4FAB-A0CC-EFAF290CD494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E47A1015-FD58-4FAB-A0CC-EFAF290CD494}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

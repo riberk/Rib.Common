@@ -21,19 +21,27 @@
         [TestMethod]
         public void BindTest1()
         {
-            var bindingToSyntax = new Mock<IBindingToSyntax<object>>(MockBehavior.Strict);
-            var bindingNamed = new Mock<IBindingWhenInNamedWithOrOnSyntax<object>>(MockBehavior.Strict);
-            var bInfo = new Mock<IBindInfo>(MockBehavior.Strict);
-            var scopeBinder = new Mock<IScopeBinder>(MockBehavior.Strict);
-            var scoped = new Mock<IBindingNamedWithOrOnSyntax<object>>(MockBehavior.Strict);
+            var bindingToSyntax = new Mock<IBindingToSyntax<object>>(MockBehavior.Loose);
+            var bindingNamed = new Mock<IBindingWhenInNamedWithOrOnSyntax<object>>(MockBehavior.Loose);
+            var bInfo = new Mock<IBindInfo>(MockBehavior.Loose);
+            var scopeBinder = new Mock<IScopeBinder>(MockBehavior.Loose);
+            var scoped = new Mock<IBindingNamedWithOrOnSyntax<object>>(MockBehavior.Loose);
             var typesFrom = new List<Type>();
             var typeTo = typeof (string);
             var bindingScope = new BindingScope("sdrjklgnlsdjkg");
+
+            bindingToSyntax.Name = "bindingToSyntax";
+            bindingNamed.Name = "bindingNamed";
+            bInfo.Name = "bInfo";
+            scopeBinder.Name = "scopeBinder";
+            scoped.Name = "scoped";
 
             bInfo.SetupGet(x => x.From).Returns(typesFrom).Verifiable();
             bInfo.SetupGet(x => x.To).Returns(typeTo).Verifiable();
             bInfo.SetupGet(x => x.Scope).Returns(bindingScope).Verifiable();
             bInfo.SetupGet(x => x.Name).Returns((string)null).Verifiable();
+            bindingNamed.Setup(x => x.GetHashCode()).Returns(100.GetHashCode()).Verifiable();
+            bindingNamed.Setup(x => x.ToString()).Returns("100").Verifiable();
 
             scopeBinder.Setup(x => x.InScope(bindingNamed.Object, bindingScope)).Returns(scoped.Object).Verifiable();
             bindingToSyntax.Setup(x => x.To(typeTo)).Returns(bindingNamed.Object).Verifiable();

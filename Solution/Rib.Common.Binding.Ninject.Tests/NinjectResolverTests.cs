@@ -127,7 +127,7 @@
 
         private void MockGetWithName(Type t, object result, bool optional, bool uniq)
         {
-            var request = _mockFactory.Create<IRequest>();
+            var request = _mockFactory.Create<IRequest>(MockBehavior.Loose);
             _kernel
                 .Setup(x => x.CreateRequest(t, It.IsAny<Func<IBindingMetadata, bool>>(), new IParameter[0], optional, uniq))
                 .Returns(request.Object)

@@ -23,7 +23,7 @@
 
             return _cacherFactory.Create<Delegate>($"{GetType().FullName}::Get").GetOrAdd($"{pi.DeclaringType.FullName}|{pi.Name}", s =>
             {
-                var p = Expression.Parameter(o.GetType());
+                var p = Expression.Parameter(pi.DeclaringType);
                 var lambda = Expression.Lambda(Expression.Property(p, pi), p);
                 return lambda.Compile();
             }).DynamicInvoke(o);
@@ -36,7 +36,7 @@
 
             _cacherFactory.Create<Delegate>($"{GetType().FullName}::Set").GetOrAdd($"{pi.DeclaringType.FullName}|{pi.Name}", s =>
             {
-                var p = Expression.Parameter(o.GetType());
+                var p = Expression.Parameter(pi.DeclaringType);
                 var p2 = Expression.Parameter(pi.PropertyType);
                 var property = Expression.Property(p, pi);
                 var lambda = Expression.Lambda(Expression.Assign(property, p2), p, p2);
