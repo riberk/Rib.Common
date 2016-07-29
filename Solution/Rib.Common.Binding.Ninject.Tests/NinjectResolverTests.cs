@@ -1,6 +1,7 @@
 ﻿namespace Rib.Common.Binding.Ninject
 {
     using System;
+    using System.Linq;
     using global::Ninject;
     using global::Ninject.Activation;
     using global::Ninject.Parameters;
@@ -41,6 +42,16 @@
             MockGet(typeof (string), expected, false);
             var res = Create().Get<string>();
             Assert.AreEqual(expected, res);
+        }
+
+        [TestMethod]
+        public void GetAllTest()
+        {
+            const string expected = "123";
+            MockGet(typeof(string), expected, true, false);
+            var res = Create().GetAll(typeof(string)).ToList();
+            Assert.AreEqual(1, res.Count);
+            Assert.AreEqual(expected, res[0]);
         }
 
         [TestMethod]
@@ -107,10 +118,10 @@
         }
 
 
-        private void MockGet(Type t, object result, bool optional)
+        private void MockGet(Type t, object result, bool optional, bool isUnique = true)
         {
             var request = _mockFactory.Create<IRequest>(MockBehavior.Loose);
-            _kernel.Setup(x => x.CreateRequest(t, null, new IParameter[0], optional, true)).Returns(request.Object).Verifiable();
+            _kernel.Setup(x => x.CreateRequest(t, null, new IParameter[0], optional, isUnique)).Returns(request.Object).Verifiable();
             _kernel.Setup(x => x.Resolve(request.Object)).Returns(new[] {result}).Verifiable();
         }
 

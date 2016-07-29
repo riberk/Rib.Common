@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Mock\ArgumentsVerifier.cs" />
     <Compile Include="Mock\SymmetricCryptoServiceExtensionsMocker.cs" />
+    <Compile Include="Ninject\EnumsChecker.cs" />
     <Compile Include="Ninject\NinjectChecker.cs" />
     <Compile Include="Ninject\TestKernelCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

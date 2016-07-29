@@ -68,10 +68,15 @@
     <Compile Include="Interfaces\IHasModified.cs" />
     <Compile Include="Interfaces\IHasModifierId.cs" />
     <Compile Include="Interfaces\IHasModifierLink.cs" />
+    <Compile Include="Interfaces\IOrderedEntity.cs" />
+    <Compile Include="Interfaces\IUploadedFile.cs" />
     <Compile Include="Metadata\BindFromAttribute.cs" />
     <Compile Include="Metadata\BindToAttribute.cs" />
+    <Compile Include="Metadata\ClientEnumAttribute.cs" />
+    <Compile Include="Metadata\ContextPropertyAttribute.cs" />
     <Compile Include="Metadata\EnumModel.cs" />
     <Compile Include="Metadata\IAssemblyInfo.cs" />
+    <Compile Include="Metadata\IContextPropertyResolver.cs" />
     <Compile Include="Metadata\IEnumModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

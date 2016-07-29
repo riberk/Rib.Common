@@ -1,6 +1,7 @@
 ﻿namespace Rib.Common.Binding.Ninject
 {
     using System;
+    using System.Collections.Generic;
     using global::Ninject;
     using JetBrains.Annotations;
     using Rib.Common.DependencyInjection;
@@ -35,6 +36,11 @@
         public object TryGet(Type t, string name = null)
         {
             return name == null ? _kernel.TryGet(t) : _kernel.TryGet(t, name);
+        }
+
+        public IEnumerable<object> GetAll(Type type)
+        {
+            return _kernel.GetAll(type);
         }
     }
 }

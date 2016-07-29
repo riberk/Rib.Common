@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E5331C6-F811-4844-8F8C-49CCA7BB26DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rib.Common.Application</RootNamespace>
+    <AssemblyName>Rib.Common.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=10.1.5.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.1.5\lib\net\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="TsSoft.AbstractMapper, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.1.0.5946.22256\lib\net45\TsSoft.AbstractMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.AbstractMapper.Entity, Version=1.0.5882.18784, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.Entity.1.0.5882.18784\lib\net45\TsSoft.AbstractMapper.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.AbstractMapper.Select, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.Select.1.0.5878.32058\lib\net45\TsSoft.AbstractMapper.Select.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.AbstractMapper.Update, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.AbstractMapper.Update.1.0.5878.32058\lib\net45\TsSoft.AbstractMapper.Update.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.BindingsDescription, Version=1.0.5878.32057, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.BindingsDescription.1.0.5878.32057\lib\net45\TsSoft.BindingsDescription.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.ContextWrapper, Version=1.0.5974.34095, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.ContextWrapper.1.0.5974.34095\lib\net45\TsSoft.ContextWrapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.ContextWrapper.Interfaces, Version=1.0.5798.24618, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.ContextWrapper.Interfaces.1.0.5798.24618\lib\net45\TsSoft.ContextWrapper.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.EntityRepository, Version=1.0.5946.22261, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.EntityRepository.1.0.5946.22261\lib\net45\TsSoft.EntityRepository.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.EntityRepository.Interfaces, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.EntityRepository.Interfaces.1.0.5946.22256\lib\net45\TsSoft.EntityRepository.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.EntityService, Version=1.0.5946.22261, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.EntityService.1.0.5946.22261\lib\net45\TsSoft.EntityService.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.Helpers, Version=1.0.5947.29043, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.Helpers.1.0.5947.29043\lib\net45\TsSoft.Expressions.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.Helpers.Entity, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.Helpers.Entity.1.0.5946.22256\lib\net45\TsSoft.Expressions.Helpers.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.IncludeBuilder, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.IncludeBuilder.1.0.5946.22256\lib\net45\TsSoft.Expressions.IncludeBuilder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.IncludeBuilder.Models, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.IncludeBuilder.Models.1.0.5878.32058\lib\net45\TsSoft.Expressions.IncludeBuilder.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.Models, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.Models.1.0.5946.22256\lib\net45\TsSoft.Expressions.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.OrderBy, Version=1.0.5634.19022, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.OrderBy.1.0.5634.19022\lib\net45\TsSoft.Expressions.OrderBy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.SelectBuilder, Version=1.0.5946.22256, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.SelectBuilder.1.0.5946.22256\lib\net45\TsSoft.Expressions.SelectBuilder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TsSoft.Expressions.SelectBuilder.Models, Version=1.0.5878.32058, Culture=neutral, PublicKeyToken=e362646c9e1f551e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TsSoft.Expressions.SelectBuilder.Models.1.0.5878.32058\lib\net45\TsSoft.Expressions.SelectBuilder.Models.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClientEnums\ClientEnumInitializer.cs" />
+    <Compile Include="ClientEnums\IClientEnumInitializer.cs" />
+    <Compile Include="CorrelationId\CorrelationIdFactory.cs" />
+    <Compile Include="Hierarchy\HierarchyCache.cs" />
+    <Compile Include="Hierarchy\HierarchyCollection.cs" />
+    <Compile Include="Hierarchy\IHierarchyCache.cs" />
+    <Compile Include="Hierarchy\IHierarchyCollection.cs" />
+    <Compile Include="Hierarchy\IReorderer.cs" />
+    <Compile Include="Hierarchy\Reorderer.cs" />
+    <Compile Include="Models\Hierarchy\IHierarchyOrderedEntity.cs" />
+    <Compile Include="Models\Hierarchy\IHierarchycalCacheModel.cs" />
+    <Compile Include="Models\Rest\CriteriaBase.cs" />
+    <Compile Include="Models\Rest\IHasPaginator.cs" />
+    <Compile Include="Models\Rest\IOrderedPaginationPredicateRequest.cs" />
+    <Compile Include="Models\Rest\IOrderedPaginationRequest.cs" />
+    <Compile Include="Models\Rest\IOrderedRequest.cs" />
+    <Compile Include="Models\Rest\IPredicateProvider.cs" />
+    <Compile Include="Models\Rest\PredicateBuilderExrensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rest\Infrastructure\IOrderCreator.cs" />
+    <Compile Include="Rest\Infrastructure\OrderCreator.cs" />
+    <Compile Include="Rest\IRestCreateService.cs" />
+    <Compile Include="Rest\IRestDeleteService.cs" />
+    <Compile Include="Rest\IRestGetService.cs" />
+    <Compile Include="Rest\IRestService.cs" />
+    <Compile Include="Rest\IRestUpdateService.cs" />
+    <Compile Include="Rest\RestCreateService.cs" />
+    <Compile Include="Rest\RestDeleteService.cs" />
+    <Compile Include="Rest\RestGetService.cs" />
+    <Compile Include="Rest\RestService.cs" />
+    <Compile Include="Rest\RestUpdateService.cs" />
+    <Compile Include="Wrappers\IWrappersDisposer.cs" />
+    <Compile Include="Wrappers\IWrappersFactory.cs" />
+    <Compile Include="Wrappers\IWrappersInitializer.cs" />
+    <Compile Include="Wrappers\IWrappersManager.cs" />
+    <Compile Include="Wrappers\IWrapperTypesResolver.cs" />
+    <Compile Include="Wrappers\WrappersFactory.cs" />
+    <Compile Include="Wrappers\WrappersManager.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">
+      <Project>{A7118FA8-3EAF-4E2F-84C7-D70A5F14F023}</Project>
+      <Name>Rib.Common.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rib.Common\Rib.Common.csproj">
+      <Project>{D73231CE-3808-4C23-8FD5-06C879DF75E4}</Project>
+      <Name>Rib.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
