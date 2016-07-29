@@ -18,12 +18,12 @@
             _store = store;
         }
 
-        public void Initialize(params object[] obj)
+        public void Initialize(params Type[] types)
         {
             IEnumerable<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            if (obj != null)
+            if (types != null)
             {
-                assemblies = assemblies.Union(obj.Where(o => o != null).Select(o => o.GetType().Assembly));
+                assemblies = assemblies.Union(types.Where(t => t != null).Select(t => t.Assembly));
             }
             foreach (var assembly in assemblies)
             {

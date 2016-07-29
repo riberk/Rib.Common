@@ -5,6 +5,7 @@
     using Rib.Common.Application.Rest;
     using Rib.Common.Application.Wrappers;
     using Rib.Tests.Mock;
+    using TsSoft.EntityRepository.Interfaces;
 
     [TestClass]
     public class NullArgumentTest
@@ -19,11 +20,18 @@
                                      .CheckAllVoidCtorsCreateObject()
                                      .CheckNullArgumentsOnConstructors()
                                      .CheckNullArgumentsOnConstructors<RestUpdateService<string, string>>()
+                                     .CheckNullArgumentsOnConstructors<RestService<E, string, string, string, int>>()
                                      .Errors;
             if (res.Any())
             {
                 Assert.Fail(string.Join("\r\n\r\n", res));
             }
+        }
+
+        public class E : IEntityWithId<int>
+        {
+            /// <summary>Ключ экземпляра</summary>
+            public int Id { get; set; }
         }
     }
 }

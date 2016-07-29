@@ -42,6 +42,7 @@ namespace Rib.Common.Application.Hierarchy
 
         public async Task ReorderAsync(Expression<Func<T, bool>> orderingEntitiesPredicate, TId entityId, TId? idBefore)
         {
+            if (orderingEntitiesPredicate == null) throw new ArgumentNullException(nameof(orderingEntitiesPredicate));
             var list = await GetListAsync(orderingEntitiesPredicate);
             var current = list.Single(x => x.Id.Equals(entityId));
             list.Remove(current);
@@ -68,19 +69,19 @@ namespace Rib.Common.Application.Hierarchy
         /// <param name="orderingEntitiesPredicate">Предикат получения сортируемых сущностей</param>
         public async Task NormalizeAsync(Expression<Func<T, bool>> orderingEntitiesPredicate)
         {
+            if (orderingEntitiesPredicate == null) throw new ArgumentNullException(nameof(orderingEntitiesPredicate));
             await SaveAsync(orderingEntitiesPredicate, await GetListAsync(orderingEntitiesPredicate));
         }
 
         [NotNull, ItemNotNull]
         private async Task<LinkedList<T>> GetListAsync([NotNull] Expression<Func<T, bool>> orderingEntitiesPredicate)
         {
-            if (orderingEntitiesPredicate == null) throw new ArgumentNullException(nameof(orderingEntitiesPredicate));
             var allChildren = await _entityRepository.GetAsync(orderingEntitiesPredicate, _select, _orderByClauses);
             var list = new LinkedList<T>(allChildren.OrderBy(x => x.Order));
             return list;
         }
 
-        private async Task SaveAsync([NotNull] Expression<Func<T, bool>> orderingEntitiesPredicate, [NotNull] LinkedList<T> list)
+        private async Task SaveAsync([NotNull] Expression<Func<T, bool>> orderingEntitiesPredicate, [NotNull] IEnumerable<T> list)
         {
             var dict = list.Select((x, i) => new KeyValuePair<TId, int>(x.Id, i)).ToDictionary(x => x.Key, x => x.Value);
             await _entityRepository.UpdateAsync(obj =>

@@ -120,7 +120,7 @@
 
         private void MockGet(Type t, object result, bool optional, bool isUnique = true)
         {
-            var request = _mockFactory.Create<IRequest>();
+            var request = _mockFactory.Create<IRequest>(MockBehavior.Loose);
             _kernel.Setup(x => x.CreateRequest(t, null, new IParameter[0], optional, isUnique)).Returns(request.Object).Verifiable();
             _kernel.Setup(x => x.Resolve(request.Object)).Returns(new[] {result}).Verifiable();
         }

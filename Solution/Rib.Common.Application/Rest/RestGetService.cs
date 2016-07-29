@@ -19,7 +19,7 @@ namespace Rib.Common.Application.Rest
             where TTableModel : class
     {
         [NotNull] private readonly IOrderCreator<TEntity> _orderCreator;
-
+        [NotNull] internal static readonly Expression<Func<TEntity, bool>> True = PredicateBuilder.True<TEntity>();
         public RestGetService([NotNull] IReadDatabaseService<TEntity, TTableModel> dbService,
                               [NotNull] IOrderCreator<TEntity> orderCreator)
         {
@@ -78,7 +78,7 @@ namespace Rib.Common.Application.Rest
         /// </summary>
         public Task<IPagedResponse<TTableModel>> GetPagedAsync(Expression<Func<TEntity, bool>> filter, IOrderedPaginationRequest request)
         {
-            return GetPagedAsync(request?.Pagination ?? Paginator.Full, filter ?? PredicateBuilder.True<TEntity>(),
+            return GetPagedAsync(request?.Pagination ?? Paginator.Full, filter ?? True,
                                  _orderCreator.Create(request?.Order));
         }
 
@@ -88,7 +88,7 @@ namespace Rib.Common.Application.Rest
         public Task<IPagedResponse<TTableModel>> GetPagedAsync(IOrderedPaginationPredicateRequest<TEntity> request)
         {
             var paginator = request?.Pagination ?? Paginator.Full;
-            var filter = request?.Predicate() ?? PredicateBuilder.True<TEntity>();
+            var filter = request?.Predicate() ?? True;
             var order = _orderCreator.Create(request?.Order);
             return GetPagedAsync(paginator, filter, order);
         }
