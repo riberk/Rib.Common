@@ -6,7 +6,7 @@
     using TsSoft.EntityRepository.Interfaces;
 
     [BindTo(typeof(HierarchyCache<,,>))]
-    public interface IHierarchyCache<TEntity, out TModel, in TId>
+    public interface IHierarchyCache<TEntity, TModel, in TId>
             where TEntity : class , IEntityWithId<TId>, IHierarchyOrderedEntity<TEntity, TId>
             where TModel : class, IHierarchycalCacheModel<TModel, TId> 
             where TId : struct

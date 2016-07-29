@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Rib.Common.Application.Hierarchy;
     using Rib.Common.Application.Rest;
     using Rib.Common.Application.Wrappers;
     using Rib.Tests.Mock;
@@ -21,6 +22,9 @@
                                      .CheckNullArgumentsOnConstructors()
                                      .CheckNullArgumentsOnConstructors<RestUpdateService<string, string>>()
                                      .CheckNullArgumentsOnConstructors<RestService<E, string, string, string, int>>()
+                                     .CheckNullArgumentsOnConstructors<Reorderer<ReordererTests.Entity, int>>()
+                                     .CheckNullArgumentsOnConstructors<HierarchyCache<HierarchyCacheTests.E, HierarchyCacheTests.Model, int>>()
+                                     .CheckNullArgumentsOnConstructors<HierarchyCollection<HierarchyCollectionTests.HierarchycalCacheModel, int>>()
                                      .Errors;
             if (res.Any())
             {

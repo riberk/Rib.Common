@@ -69,14 +69,33 @@ namespace Rib.Common.Application.Hierarchy
         /// </returns>
         public int Count => _tree.Count;
 
-        public TModel Leaf(TId id)
+        public TModel this[TId id]
+        {
+            get
+            {
+                TModel model;
+                if (!TryGetValue(id, out model))
+                {
+                    throw new KeyNotFoundException();
+                }
+                return model;
+            }
+        }
+
+        public bool TryGetValue(TId id, out TModel model)
         {
             var res = _treeHelper.Find(_tree, m => m.Children, m => m.Id.Equals(id)).ToArray();
             if (res.Length > 1)
             {
                 throw new InvalidOperationException($"В иерархии несколько сущностей с Id {id}");
             }
-            return res.Length == 0 ? null : res[0];
+            if (res.Length == 0)
+            {
+                model = default(TModel);
+                return false;
+            }
+            model = res[0];
+            return true;
         }
 
         public IEnumerable<TModel> FlatEnumerable()
@@ -90,7 +109,7 @@ namespace Rib.Common.Application.Hierarchy
             var s = source.ToList();
             foreach (var model in s)
             {
-                model.Children.Clear();
+                model.Children?.Clear();
                 model.Parent = null;
                 yield return model;
             }

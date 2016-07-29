@@ -28,21 +28,20 @@
             _reader = reader;
             _treeHelper = treeHelper;
             _cacherFactory = cacherFactory;
-            Reload();
         }
 
-        public IHierarchyCollection<TModel, TId> Data => GtCacher().GetOrAdd(CacheKey(), s => Get());
+        public IHierarchyCollection<TModel, TId> Data => GetCacher().GetOrAdd(CacheKey(), s => Get());
 
         [NotNull]
-        private ICacher<IHierarchyCollection<TModel, TId>> GtCacher()
+        private ICacher<IHierarchyCollection<TModel, TId>> GetCacher()
         {
             return _cacherFactory.Create<IHierarchyCollection<TModel, TId>>();
         }
 
         [NotNull]
-        private string CacheKey() => GetType().FullName;
+        internal string CacheKey() => GetType().AssemblyQualifiedName;
 
-        public void Reload() => GtCacher().Remove(CacheKey());
+        public void Reload() => GetCacher().Remove(CacheKey());
 
         
         [NotNull]

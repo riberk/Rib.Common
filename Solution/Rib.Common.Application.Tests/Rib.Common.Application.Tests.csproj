@@ -151,6 +151,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ClientEnums\ClientEnumInitializerTests.cs" />
     <Compile Include="CorrelationId\CorrelationIdFactoryTests.cs" />
     <Compile Include="EnumsTest.cs" />
     <Compile Include="Hierarchy\HierarchyCacheTests.cs" />

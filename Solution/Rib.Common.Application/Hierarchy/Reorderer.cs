@@ -17,14 +17,17 @@ namespace Rib.Common.Application.Hierarchy
             where T : class, IOrderedEntity, IEntityWithId<TId>
             where TId : struct, IComparable<TId>, IEquatable<TId>
     {
-        [NotNull] private readonly IBaseRepository<T> _entityRepository;
+        [NotNull] private readonly IReadRepository<T> _readRepository;
+        [NotNull] private readonly IUpdateRepository<T> _updateRepository;
         [NotNull] private readonly IOrderByClause<T>[] _orderByClauses;
         [NotNull] private readonly SelectExpression<T> _select;
 
-        public Reorderer([NotNull] IBaseRepository<T> repository)
+        public Reorderer([NotNull] IReadRepository<T> readRepository, [NotNull] IUpdateRepository<T> updateRepository)
         {
-            if (repository == null) throw new ArgumentNullException(nameof(repository));
-            _entityRepository = repository;
+            if (readRepository == null) throw new ArgumentNullException(nameof(readRepository));
+            if (updateRepository == null) throw new ArgumentNullException(nameof(updateRepository));
+            _readRepository = readRepository;
+            _updateRepository = updateRepository;
             _select = new SelectExpression<T>
             {
                 Select = arg => new
@@ -54,10 +57,6 @@ namespace Rib.Common.Application.Hierarchy
             {
                 var before = list.Single(x => x.Id.Equals(idBefore.Value));
                 var beforeNode = list.Find(before);
-                if (beforeNode == null)
-                {
-                    throw new InvalidOperationException($"Не найден элемент с ид {idBefore.Value}");
-                }
                 list.AddAfter(beforeNode, current);
             }
             await SaveAsync(orderingEntitiesPredicate, list);
@@ -76,15 +75,15 @@ namespace Rib.Common.Application.Hierarchy
         [NotNull, ItemNotNull]
         private async Task<LinkedList<T>> GetListAsync([NotNull] Expression<Func<T, bool>> orderingEntitiesPredicate)
         {
-            var allChildren = await _entityRepository.GetAsync(orderingEntitiesPredicate, _select, _orderByClauses);
+            var allChildren = await _readRepository.GetAsync(orderingEntitiesPredicate, _select, _orderByClauses);
             var list = new LinkedList<T>(allChildren.OrderBy(x => x.Order));
             return list;
         }
 
         private async Task SaveAsync([NotNull] Expression<Func<T, bool>> orderingEntitiesPredicate, [NotNull] IEnumerable<T> list)
         {
-            var dict = list.Select((x, i) => new KeyValuePair<TId, int>(x.Id, i)).ToDictionary(x => x.Key, x => x.Value);
-            await _entityRepository.UpdateAsync(obj =>
+            var dict = list.Select((x, i) => new KeyValuePair<TId, int>(x.Id, i+1)).ToDictionary(x => x.Key, x => x.Value);
+            await _updateRepository.UpdateAsync(obj =>
             {
                 int newOrder;
                 if (!dict.TryGetValue(obj.Id, out newOrder))
@@ -93,7 +92,7 @@ namespace Rib.Common.Application.Hierarchy
                 }
                 obj.Order = newOrder;
             }, orderingEntitiesPredicate, null, false);
-            await _entityRepository.SaveChangesAsync();
+            await _updateRepository.SaveChangesAsync();
         }
     }
 }
