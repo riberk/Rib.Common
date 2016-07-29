@@ -167,6 +167,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Rib.Common.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rib.Common.Models\Rib.Common.Models.csproj">

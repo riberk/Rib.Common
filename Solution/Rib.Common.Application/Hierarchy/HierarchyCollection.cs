@@ -16,9 +16,10 @@ namespace Rib.Common.Application.Hierarchy
         [NotNull] private readonly IReadOnlyCollection<TModel> _tree;
         [NotNull] private readonly ITreeHelper _treeHelper;
 
-        public HierarchyCollection(IEnumerable<TModel> models,
+        public HierarchyCollection([NotNull] IEnumerable<TModel> models,
                                    [NotNull] ITreeHelper treeHelper)
         {
+            if (models == null) throw new ArgumentNullException(nameof(models));
             if (treeHelper == null) throw new ArgumentNullException(nameof(treeHelper));
             _treeHelper = treeHelper;
             var ordered = _treeHelper.OrderByHierarchy(

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Rib.Common.Application</id>
+    <version>1.0.0</version>
+    <title>Rib.Common.Application</title>
+    <authors>Pavel Kurdikov</authors>
+    <owners>Pavel Kurdikov</owners>
+    <licenseUrl>https://github.com/riberk/Rib.Common/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/riberk/Rib.Common</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common classes and interfaces application building</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags></tags>
+    <dependencies>
+      <dependency id="Rib.Common" version="[2.1, 3.0)" />
+      <dependency id="Rib.Common.Models" version="[2.1, 3.0)" />
+      <dependency id="EntityFramework" version="[6.1.3, 7.0.0)" />
+      <dependency id="TsSoft.AbstractMapper" version="[1.0.5946.22256, 2.0.0.0)" />
+      <dependency id="TsSoft.AbstractMapper.Entity" version="[1.0.5882.18784, 2.0.0.0)" />
+      <dependency id="TsSoft.AbstractMapper.Select" version="[1.0.5878.32058, 2.0.0.0)" />
+      <dependency id="TsSoft.AbstractMapper.Update" version="[1.0.5878.32058, 2.0.0.0)" />
+      <dependency id="TsSoft.BindingsDescription" version="[1.0.5878.32057, 2.0.0.0)" />
+      <dependency id="TsSoft.ContextWrapper" version="[1.0.5974.34095, 2.0.0.0)" />
+      <dependency id="TsSoft.ContextWrapper.Interfaces" version="[1.0.5798.24618, 2.0.0.0)" />
+      <dependency id="TsSoft.EntityRepository" version="[1.0.5946.22261, 2.0.0.0)" />
+      <dependency id="TsSoft.EntityRepository.Interfaces" version="[1.0.5946.22256, 2.0.0.0)" />
+      <dependency id="TsSoft.EntityService" version="[1.0.5946.22261, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.Helpers" version="[1.0.5947.29043, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.Helpers.Entity" version="[1.0.5946.22256, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.IncludeBuilder" version="[1.0.5946.22256, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.IncludeBuilder.Models" version="[1.0.5878.32058, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.Models" version="[1.0.5946.22256, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.OrderBy" version="[1.0.5634.19022, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.SelectBuilder" version="[1.0.5946.22256, 2.0.0.0)" />
+      <dependency id="TsSoft.Expressions.SelectBuilder.Models" version="[1.0.5878.32058, 2.0.0.0)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\Rib.Common.Application.dll" target="lib\net46" />
+  </files>
+</package>
