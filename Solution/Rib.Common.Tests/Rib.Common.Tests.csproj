@@ -130,10 +130,12 @@
     <Compile Include="Helpers\Tmp\TmpFolderTests.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumAssembliesResolverTests.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumAssemblyStoreTests.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumPermanentStoreTests.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumResolverTests.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumTypesResolverTests.cs" />
     <Compile Include="NullArgumentTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

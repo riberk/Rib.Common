@@ -4,12 +4,14 @@
     using System.Linq.Expressions;
     using System.Threading.Tasks;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
     using TsSoft.EntityRepository;
 
     /// <summary>
     ///     Сервис удаления сущностей
     /// </summary>
     /// <typeparam name="TEntity">Тип сущности</typeparam>
+    [BindTo(typeof(RestDeleteService<>))]
     public interface IRestDeleteService<TEntity>
             where TEntity : class
     {

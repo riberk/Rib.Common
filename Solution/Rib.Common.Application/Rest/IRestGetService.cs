@@ -7,9 +7,11 @@
     using JetBrains.Annotations;
     using Rib.Common.Application.Models.Rest;
     using Rib.Common.Models.Contract;
+    using Rib.Common.Models.Metadata;
     using TsSoft.EntityService;
     using TsSoft.Expressions.OrderBy;
 
+    [BindTo(typeof(RestGetService<,>))]
     public interface IRestGetService<TEntity, TTableModel>
             where TEntity : class
             where TTableModel : class

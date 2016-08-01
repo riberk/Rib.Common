@@ -8,6 +8,6 @@
         /// <summary>
         ///     Получить
         /// </summary>
-        object Resolve();
+        object Resolve(object currentValue);
     }
 }

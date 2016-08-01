@@ -84,7 +84,12 @@ namespace Rib.Common.Application.Web.WebApi.Filters
                 {
                     throw new InvalidCastException($"{prop.Attr.ResolverType} could ot be cast to IContextPropertyResolver");
                 }
-                res.Add(new ContextPropertyInfo(o => _propertyHelper.Set(prop.Property, o, contextPropertyResolver.Resolve())));
+                res.Add(new ContextPropertyInfo(o =>
+                {
+                    var curValue = _propertyHelper.Get(prop.Property, o);
+                    var resolved = contextPropertyResolver.Resolve(curValue);
+                    _propertyHelper.Set(prop.Property, o, resolved);
+                }));
             }
             infos = res;
             return res.Any();

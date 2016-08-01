@@ -4,6 +4,7 @@
     using System.Linq.Expressions;
     using System.Threading.Tasks;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
     using TsSoft.EntityRepository;
 
     /// <summary>
@@ -11,6 +12,7 @@
     /// </summary>
     /// <typeparam name="TEntity">Тип сущности</typeparam>
     /// <typeparam name="TChangeModel">Тип модели</typeparam>
+    [BindTo(typeof(RestUpdateService<,>))]
     public interface IRestUpdateService<TEntity, in TChangeModel>
             where TEntity : class
     {

@@ -161,10 +161,12 @@
     <Compile Include="Helpers\Tmp\TmpFolder.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumAssembliesResolver.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumAssemblyStore.cs" />
+    <Compile Include="Metadata\ClientEnums\ClientEnumPermanentStore.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumResolver.cs" />
     <Compile Include="Metadata\ClientEnums\ClientEnumTypesResolver.cs" />
     <Compile Include="Metadata\ClientEnums\IClientEnumAssembliesResolver.cs" />
     <Compile Include="Metadata\ClientEnums\IClientEnumAssemblyStore.cs" />
+    <Compile Include="Metadata\ClientEnums\IClientEnumPermanentStore.cs" />
     <Compile Include="Metadata\ClientEnums\IClientEnumResolver.cs" />
     <Compile Include="Metadata\ClientEnums\IClientEnumTypesResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

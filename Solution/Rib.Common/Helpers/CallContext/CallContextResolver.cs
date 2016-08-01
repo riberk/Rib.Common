@@ -26,6 +26,7 @@
                 }
                 return ctx;
             }
+            set { CallContext.LogicalSetData(ContextKey, value); }
         }
     }
 }

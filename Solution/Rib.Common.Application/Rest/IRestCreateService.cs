@@ -3,9 +3,11 @@
     using System;
     using System.Threading.Tasks;
     using JetBrains.Annotations;
+    using Rib.Common.Models.Metadata;
     using TsSoft.EntityRepository;
     using TsSoft.EntityRepository.Interfaces;
 
+    [BindTo(typeof(RestCreateService<,,>))]
     public interface IRestCreateService<TEntity, in TCreateModel, TEntityId>
             where TEntity : class, IEntityWithId<TEntityId>
             where TEntityId : struct
