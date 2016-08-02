@@ -176,9 +176,6 @@
     <Compile Include="Razor\IViewsPathResolver.cs" />
     <Compile Include="Razor\RazorActivator.cs" />
     <Compile Include="Razor\TemplateManager.cs" />
-    <Content Include="Razor\Tests\1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Compile Include="WebApi\DependencyResolver.cs" />
     <Compile Include="WebApi\Filters\AutoPropertiesSetter.cs" />
     <Compile Include="WebApi\Filters\ExceptionFilterAttribute.cs" />
