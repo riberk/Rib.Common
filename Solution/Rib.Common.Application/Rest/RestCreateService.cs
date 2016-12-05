@@ -58,7 +58,10 @@
             var entity = _newMaker.Create<TEntity>()();
             entityAction(entity);
             var tasks = _createUpdater(_createMapper.Map(createModel), entity);
-            await Task.WhenAll(tasks.Select(x => x()));
+            foreach (var task in tasks ?? Enumerable.Empty<Func<Task>>())
+            {
+                await task();
+            }
             var res = await CreateRepository.CreateAsync(entity);
             if (res == null)
             {
